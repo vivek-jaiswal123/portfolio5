@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic Tac Toe Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #4CAF50, #008CBA);
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        text-align: center;
+    }
+    .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-gap: 4px;
+    }
+    .cell {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #333;
+        font-size: 48px;
+        text-align: center;
+        line-height: 100px;
+        cursor: pointer;
+    }
+    .highlight {
+        background-color: #ff0;
+    }
+    .message {
+        margin-top: 20px;
+        font-size: 24px;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+    .overlay-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    button {
+        margin-top: 20px;
+        background: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="board">
+        <div class="cell" onclick="makeMove(0)"></div>
+        <div class="cell" onclick="makeMove(1)"></div>
+        <div class="cell" onclick="makeMove(2)"></div>
+        <div class="cell" onclick="makeMove(3)"></div>
+        <div class="cell" onclick="makeMove(4)"></div>
+        <div class="cell" onclick="makeMove(5)"></div>
+        <div class="cell" onclick="makeMove(6)"></div>
+        <div class="cell" onclick="makeMove(7)"></div>
+        <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+    <div class="message" id="message"></div>
+    <button onclick="resetGame()">Reset Game</button>
+</div>
+<div class="overlay" id="overlay" style="display: none;">
+    <div class="overlay-content">
+        <div id="resultMessage"></div>
+        <button onclick="startNewGame()">New Game</button>
+    </div>
+</div>
+<script>
+    let currentPlayer = 'X';
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let gameActive = true;
+
+    const winningCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6] // Diagonals
+    ];
+
+    function makeMove(cellIndex) {
+        if (gameActive && board[cellIndex] === '') {
+            board[cellIndex] = currentPlayer;
+            document.getElementsByClassName('cell')[cellIndex].textContent = currentPlayer;
+            checkResult();
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+    }
+
+    function checkResult() {
+        for (let combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                showResult(`${currentPlayer} wins!`, combination);
+                gameActive = false;
+                return;
+            }
+        }
+        if (!board.includes('')) {
+            showResult("It's a draw!");
+            gameActive = false;
+            return;
+        }
+    }
+
+    function showResult(message, winningCells = []) {
+        document.getElementById('resultMessage').textContent = message;
+        if (winningCells.length > 0) {
+            for (let cellIndex of winningCells) {
+                document.getElementsByClassName('cell')[cellIndex].classList.add('highlight');
+            }
+        }
+        document.getElementById('overlay').style.display = 'flex';
+    }
+
+    function resetGame() {
+        currentPlayer = 'X';
+        board = ['', '', '', '', '', '', '', '', ''];
+        gameActive = true;
+        document.getElementById('message').textContent = '';
+        for (let i = 0; i < 9; i++) {
+            const cell = document.getElementsByClassName('cell')[i];
+            cell.textContent = '';
+            cell.classList.remove('highlight');
+        }
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    function startNewGame() {
+        resetGame();
+    }
+</script>
+</body>
+</html>
