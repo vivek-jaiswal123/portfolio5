@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .weather-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #weather-info {
+            margin-top: 20px;
+        }
+
+        #weather-info p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        #error {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <input type="text" id="city" placeholder="Enter city" />
+        <button id="getWeatherBtn">Get Weather</button>
+
+        <div id="weather-info" style="display: none;">
+            <h2 id="location"></h2>
+            <p id="temperature"></p>
+            <p id="condition"></p>
+            <p id="aqi"></p>
+        </div>
+
+        <div id="error" style="display: none;">
+            <p>Sorry, we couldn't fetch the weather for the given location. Please try again.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('getWeatherBtn').addEventListener('click', getWeather);
+
+        function getWeather() {
+            const city = document.getElementById('city').value;
+            if (!city) {
+                alert("Please enter a city!");
+                return;
+            }
+
+            const apiKey = '919235be83824b13a0a90748252901'; // API key
+            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        showError(data.error.message);
+                    } else {
+                        showWeather(data);
+                    }
+                })
+                .catch(error => {
+                    showError("Error fetching data. Please try again.");
+                });
+        }
+
+        function showWeather(data) {
+            const location = data.location.name + ', ' + data.location.country;
+            const temperature = data.current.temp_c + '°C';
+            const condition = data.current.condition.text;
+            const aqi = data.current.air_quality['us-epa-index'];
+
+            document.getElementById('location').textContent = location;
+            document.getElementById('temperature').textContent = 'Temperature: ' + temperature;
+            document.getElementById('condition').textContent = 'Condition: ' + condition;
+            document.getElementById('aqi').textContent = 'Air Quality Index (AQI): ' + aqi;
+
+            document.getElementById('weather-info').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').textContent = message;
+            document.getElementById('weather-info').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
