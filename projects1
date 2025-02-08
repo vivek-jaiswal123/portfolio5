@@ -1,1 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio Projects</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        margin: 0;
+        padding: 0;
+      }
+
+      .project-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 30px;
+        padding: 50px 10%;
+      }
+
+      .project-box {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 280px;
+        height: 300px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .project-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-box i {
+        font-size: 60px;
+        color: #4C99D1;
+        margin-bottom: 20px;
+        z-index: 2;
+        transition: color 0.3s ease;
+      }
+
+      .project-box h3 {
+        font-size: 18px;
+        color: #fff;
+        margin: 10px 0;
+        text-align: center;
+        z-index: 2;
+        transition: color 0.3s ease;
+      }
+
+      .project-box label {
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        z-index: 2;
+        transition: color 0.3s ease;
+      }
+
+      .project-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-box:hover::before {
+        opacity: 0;
+      }
+
+      .project-box:hover i {
+        color: #ffffff;
+      }
+
+      .project-box:hover h3,
+      .project-box:hover label {
+        color: #ffffff;
+      }
+
+      .project-box::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #47d3dd;
+        z-index: 1;
+        transition: height 0.4s ease;
+      }
+
+      .project-box:hover::after {
+        height: 100%;
+      }
+
+      .project-box h3, .project-box label, .project-box i {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Media Queries for responsiveness */
+      @media (max-width: 768px) {
+        .project-container {
+          padding: 30px 5%;
+        }
+
+        .project-box {
+          width: 100%;
+          height: 250px;
+        }
+
+        .project-box i {
+          font-size: 50px;
+        }
+
+        .project-box h3 {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .project-container {
+          padding: 20px 5%;
+        }
+
+        .project-box {
+          width: 100%;
+          height: 220px;
+        }
+
+        .project-box i {
+          font-size: 40px;
+        }
+
+        .project-box h3 {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="project-container">
+      <div class="project-box" style="background-image: url('Tic tac.png');" onclick="handleClickGame()">
+        <i class="uil uil-briefcase-alt"></i>
+        <h3><a href="game.html" style="text-decoration:none;color: #ffffff;">Tic Tac Toe</a></h3>
+      </div>
+
+      <div class="project-box" style="background-image: url('Netflix.png');"  onclick="handleClickNetflix()">
+        <i class="uil uil-users-alt"></i>
+        <h3><a href="netflix.html" style="text-decoration:none;color: #ffffff;">Netflix</a></h3>
+      </div>
+
+      <div class="project-box" style="background-image: url('Amazon.png');" onclick="handleClickAmazon()">
+        <i class="uil uil-award"></i>
+        <h3><a href="amazon.html" style="text-decoration:none;color: #ffffff;">Amazon</a></h3>
+      </div>
+
+      <div class="project-box" style="background-image: url('Bg logo.png');" onclick="handleClickFastremover()">
+        <i class="uil uil-award"></i>
+        <h3><a href="https://fastremover.netlify.app/" style="text-decoration:none;color: #ffffff;">Fastremover</a></h3>
+      </div>
+
+      <div class="project-box" style="background-color: #cccccc;">
+        <i class="uil uil-award"></i>
+        <h3>Coming Soon</h3>
+        <label>Stay Tuned!</label>
+      </div>
+
+      <div class="project-box" style="background-color: #cccccc;">
+        <i class="uil uil-award"></i>
+        <h3>Coming Soon</h3>
+        <label>Stay Tuned!</label>
+      </div>
+    </div>
+
+    <script>
+    function  handleClickGame(){
+      
+      window.location.href = "game.html";
+    }
+    function  handleClickNetflix(){
+      
+      window.location.href = "netflix.html";
+    }
+    function  handleClickAmazon(){
+      
+      window.location.href = "amazon.html";
+    }
+    function  handleClickFastremover(){
+      
+      window.location.href = "https://fastremover.netlify.app/";
+    }
+    </script>
+  </body>
+</html>
 
