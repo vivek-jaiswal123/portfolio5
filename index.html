@@ -90,15 +90,71 @@
             width: 100%;
         }
 
-        .nav-menu.active {
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
             display: block;
-            position: absolute;
-            top: 80px;
-            right: 0;
-            background-color: #fff;
-            box-shadow: var(--shadow);
-            padding: 1rem;
-            border-radius: 0.5rem;
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* Mobile Navigation */
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+
+            .nav-menu {
+                display: block;
+                position: absolute;
+                top: -100vh;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem;
+                text-align: center;
+                box-shadow: var(--shadow);
+                transition: top 0.3s ease-in-out;
+                z-index: 1000;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-menu a:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu.active {
+                display: block;
+                top: 100%;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
         }
 
         /* Hero Section */
@@ -106,12 +162,15 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 5%;
             background: linear-gradient(135deg, hwb(177 64% 7%) 0%, #ebe7e5 100%);
             position: relative;
+            gap: 2rem;
         }
 
         .hero-content {
+            flex: 1;
             max-width: 600px;
             z-index: 1;
         }
@@ -289,20 +348,126 @@
             padding: 3rem 5%;
             text-align: center;
         }
+
+        /* Profile Image Styling */
         .featured-image {
-            display: flex;
-            justify-content: right;
-            align-content: center;
-            min-height: 80vh;
-            width: 50%;
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin: 0;
+            flex-shrink: 0;
         }
 
         .image {
-            margin: auto 0;
-            width: 380px;
-            height: 380px;
-            box-shadow: whitesmoke 2px;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
         }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .image::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+        }
+
+        .image::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            z-index: -2;
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .image:hover img {
+            transform: scale(1.02);
+            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 6rem 5% 2rem;
+            }
+            
+            .featured-image {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 6rem 5% 2rem;
+                gap: 3rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .featured-image {
+                width: 250px;
+                height: 250px;
+                margin: 0 auto;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .featured-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -364,13 +529,48 @@
                 text-align: center;
             }
         }
+        .b1 {
+    background: linear-gradient(45deg, #3789e7, #2374df); /* Gradient color */
+    color: white; /* Text color */
+    font-size: 9px; /* Smaller font size */
+    padding: 5px 10px; /* Smaller padding */
+    border: none; /* Remove default border */
+    border-radius: 50px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for effects */
+    text-transform: uppercase; /* Uppercase text */
+    font-weight: bold; /* Bold text */
+    position: absolute;
+    transform: translateX(-50%); /* Exact center alignment */
+    bottom: 20px;
+    left: 60%;
+  }
+
+  .b1:hover {
+    background: linear-gradient(45deg, #3789e7, #2374df); /* Hover color change */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    transform: scale(1.05) translateX(-50%); /* Slightly increase size on hover */
+  }
+
+  .b1:active {
+    transform: scale(0.98) translateX(-50%); /* Slight shrink effect on click */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+  }
+
+        
     </style>
 </head>
 
 <body>
     <nav>
         <a href="#" class="nav-logo">Vivek.dev</a>
+        <button class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-menu">
+            <!-- <button class="b1">Education</button> -->
             <a href="#home" class="nav-link">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="projects1.html" class="nav-link">Projects</a>
@@ -381,7 +581,7 @@
     <section class="hero" id="home">
         <div class="hero-content animate-fade-up">
             <h1 class="hero-title">Hi, I'm <span id="typedText"></span></h1>
-            <p class="hero-subtitle">Fresher frontend developer with a passion for creating visually stunning and user-friendly websites.</p>
+            <p class="hero-subtitle">Experienced frontend developer with a passion for creating visually stunning and user-friendly websites.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
                 <a href="VivekJaiswalResumelatest.pdf" class="btn btn-outline" download>Download CV</a>
@@ -390,9 +590,7 @@
         
         <div class="featured-image">
             <div class="image">
-                <img src="myself.jpg" height="350px " width="100%"
-                    style="border-radius: 100%;box-shadow:5px 1px 3px 5px hsla(0, 0%, 0%, 0.699);"
-                    alt="avatar">
+                <img src="myself.jpg" alt="avatar">
             </div>
         </div>
     </section>
@@ -430,7 +628,7 @@
             <div class="project-box">
                 <i class="uil uil-award"></i>
                 <h3>Experience</h3>
-                <label>As A Fresher in the field</label>
+                <label>As A 6+ months Experience in the field</label>
             </div>
         </div>
     </section>
@@ -467,11 +665,27 @@
             backDelay: 2000
         });
 
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Mobile Menu Toggle
         document.querySelector('.nav-logo').addEventListener('click', () => {
             document.querySelector('.nav-menu').classList.toggle('active');
         });
     </script>
 </body>
-
 </html>
