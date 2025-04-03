@@ -529,35 +529,91 @@
                 text-align: center;
             }
         }
+
+        /* Skills Section Styles */
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-item span {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+
         .b1 {
-    background: linear-gradient(45deg, #3789e7, #2374df); /* Gradient color */
-    color: white; /* Text color */
-    font-size: 9px; /* Smaller font size */
-    padding: 5px 10px; /* Smaller padding */
-    border: none; /* Remove default border */
-    border-radius: 50px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth transition for effects */
-    text-transform: uppercase; /* Uppercase text */
-    font-weight: bold; /* Bold text */
-    position: absolute;
-    transform: translateX(-50%); /* Exact center alignment */
-    bottom: 20px;
-    left: 60%;
-  }
+            background: linear-gradient(45deg, #3789e7, #2374df); /* Gradient color */
+            color: white; /* Text color */
+            font-size: 9px; /* Smaller font size */
+            padding: 5px 10px; /* Smaller padding */
+            border: none; /* Remove default border */
+            border-radius: 50px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: all 0.3s ease; /* Smooth transition for effects */
+            text-transform: uppercase; /* Uppercase text */
+            font-weight: bold; /* Bold text */
+            position: absolute;
+            transform: translateX(-50%); /* Exact center alignment */
+            bottom: 20px;
+            left: 60%;
+        }
 
-  .b1:hover {
-    background: linear-gradient(45deg, #3789e7, #2374df); /* Hover color change */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
-    transform: scale(1.05) translateX(-50%); /* Slightly increase size on hover */
-  }
+        .b1:hover {
+            background: linear-gradient(45deg, #3789e7, #2374df); /* Hover color change */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+            transform: scale(1.05) translateX(-50%); /* Slightly increase size on hover */
+        }
 
-  .b1:active {
-    transform: scale(0.98) translateX(-50%); /* Slight shrink effect on click */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
-  }
-
-        
+        .b1:active {
+            transform: scale(0.98) translateX(-50%); /* Slight shrink effect on click */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+        }
     </style>
 </head>
 
@@ -590,7 +646,7 @@
         
         <div class="featured-image">
             <div class="image">
-                <img src="myself.jpg" alt="avatar">
+                <img src="my phto.jfif" alt="avatar">
             </div>
         </div>
     </section>
@@ -613,6 +669,65 @@
         </div>
     </section>
 
+    <section id="skills">
+        <h2 class="section-title">My Skills <svg fill="#4d9900" height="50px" width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#4d9900"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M461.913,30.614H50.087C22.469,30.614,0,53.083,0,80.701v267.13c0,27.618,22.469,50.087,50.087,50.087h148.078 l43.376,75.13c6.422,11.125,22.507,11.106,28.917,0l43.376-75.13h148.078c27.618,0,50.087-22.469,50.087-50.087V80.701 C512,53.083,489.531,30.614,461.913,30.614z M478.609,347.832c0,9.206-7.49,16.696-16.696,16.696H304.196 c-5.965,0-11.477,3.182-14.458,8.348L256,431.31l-33.737-58.435c-2.982-5.166-8.494-8.348-14.458-8.348H50.087 c-9.206,0-16.696-7.49-16.696-16.696V80.701c0-9.206,7.49-16.696,16.696-16.696h411.826c9.206,0,16.696,7.49,16.696,16.696 V347.832z"></path> </g> </g> <g> <g> <path d="M360.714,142.664l-47.467,20.103c-11.829,5.011-13.782,20.974-3.547,28.7l6.033,4.553l-37.93,47.687l-53.487-67.247 c-6.68-8.398-19.454-8.397-26.133,0l-66.553,83.674c-5.74,7.216-4.543,17.72,2.674,23.46c7.219,5.742,17.721,4.54,23.46-2.674 l53.487-67.247l53.487,67.247c6.68,8.398,19.454,8.397,26.133,0l51.524-64.777l8.519,6.43 c10.181,7.686,25.042,1.553,26.628-11.277l6.333-51.245C385.461,147.213,372.482,137.627,360.714,142.664z"></path> </g> </g> </g></svg></h2>
+        <div class="skills-container">
+            <div class="skill-category"> 
+                <h3>Front-end</h3>
+                <div class="skill-item">
+                    <span>HTML5</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>CSS3</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>JavaScript</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Frameworks/Libraries</h3>
+                <div class="skill-item">
+                    <span>C</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>Bootstrap</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="skill-item">
+                    <span>C++</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>VS Code</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="projects" id="projects">
         <div class="project-container">
             <div class="project-box">
@@ -623,7 +738,7 @@
             <div class="project-box">
                 <i class="uil uil-users-alt"></i>
                 <h3>Friends</h3>
-                <label>5+ Happy clients</label>
+                <label>8+ Happy clients</label>
             </div>
             <div class="project-box">
                 <i class="uil uil-award"></i>
