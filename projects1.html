@@ -4,92 +4,160 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      
+      :root {
+        --primary-color: #47d3dd;
+        --secondary-color: #4C99D1;
+        --text-light: #ffffff;
+        --text-dark: #333333;
+        --bg-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        --card-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+        --hover-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
+        --transition-speed: 0.4s;
+      }
+
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--bg-gradient);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .header {
+        text-align: center;
+        padding: 3rem 0 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        display: inline-block;
+      }
+
+      .header p {
+        color: var(--text-dark);
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.8;
       }
 
       .project-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 30px;
-        padding: 50px 10%;
+        justify-content: center;
+        gap: 40px;
+        padding: 50px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+        perspective: 1000px;
       }
 
       .project-box {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 280px;
-        height: 300px;
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        height: 320px;
+        border-radius: 15px;
         overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--card-shadow);
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                    box-shadow var(--transition-speed) ease;
         background-size: cover;
         background-position: center;
+        background-color: #ffffff;
       }
 
-      .project-box::before {
-        content: "";
+      .project-box:hover {
+        transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+        box-shadow: var(--hover-shadow);
+      }
+
+      .project-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.65) 0%,
+          rgba(0, 0, 0, 0.4) 50%,
+          rgba(0, 0, 0, 0.65) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         z-index: 1;
-        transition: opacity 0.3s ease;
+        transition: all var(--transition-speed) ease;
       }
 
-      .project-box i {
-        font-size: 60px;
-        color: #4C99D1;
-        margin-bottom: 20px;
-        z-index: 2;
-        transition: color 0.3s ease;
+      .project-box:hover .project-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(71, 211, 221, 0.85) 0%,
+          rgba(76, 153, 209, 0.85) 100%
+        );
       }
 
-      .project-box h3 {
-        font-size: 18px;
-        color: #fff;
+      .project-icon {
+        font-size: 3rem;
+        color: var(--text-light);
+        margin-bottom: 15px;
+        transform: translateY(0);
+        transition: transform var(--transition-speed) ease;
+        opacity: 0.9;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        color: var(--text-light);
+        font-weight: 600;
         margin: 10px 0;
         text-align: center;
-        z-index: 2;
-        transition: color 0.3s ease;
+        transform: translateY(0);
+        transition: transform var(--transition-speed) ease;
       }
 
-      .project-box label {
-        font-size: 14px;
-        color: #fff;
+      .project-label {
+        font-size: 0.9rem;
+        color: var(--text-light);
         text-align: center;
-        z-index: 2;
-        transition: color 0.3s ease;
-      }
-
-      .project-box:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      .project-box:hover::before {
+        opacity: 0.8;
+        padding: 0 20px;
+        transform: translateY(20px);
+        transition: all var(--transition-speed) ease;
         opacity: 0;
       }
 
-      .project-box:hover i {
-        color: #ffffff;
+      .project-box:hover .project-icon {
+        transform: translateY(-10px) scale(1.1);
       }
 
-      .project-box:hover h3,
-      .project-box:hover label {
-        color: #ffffff;
+      .project-box:hover .project-title {
+        transform: translateY(-5px);
+      }
+
+      .project-box:hover .project-label {
+        transform: translateY(0);
+        opacity: 1;
       }
 
       .project-box::after {
@@ -98,126 +166,412 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 0;
-        background-color: #47d3dd;
-        z-index: 1;
-        transition: height 0.4s ease;
-      }
-
-      .project-box:hover::after {
-        height: 100%;
-      }
-
-      .project-box h3, .project-box label, .project-box i {
-        position: relative;
+        height: 5px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--transition-speed) ease;
         z-index: 2;
       }
 
-      /* Media Queries for responsiveness */
+      .project-box:hover::after {
+        transform: scaleX(1);
+      }
+
+      .project-link {
+        text-decoration: none;
+        color: var(--text-light);
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .project-action {
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--text-light);
+        color: var(--primary-color);
+        border: none;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all var(--transition-speed) ease;
+        opacity: 0;
+        z-index: 3;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .project-box:hover .project-action {
+        bottom: 20px;
+        opacity: 1;
+      }
+
+      .project-action:hover {
+        background: var(--primary-color);
+        color: var(--text-light);
+        box-shadow: 0 7px 20px rgba(71, 211, 221, 0.4);
+      }
+
+      .coming-soon {
+        background-color: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .coming-soon::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.7) 0%,
+          rgba(255, 255, 255, 0.7) 25%,
+          rgba(240, 240, 240, 0.7) 25%,
+          rgba(240, 240, 240, 0.7) 50%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(255, 255, 255, 0.7) 75%,
+          rgba(240, 240, 240, 0.7) 75%,
+          rgba(240, 240, 240, 0.7) 100%
+        );
+        background-size: 30px 30px;
+        animation: moveStripes 20s linear infinite;
+        z-index: 0;
+      }
+
+      @keyframes moveStripes {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .coming-soon .project-overlay {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(3px);
+      }
+
+      .coming-soon:hover .project-overlay {
+        background: rgba(76, 153, 209, 0.7);
+      }
+
+      .coming-soon .project-icon,
+      .coming-soon .project-title,
+      .coming-soon .project-label {
+        color: var(--text-dark);
+        z-index: 2;
+      }
+
+      .coming-soon:hover .project-icon,
+      .coming-soon:hover .project-title,
+      .coming-soon:hover .project-label {
+        color: var(--text-light);
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Loading animation */
+      .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-gradient);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+      }
+
+      .loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .loader-content {
+        text-align: center;
+      }
+
+      .loader-spinner {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(76, 153, 209, 0.2);
+        border-top-color: var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Tilt effect for project boxes */
+      .tilt-effect {
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+      }
+
+      .tilt-inner {
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 30px 0;
+        color: var(--text-dark);
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1200px) {
+        .project-container {
+          gap: 30px;
+        }
+      }
+
       @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2rem;
+        }
+        
         .project-container {
           padding: 30px 5%;
+          gap: 25px;
         }
 
         .project-box {
-          width: 100%;
-          height: 250px;
-        }
-
-        .project-box i {
-          font-size: 50px;
-        }
-
-        .project-box h3 {
-          font-size: 16px;
+          width: 280px;
+          height: 300px;
         }
       }
 
       @media (max-width: 480px) {
+        .header h1 {
+          font-size: 1.8rem;
+        }
+        
         .project-container {
           padding: 20px 5%;
+          gap: 20px;
         }
 
         .project-box {
           width: 100%;
-          height: 220px;
+          max-width: 320px;
+          height: 280px;
         }
 
-        .project-box i {
-          font-size: 40px;
+        .project-icon {
+          font-size: 2.5rem;
         }
 
-        .project-box h3 {
-          font-size: 14px;
+        .project-title {
+          font-size: 1.3rem;
         }
       }
     </style>
   </head>
   <body>
-    <div class="project-container">
-      <div class="project-box" style="background-image: url('Tic tac.png');" onclick="handleClickGame()">
-        <i class="uil uil-briefcase-alt"></i>
-        <h3><a href="game.html" style="text-decoration:none;color: #ffffff;">Tic Tac Toe</a></h3>
-      </div>
-
-      <div class="project-box" style="background-image: url('Netflix.png');"  onclick="handleClickNetflix()">
-        <i class="uil uil-users-alt"></i>
-        <h3><a href="netflix.html" style="text-decoration:none;color: #ffffff;">Netflix</a></h3>
-      </div>
-
-      <div class="project-box" style="background-image: url('Amazon.png');" onclick="handleClickAmazon()">
-        <i class="uil uil-award"></i>
-        <h3><a href="amazon.html" style="text-decoration:none;color: #ffffff;">Amazon</a></h3>
-      </div>
-
-      <div class="project-box" style="background-image: url('Bg logo.png');" onclick="handleClickFastremover()">
-        <i class="uil uil-award"></i>
-        <h3><a href="https://fastremover.netlify.app/" style="text-decoration:none;color: #ffffff;">Fastremover</a></h3>
-      </div>
-
-      <div class="project-box" style="background-image: url('/affiliatenest-logo.png');" onclick="handleClickAffiliateNest()">
-        <i class="uil uil-award"></i>
-        <h3><a href="https://affiliate-ultra.vercel.app/" style="text-decoration:none;color: #ffffff;">AffiliateNest</a></h3>
-        <!-- <label>Stay Tuned!</label> -->
-      </div>
-
-      <div class="project-box" style="background-image: url('/bookverse-logo.png');" onclick="handleClickBookVerse()">
-        <i class="uil uil-award"></i>
-        <h3><a href="https://bookverse-bv.vercel.app/#" style="text-decoration:none;color: #ffffff;">BookVerse</a></h3>
-        <!-- <label>Stay Tuned!</label> -->
-      </div>
-
-      <div class="project-box" style="background-color: #cccccc;">
-        <i class="uil uil-award"></i>
-        <h3>Coming Soon</h3>
-        <label>Stay Tuned!</label>
+    <!-- Loading animation -->
+    <div class="loader">
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
       </div>
     </div>
 
-    <script>
-    function  handleClickGame(){
-      
-      window.location.href = "game.html";
-    }
-    function  handleClickNetflix(){
-      
-      window.location.href = "netflix.html";
-    }
-    function  handleClickAmazon(){
-      
-      window.location.href = "amazon.html";
-    }
-    function  handleClickFastremover(){
-      
-      window.location.href = "https://fastremover.netlify.app/";
-    }
+    <!-- Header section -->
+    <header class="header">
+      <h1 class="animate__animated animate__fadeInDown">Portfolio Projects</h1>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">A showcase of my web development journey and creative work</p>
+    </header>
 
-    function  handleClickAffiliateNest(){
+    <!-- Projects container -->
+    <div class="project-container">
+      <div class="project-box animate__animated animate__fadeInUp" 
+           style="background-image: url('Tic tac.png'); animation-delay: 0.2s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <a href="game.html" class="project-link">
+            <i class="fas fa-gamepad project-icon"></i>
+            <h3 class="project-title">Tic Tac Toe</h3>
+            <p class="project-label">Classic game with modern UI and multiplayer capabilities</p>
+          </a>
+          <button class="project-action" onclick="window.location.href='game.html'">Play Now</button>
+        </div>
+      </div>
+
+      <div class="project-box animate__animated animate__fadeInUp" 
+           style="background-image: url('Netflix.png'); animation-delay: 0.3s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <a href="netflix.html" class="project-link">
+            <i class="fas fa-film project-icon"></i>
+            <h3 class="project-title">Netflix Clone</h3>
+            <p class="project-label">Streaming platform UI with responsive design</p>
+          </a>
+          <button class="project-action" onclick="window.location.href='netflix.html'">View Project</button>
+        </div>
+      </div>
+
+      <div class="project-box animate__animated animate__fadeInUp" 
+           style="background-image: url('Amazon.png'); animation-delay: 0.4s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <a href="amazon.html" class="project-link">
+            <i class="fas fa-shopping-cart project-icon"></i>
+            <h3 class="project-title">Amazon Clone</h3>
+            <p class="project-label">E-commerce platform with shopping cart functionality</p>
+          </a>
+          <button class="project-action" onclick="window.location.href='amazon.html'">Shop Now</button>
+        </div>
+      </div>
+
+      <div class="project-box animate__animated animate__fadeInUp" 
+           style="background-image: url('Bg logo.png'); animation-delay: 0.5s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <a href="https://fastremover.netlify.app/" class="project-link">
+            <i class="fas fa-bolt project-icon"></i>
+            <h3 class="project-title">Fastremover</h3>
+            <p class="project-label">Quick and efficient content removal service</p>
+          </a>
+          <button class="project-action" onclick="window.location.href='https://fastremover.netlify.app/'">Visit Site</button>
+        </div>
+      </div>
+
+      <div class="project-box animate__animated animate__fadeInUp" 
+           style="background-image: url('/affiliatenest-logo.png'); animation-delay: 0.6s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <a href="https://affiliate-ultra.vercel.app/" class="project-link">
+            <i class="fas fa-link project-icon"></i>
+            <h3 class="project-title">AffiliateNest</h3>
+            <p class="project-label">Affiliate marketing platform with analytics</p>
+          </a>
+          <button class="project-action" onclick="window.location.href='https://affiliate-ultra.vercel.app/'">Explore</button>
+        </div>
+      </div>
+
+      <div class="project-box animate__animated animate__fadeInUp" 
+           style="background-image: url('/bookverse-logo.png'); animation-delay: 0.7s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <a href="https://bookverse-bv.vercel.app/" class="project-link">
+            <i class="fas fa-book project-icon"></i>
+            <h3 class="project-title">BookVerse</h3>
+            <p class="project-label">Digital library with reader-friendly interface</p>
+          </a>
+          <button class="project-action" onclick="window.location.href='https://bookverse-bv.vercel.app/'">Read Now</button>
+        </div>
+      </div>
+
+      <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" 
+           style="animation-delay: 0.8s;"
+           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+        <div class="project-overlay">
+          <div class="project-link">
+            <i class="fas fa-rocket project-icon"></i>
+            <h3 class="project-title">Coming Soon</h3>
+            <p class="project-label">Exciting new project in the works. Stay tuned for more!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer animate__animated animate__fadeIn animate__delay-1s">
+      <p>© 2025 Portfolio Projects | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script>
+      // Loading animation
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.querySelector('.loader').classList.add('hidden');
+        }, 1000);
+      });
+
+      // Initialize tilt effect
+      VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.3,
+      });
+
+      // Project click handlers
+      function handleClickGame() {
+        window.location.href = "game.html";
+      }
       
-      window.location.href = "https://affiliate-ultra.vercel.app/";
-    }function  handleClickBookVerse(){
-      window.location.href = "https://bookverse-bv.vercel.app/";
-    }
+      function handleClickNetflix() {
+        window.location.href = "netflix.html";
+      }
+      
+      function handleClickAmazon() {
+        window.location.href = "amazon.html";
+      }
+      
+      function handleClickFastremover() {
+        window.location.href = "https://fastremover.netlify.app/";
+      }
+      
+      function handleClickAffiliateNest() {
+        window.location.href = "https://affiliate-ultra.vercel.app/";
+      }
+      
+      function handleClickBookVerse() {
+        window.location.href = "https://bookverse-bv.vercel.app/";
+      }
+
+      // Add animation when scrolling
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate__fadeInUp');
+            entry.target.style.opacity = 1;
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.project-box').forEach(box => {
+        observer.observe(box);
+      });
     </script>
   </body>
 </html>
