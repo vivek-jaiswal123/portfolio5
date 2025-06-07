@@ -27,7 +27,7 @@
         }
 
         * {
-            margin: 0;
+            margin: 0;    
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
@@ -636,7 +636,7 @@
 
     <section class="hero" id="home">
         <div class="hero-content animate-fade-up">
-            <h1 class="hero-title">Hi, I'm <span id="typedText"></span></h1>
+            <h1 class="hero-title">Hi, I'm a <span id="typedText"></span></h1>
             <p class="hero-subtitle">Experienced frontend developer with a passion for creating visually stunning and user-friendly websites.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
@@ -748,22 +748,24 @@
         </div>
     </section>
 
+    <form action="https://formspree.io/f/mwpbvyak" method="POST">
     <section class="contact" id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-grid">
             <div class="contact-form">
                 <div class="form-group">
-                    <input type="text" class="form-input" placeholder="Your Name">
+                    <input type="text" class="form-input" name="text" placeholder="Your Name">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-input" placeholder="Your Email">
+                    <input type="email" class="form-input" name="email" placeholder="Your Email">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-input" placeholder="Your Message" rows="4"></textarea>
+                    <textarea class="form-input" name="message" placeholder="Your Message" rows="4"></textarea>
                 </div>
                 <button type="submit" class="form-button">Send Message</button>
             </div>
         </div>
+    </form>
     </section>
 
     <footer>
@@ -800,7 +802,7 @@
         // Mobile Menu Toggle
         document.querySelector('.nav-logo').addEventListener('click', () => {
             document.querySelector('.nav-menu').classList.toggle('active');
-        });
+        }); 
     </script>
 </body>
 </html>
