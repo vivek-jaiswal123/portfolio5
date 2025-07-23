@@ -12,7 +12,7 @@
     <script defer data-domain="vivekdevelops.vercel.app" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
     <title>Vivek's Portfolio</title>
     <style>
-        /* General Styling */
+       /* General Styling */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         :root {
@@ -568,19 +568,19 @@
         }
 
         .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
-            transition: width 1s ease-in-out;
-        }
+  background: #e5e7eb;
+  border-radius: 8px;
+  height: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+.progress {
+  background: linear-gradient(90deg, #3789e7 0%, #2374df 100%);
+  height: 100%;
+  width: 0%;          /* Changed by JS to animate */
+  border-radius: 8px;
+  transition: width 0.4s;
+}
 
         @media (max-width: 768px) {
             .skills-container {
@@ -676,6 +676,104 @@
 #chat-toggle img:hover {
   transform: scale(1.1);
 }
+.social-icons{
+    
+}
+.feedback-testimonials-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.feedback-section, .testimonials-section {
+  flex: 1 1 400px;
+  background: #f8fafc;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.testimonial {
+  margin-bottom: 1.5rem;
+}
+.testimonial-text {
+  font-style: italic;
+  color: #2563eb;
+}
+.testimonial-person {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.testimonial-person img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #3789e7;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Testimonials form styles */
+#testimonialForm input, #testimonialForm textarea {
+  width: 90%;
+  margin: 0.5rem 0;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+#testimonialForm input:focus, #testimonialForm textarea:focus {
+  border-color: #3789e7;
+}
+#testimonialForm button {
+  background: linear-gradient(90deg, #3789e7, #2374df);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2.4rem;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+#testimonialForm button:hover {
+  background: linear-gradient(90deg, #2374df, #3789e7);
+}
+#testimonialStatus {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #2563eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feedback-testimonials-container {
+    flex-direction: column;
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+  .feedback-section, .testimonials-section {
+    flex: unset;
+    width: 100%;
+  }
+}
+body {
+  background: linear-gradient(120deg, #2563eb, #60a5fa, #ebe7e5);
+  background-size: 200% 200%;
+  animation: gradientMove 16s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
     </style>
 </head>
@@ -714,20 +812,20 @@
         </div>
     </section>
 
-    <section class="about" id="about">
+     <section class="about" id="about">
         <h2 class="section-title">About Me</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <h3 class="skill-title">Frontend Development</h3>
-                <p>Experienced in HTML, CSS, JavaScript, and modern frameworks</p>
+                 <h3 class="skill-title">Background</h3>
+                <p>"I started my tech journey out of curiosity and quickly found a passion for building seamless digital experiences. I'm currently diving deeper into modern frameworks like Next.js and Tailwind CSS."</p>
             </div>
             <div class="skill-card">
                 <h3 class="skill-title">UI/UX Design</h3>
                 <p>Creating intuitive and beautiful user interfaces</p>
             </div>
             <div class="skill-card">
-                <h3 class="skill-title">WordPress Development</h3>
-                <p>Building custom WordPress themes and plugins</p>
+                <h3 class="skill-title">Frontend Development</h3>
+                <p>Experienced in HTML, CSS, JavaScript, and modern frameworks</p>
             </div>
         </div>
     </section>
@@ -740,19 +838,22 @@
                 <div class="skill-item">
                     <span>HTML5</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
+                        <div class="progress" data-progress="90"></div>
+
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>CSS3</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
+                       <div class="progress" data-progress="90"></div>
+
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>JavaScript</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 80%"></div>
+                        <div class="progress" data-progress="80"></div>
+
                     </div>
                 </div>
             </div>
@@ -762,13 +863,15 @@
                 <div class="skill-item">
                     <span>C</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 75%"></div>
+                        <div class="progress" data-progress="70"></div>
+
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>Bootstrap</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
+                        <div class="progress" data-progress="85"></div>
+
                     </div>
                 </div>
             </div>
@@ -778,13 +881,15 @@
                 <div class="skill-item">
                     <span>C++</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 70%"></div>
+                        <div class="progress" data-progress="90"></div>
+
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>VS Code</span>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
+                        <div class="progress" data-progress="90"></div>
+
                     </div>
                 </div>
             </div>
@@ -810,6 +915,34 @@
             </div>
         </div>
     </section>
+
+    <div class="feedback-testimonials-container">
+  <!-- Feedback (static or approved testimonials) -->
+  <section class="feedback-section" id="feedback-section">
+    <h2>Feedback</h2>
+    <div class="testimonial">
+      <p class="testimonial-text">"Vivek’s design skills greatly improved our website’s user experience!"</p>
+      <div class="testimonial-person"><img src="https://randomuser.me/api/portraits/men/12.jpg" alt="John">John Doe</div>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-text">"Professional, timely, and detail-oriented developer."</p>
+      <div class="testimonial-person"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Jane">Jane Smith</div>
+    </div>
+    <!-- More feedback entries or dynamically added testimonials go here -->
+  </section>
+
+  <!-- Testimonials Submission Form -->
+  <section class="testimonials-section" id="testimonials-section">
+    <h2>Submit Your Testimonial</h2>
+    <form id="testimonialForm" autocomplete="off">
+      <input type="text" name="name" placeholder="Your Name" required minlength="2" maxlength="32" />
+      <input type="text" name="role" placeholder="Your Role (optional)" maxlength="32" />
+      <textarea name="message" placeholder="Your testimonial about me..." required minlength="10" maxlength="240"></textarea>
+      <button type="submit">Submit Testimonial</button>
+      <div id="testimonialStatus"></div>
+    </form>
+  </section>
+</div>
 
     <form action="https://formspree.io/f/mwpbvyak" method="POST">
     <section class="contact" id="contact">
@@ -848,10 +981,11 @@
         <p>&copy; 2025 Vivek Jaiswal. All rights reserved.</p>
     </footer>
 
+ 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         var typingEffect = new Typed("#typedText", {
-            strings: ["Vivek- I build Web Apps)", "Web Designer)", "WordPress Developer)"," Frontend Developer)", "UX/UI Designer)"],
+            strings: ["Vivek Jaiswal", "Web Designer", "WordPress Developer"," Frontend Developer", "UX/UI Designer"],
             loop: true,
             typeSpeed: 100,
             backSpeed: 80,
@@ -935,6 +1069,72 @@ function respondToUser(input) {
   const resumeUrl = "VivekJaiswalResumelatest.pdf";
 
 }
+// Animate skill progress bars on page load
+document.addEventListener("DOMContentLoaded", function () {
+  // Select all '.progress' elements
+  document.querySelectorAll('.progress').forEach(function(bar) {
+    let percentage = parseInt(bar.getAttribute('data-progress'), 10) || 0;
+    bar.style.width = '0%'; // Start empty
+
+    // Animate fill using requestAnimationFrame
+    let current = 0;
+    function animate() {
+      if (current < percentage) {
+        current++;
+        bar.style.width = current + '%';
+        requestAnimationFrame(animate);
+      }
+    }
+    animate();
+  });
+});
+const form = document.getElementById('testimonialForm');
+const statusDiv = document.getElementById('testimonialStatus');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = form.name.value.trim().slice(0,32) || "Anonymous";
+  const role = form.role.value.trim().slice(0,32);
+  const message = form.message.value.trim().slice(0,240);
+
+  if (message.length < 10) {
+    statusDiv.textContent = "Please write at least 10 characters.";
+    return;
+  }
+
+  // Save to localStorage (replace with backend in production)
+  let testimonials = JSON.parse(localStorage.getItem("userTestimonials") || "[]");
+  testimonials.unshift({ name, role, message });
+  localStorage.setItem("userTestimonials", JSON.stringify(testimonials));
+
+  statusDiv.textContent = "Thank you! Your testimonial is saved and will appear after refresh.";
+  form.reset();
+});
+
+// Display testimonials dynamically
+window.addEventListener('DOMContentLoaded', () => {
+  const list = JSON.parse(localStorage.getItem("userTestimonials") || "[]");
+  const section = document.getElementById('feedback-section');
+  list.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'testimonial';
+    div.innerHTML = `<p class='testimonial-text'>\"${t.message}\"</p><div class='testimonial-person'>${t.name}${t.role ? ', ' + t.role : ''}</div>`;
+    section.appendChild(div);
+  });
+});
+    tsParticles.load("tsparticles", {
+  background: { color: "#f8fafc" }, // Set to match your site's background
+  particles: {
+    number: { value: 40 },
+    color: { value: "#60a5fa" },
+    shape: { type: "circle" },
+    opacity: { value: 0.15 },
+    size: { value: 4, random: { enable: true, minimumValue: 2 } },
+    move: { enable: true, speed: 1, direction: "none", outModes: { default: "bounce" } }
+  },
+  interactivity: { events: { onHover: { enable: false }, onClick: { enable: false } } }
+});
+
     </script>
 </body>
 </html>
