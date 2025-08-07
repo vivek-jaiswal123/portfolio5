@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Certificates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #109CB4;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --body-bg: linear-gradient(135deg, hwb(177 64% 7%) 0%, #ebe7e5 100%);
+            --shadow-color: rgba(0, 90, 180, 0.12);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: var(--body-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        #certificates {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #certificates h2 {
+            text-align: center;
+            margin-bottom: 48px;
+            font-size: 2.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-color);
+        }
+
+        .certificates-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .certificate {
+            background-color: transparent;
+            width: 350px;
+            height: 220px;
+            perspective: 1000px;
+        }
+
+        .certificate-flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .certificate:hover .certificate-flipper {
+            transform: rotateY(180deg);
+        }
+
+        .certificate-front,
+        .certificate-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .certificate-front {
+            background: var(--card-bg);
+        }
+
+        .certificate-front img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+        }
+
+        .certificate-front h3 {
+            font-size: 1.3em;
+            margin: 0;
+            padding: 0 15px;
+        }
+
+        .certificate-back {
+            background: var(--primary-color);
+            color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .certificate-back h3 {
+            margin-top: 0;
+            font-size: 1.25em;
+        }
+
+        .certificate-back p {
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .view-btn {
+            background: #ffffff;
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .view-btn:hover {
+            background: #f0f0f0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            animation: fadeIn 0.5s;
+        }
+
+        .modal-content-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .modal-skill-tags {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1100;
+            user-select: none;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+        }
+
+        .tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.85em;
+            border-radius: 15px;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #certificates h2 {
+                font-size: 2.2em;
+            }
+
+            .certificate {
+                width: 300px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="certificates">
+        <h2>Certificates & Achievements</h2>
+        <div class="certificates-container">
+
+            <div class="certificate">
+                <div class="certificate-flipper">
+                    <div class="certificate-front">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/0ed76c69-0435-4fe7-b178-1030ff23e212.png"
+                            alt="Web Dev Icon" />
+                        <h3>Web Developer</h3>
+                    </div>
+                    <div class="certificate-back">
+                        <h3>Web Developer</h3>
+                        <p>Issued by: I-tech computer education, NSP (W)</p>
+                        <p>Date: March 2024</p>
+                        <button class="view-btn" data-img-src="certificate1.jpg">View Certificate</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate">
+                <div class="certificate-flipper">
+                    <div class="certificate-front">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/8a454c64-598c-4527-b397-a0afa4195d0b.png"
+                            alt="MS-Excel Icon" />
+                        <h3>MS-Excel</h3>
+                    </div>
+                    <div class="certificate-back">
+                        <h3>MS-Excel</h3>
+                        <p>Issued by: I-tech computer education, NSP (W)</p>
+                        <p>Date: March 2024</p>
+                        <button class="view-btn" data-img-src="certificate2.jpg">View Certificate</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate">
+                <div class="certificate-flipper">
+                    <div class="certificate-front">
+                        <img
+                            src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/47491a55-6926-4d94-94b6-ee3cc9cf0680.png"
+                            alt="Bot Designer Icon" />
+                        <h3>Basic Bot Designer</h3>
+                    </div>
+                    <div class="certificate-back">
+                        <h3>Basic Bot Designer</h3>
+                        <p>Issued by: Great Learning.com</p>
+                        <p>Date: March 2024</p>
+                        <button class="view-btn" data-img-src="certificate3.jpg">View Certificate</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="close-button">&times;</span>
+        <div class="modal-content-wrapper">
+            <img id="modalImage" class="modal-content" alt="Certificate Image" />
+            <div id="modalSkills" class="modal-skill-tags"></div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("certificateModal");
+        const modalImg = document.getElementById("modalImage");
+        const modalSkills = document.getElementById("modalSkills");
+        const closeBtn = document.querySelector(".close-button");
+
+        // Map certificate image filenames to skill tags
+        const certificateSkills = {
+            "certificate1.jpg": ["HTML", "CSS", "JavaScript"],
+            "certificate2.jpg": ["Excel", "Formulas", "Pivot Tables"],
+            "certificate3.jpg": ["Bot Design", "Automation"],
+        };
+
+        // Show modal with image and skills on View Certificate click
+        document.querySelectorAll(".view-btn").forEach(button => {
+            button.onclick = function () {
+                const imgSrc = this.getAttribute('data-img-src');
+                modalImg.src = imgSrc;
+
+                // Clear previous skills
+                modalSkills.innerHTML = '';
+
+                // Add skill tags for this certificate
+                const skills = certificateSkills[imgSrc];
+                if (skills) {
+                    skills.forEach(skill => {
+                        const tagSpan = document.createElement('span');
+                        tagSpan.className = 'tag';
+                        tagSpan.textContent = skill;
+                        modalSkills.appendChild(tagSpan);
+                    });
+                }
+
+                modal.style.display = "block";
+            };
+        });
+
+        // Close modal on X click
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+        };
+
+        // Close modal when clicking outside modal content
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>
