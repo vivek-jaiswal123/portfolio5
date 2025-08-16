@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vivek Jaiswal's Portfolio - Web Developer & Designer">
-    <meta name="author" content="Vivek Jaiswal">
-    <meta name="keywords" content="Portfolio, Web Developer, WordPress, Frontend Developer, UX/UI">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Vivek Jaiswal's Portfolio - Web Developer & Designer" />
+    <meta name="author" content="Vivek Jaiswal" />
+    <meta name="keywords" content="Portfolio, Web Developer, WordPress, Frontend Developer, UX/UI" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script defer data-domain="vivekdevelops.vercel.app" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
     <title>Vivek's Portfolio</title>
     <style>
-       /* General Styling */
+        /* General Styling */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         :root {
@@ -25,13 +25,22 @@
             --bg-light: #ffffff;
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
             --transition: all 0.3s ease;
+            /* Dark theme colors */
+            --primary-dark: #60a5fa;
+            --secondary-dark: #3789e7;
+            --accent-dark: #2563eb;
+            --text-darkmode: #f3f4f6;
+            --text-lightmode: #1f2937;
+            --bg-darkmode: #111827;
+            --bg-lightmode: #1a2233;
         }
 
         * {
-            margin: 0;    
+            margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
         }
 
         body {
@@ -41,9 +50,18 @@
             overflow-x: hidden;
         }
 
+        /* Dark mode body */
+        body.dark-mode {
+            background: var(--bg-darkmode);
+            color: var(--text-darkmode);
+        }
+
         /* Navigation */
         nav {
             position: fixed;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -53,7 +71,12 @@
             align-items: center;
             z-index: 1000;
             box-shadow: var(--shadow);
-            transition: 0.3s;
+            transition: var(--transition);
+        }
+
+        body.dark-mode nav {
+            background: rgba(17, 24, 39, 0.95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
         }
 
         .nav-logo {
@@ -61,11 +84,19 @@
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
+            margin-right: auto;
+        }
+
+        body.dark-mode .nav-logo {
+            color: var(--primary-dark);
         }
 
         .nav-menu {
             display: flex;
             gap: 2rem;
+            margin-left: auto;
+            display: flex;
+
         }
 
         .nav-link {
@@ -74,6 +105,10 @@
             font-weight: 500;
             position: relative;
             transition: var(--transition);
+        }
+
+        body.dark-mode .nav-link {
+            color: var(--text-darkmode);
         }
 
         .nav-link::after {
@@ -87,8 +122,33 @@
             transition: var(--transition);
         }
 
+        body.dark-mode .nav-link::after {
+            background: var(--primary-dark);
+        }
+
         .nav-link:hover::after {
             width: 100%;
+        }
+
+        /* Dark mode toggle button */
+        #darkModeToggle {
+            font-size: 1.3rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        #darkModeToggle:hover {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        body.dark-mode #darkModeToggle {
+            color: var(--primary-dark);
         }
 
         /* Hamburger Menu */
@@ -107,6 +167,10 @@
             background: var(--text-dark);
             margin: 5px 0;
             transition: var(--transition);
+        }
+
+        body.dark-mode .hamburger span {
+            background: var(--text-darkmode);
         }
 
         /* Mobile Navigation */
@@ -130,10 +194,20 @@
                 z-index: 1000;
             }
 
+            body.dark-mode .nav-menu {
+                background: var(--bg-darkmode);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+            }
+
             .nav-menu a {
                 display: block;
                 padding: 15px;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            body.dark-mode .nav-menu a {
+                color: var(--text-darkmode);
+                border-bottom-color: rgba(255, 255, 255, 0.1);
             }
 
             .nav-menu a:last-child {
@@ -142,7 +216,7 @@
 
             .nav-menu.active {
                 display: block;
-                top: 100%;
+                top: 80px;
             }
 
             .hamburger.active span:nth-child(1) {
@@ -166,9 +240,13 @@
             justify-content: space-between;
             padding: 0 5%;
             background: linear-gradient(135deg, hwb(177 64% 7%) 0%, #ebe7e5 100%);
-            /* background-image:url("/bg1.jpg"); */
             position: relative;
             gap: 2rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .hero {
+            background: var(--bg-darkmode);
         }
 
         .hero-content {
@@ -182,6 +260,11 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: #0755d3;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .hero-title {
+            color: var(--primary-dark);
         }
 
         .hero-subtitle {
@@ -189,6 +272,12 @@
             color: var(--text-dark);
             opacity: 0.8;
             margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .hero-subtitle {
+            color: var(--text-darkmode);
+            opacity: 0.85;
         }
 
         .btn {
@@ -212,6 +301,15 @@
             transform: translateY(-2px);
         }
 
+        body.dark-mode .btn-primary {
+            background: var(--primary-dark);
+            color: var(--text-darkmode);
+        }
+
+        body.dark-mode .btn-primary:hover {
+            background: var(--secondary-dark);
+        }
+
         .btn-outline {
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
@@ -223,9 +321,24 @@
             color: var(--text-light);
         }
 
+        body.dark-mode .btn-outline {
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+        }
+
+        body.dark-mode .btn-outline:hover {
+            background: var(--primary-dark);
+            color: var(--text-darkmode);
+        }
+
         .about {
             padding: 5rem 5%;
             background: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .about {
+            background: var(--bg-darkmode);
         }
 
         .section-title {
@@ -233,6 +346,11 @@
             text-align: center;
             margin-bottom: 3rem;
             color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .section-title {
+            color: var(--primary-dark);
         }
 
         .skills-grid {
@@ -249,11 +367,18 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
+            color: var(--text-dark);
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .skill-card {
+            background: var(--bg-lightmode);
+            color: var(--text-darkmode);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
         }
 
         .skill-title {
@@ -262,9 +387,18 @@
             color: var(--primary-color);
         }
 
+        body.dark-mode .skill-title {
+            color: var(--primary-dark);
+        }
+
         .projects {
             padding: 5rem 5%;
             background: #f8fafc;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .projects {
+            background: var(--bg-darkmode);
         }
 
         .project-container {
@@ -279,8 +413,9 @@
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+            color: var(--text-dark);
         }
 
         .project-box:hover {
@@ -288,9 +423,19 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
+        body.dark-mode .project-box {
+            background: var(--bg-lightmode);
+            color: var(--text-darkmode);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+        }
+
         .project-box i {
             font-size: 40px;
             color: var(--primary-color);
+        }
+
+        body.dark-mode .project-box i {
+            color: var(--primary-dark);
         }
 
         .project-box h3 {
@@ -299,14 +444,27 @@
             margin: 1rem 0;
         }
 
+        body.dark-mode .project-box h3 {
+            color: var(--text-darkmode);
+        }
+
         .project-box label {
             color: #777;
+        }
+
+        body.dark-mode .project-box label {
+            color: #aaa;
         }
 
         /* Contact Section */
         .contact {
             padding: 5rem 5%;
             background: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .contact {
+            background: var(--bg-darkmode);
         }
 
         .contact-form {
@@ -314,6 +472,14 @@
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .contact-form {
+            background: var(--bg-lightmode);
+            color: var(--text-darkmode);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
         }
 
         .form-group {
@@ -326,11 +492,23 @@
             border: 1px solid #e5e7eb;
             border-radius: 0.5rem;
             transition: var(--transition);
+            background: white;
+            color: var(--text-dark);
         }
 
         .form-input:focus {
             outline: none;
             border-color: var(--primary-color);
+        }
+
+        body.dark-mode .form-input {
+            background: var(--bg-darkmode);
+            border-color: #444;
+            color: var(--text-darkmode);
+        }
+
+        body.dark-mode .form-input:focus {
+            border-color: var(--primary-dark);
         }
 
         .form-button {
@@ -341,6 +519,19 @@
             border: none;
             border-radius: 0.5rem;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-button:hover {
+            background: var(--secondary-color);
+        }
+
+        body.dark-mode .form-button {
+            background: var(--primary-dark);
+        }
+
+        body.dark-mode .form-button:hover {
+            background: var(--secondary-dark);
         }
 
         /* Footer */
@@ -349,6 +540,12 @@
             color: var(--text-light);
             padding: 3rem 5%;
             text-align: center;
+            transition: var(--transition);
+        }
+
+        body.dark-mode footer {
+            background: #0f172a;
+            color: var(--text-darkmode);
         }
 
         /* Profile Image Styling */
@@ -402,6 +599,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -417,7 +615,7 @@
             .hero {
                 padding: 6rem 5% 2rem;
             }
-            
+
             .featured-image {
                 width: 300px;
                 height: 300px;
@@ -487,51 +685,6 @@
             color: var(--accent-color);
         }
 
-        .animate-fade-up {
-            animation: fadeUp 1s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .nav-menu.active {
-                display: block;
-                position: absolute;
-                top: 80px;
-                right: 0;
-                background-color: #fff;
-                padding: 1rem;
-                border-radius: 0.5rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
         /* Skills Section Styles */
         .skills-container {
             max-width: 1200px;
@@ -547,6 +700,12 @@
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .skill-category {
+            background: var(--bg-lightmode);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
         }
 
         .skill-category h3 {
@@ -554,6 +713,10 @@
             margin-bottom: 1.5rem;
             font-size: 1.25rem;
             font-weight: 600;
+        }
+
+        body.dark-mode .skill-category h3 {
+            color: var(--primary-dark);
         }
 
         .skill-item {
@@ -567,256 +730,175 @@
             font-weight: 500;
         }
 
+        body.dark-mode .skill-item span {
+            color: var(--text-darkmode);
+        }
+
         .progress-bar {
-  background: #e5e7eb;
-  border-radius: 8px;
-  height: 12px;
-  overflow: hidden;
-  width: 100%;
-}
-.progress {
-  background: linear-gradient(90deg, #3789e7 0%, #2374df 100%);
-  height: 100%;
-  width: 0%;          /* Changed by JS to animate */
-  border-radius: 8px;
-  transition: width 0.4s;
-}
-
-        @media (max-width: 768px) {
-            .skills-container {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
+            background: #e5e7eb;
+            border-radius: 8px;
+            height: 12px;
+            overflow: hidden;
+            width: 100%;
         }
 
-        .b1 {
-            background: linear-gradient(45deg, #3789e7, #2374df); /* Gradient color */
-            color: white; /* Text color */
-            font-size: 9px; /* Smaller font size */
-            padding: 5px 10px; /* Smaller padding */
-            border: none; /* Remove default border */
-            border-radius: 50px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: all 0.3s ease; /* Smooth transition for effects */
-            text-transform: uppercase; /* Uppercase text */
-            font-weight: bold; /* Bold text */
-            position: absolute;
-            transform: translateX(-50%); /* Exact center alignment */
-            bottom: 20px;
-            left: 60%;
+        body.dark-mode .progress-bar {
+            background: #3a3f52;
         }
 
-        .b1:hover {
-            background: linear-gradient(45deg, #3789e7, #2374df); /* Hover color change */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
-            transform: scale(1.05) translateX(-50%); /* Slightly increase size on hover */
+        .progress {
+            background: linear-gradient(90deg, #3789e7 0%, #2374df 100%);
+            height: 100%;
+            width: 0%;
+            border-radius: 8px;
+            transition: width 0.4s;
         }
 
-        .b1:active {
-            transform: scale(0.98) translateX(-50%); /* Slight shrink effect on click */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+        /* Education Section */
+        .education-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 85%;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
         }
+
+        body.dark-mode .education-container {
+            background-color: var(--bg-lightmode);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+            color: var(--text-darkmode);
+        }
+
+        .education-text {}
+
+        .education-entry {
+            margin-bottom: 20px;
+        }
+
+        .education-entry h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        body.dark-mode .education-entry h3 {
+            color: var(--primary-dark);
+        }
+
+        .education-entry p {
+            margin: 4px 0;
+            color: #555;
+        }
+
+        body.dark-mode .education-entry p {
+            color: var(--text-darkmode);
+        }
+
+        .education-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .education-image img {
+            height: auto;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        /* Chatbot styles - adjusted for dark mode */
         #chatbot {
-  position: fixed;
-  bottom: 80px;
-  right: 30px;
-  width: 280px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  display: none;
-  flex-direction: column;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  font-family: sans-serif;
-}
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            width: 280px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            font-family: sans-serif;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
 
-#chat-header {
-  padding: 10px;
-  background: #f5f5f5;
-  border-bottom: 1px solid #ddd;
-  font-weight: bold;
-  text-align: center;
-}
+        body.dark-mode #chatbot {
+            background: var(--bg-lightmode);
+            border-color: #444;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+            color: var(--text-darkmode);
+        }
 
-#chat-box {
-  height: 200px;
-  overflow-y: auto;
-  padding: 10px;
-  font-size: 14px;
-}
+        #chat-header {
+            padding: 10px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+            text-align: center;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
 
-#chat-input {
-  border: none;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  width: 100%;
-  box-sizing: border-box;
-  outline: none;
-}
+        body.dark-mode #chat-header {
+            background: var(--bg-darkmode);
+            border-color: #555;
+            color: var(--text-darkmode);
+        }
 
-#chat-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  padding: 10px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-}
+        #chat-box {
+            height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 14px;
+        }
 
-#chat-toggle img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  transition: transform 0.2s ease;
-}
+        #chat-input {
+            border: none;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+            background: white;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
 
-#chat-toggle img:hover {
-  transform: scale(1.1);
-}
-.social-icons{
-    
-}
-.feedback-testimonials-container {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 1000px;
-  margin: 2rem auto;
-}
+        body.dark-mode #chat-input {
+            background: var(--bg-lightmode);
+            border-color: #444;
+            color: var(--text-darkmode);
+        }
 
-.feedback-section, .testimonials-section {
-  flex: 1 1 400px;
-  background: #f8fafc;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+        #chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            transition: var(--transition);
+        }
 
-.testimonial {
-  margin-bottom: 1.5rem;
-}
-.testimonial-text {
-  font-style: italic;
-  color: #2563eb;
-}
-.testimonial-person {
-  margin-top: 10px;
-  font-weight: 600;
-  color: #1f2937;
-}
-.testimonial-person img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid #3789e7;
-  margin-right: 10px;
-  vertical-align: middle;
-}
+        #chat-toggle img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
 
-/* Testimonials form styles */
-#testimonialForm input, #testimonialForm textarea {
-  width: 90%;
-  margin: 0.5rem 0;
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  outline: none;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-#testimonialForm input:focus, #testimonialForm textarea:focus {
-  border-color: #3789e7;
-}
-#testimonialForm button {
-  background: linear-gradient(90deg, #3789e7, #2374df);
-  color: #fff;
-  border: none;
-  padding: 0.7rem 2.4rem;
-  border-radius: 24px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: background 0.3s;
-}
-#testimonialForm button:hover {
-  background: linear-gradient(90deg, #2374df, #3789e7);
-}
-#testimonialStatus {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #2563eb;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .feedback-testimonials-container {
-    flex-direction: column;
-    max-width: 90%;
-    margin: 1rem auto;
-  }
-  .feedback-section, .testimonials-section {
-    flex: unset;
-    width: 100%;
-  }
-/* }
-body {
-  background: linear-gradient(120deg, #2563eb, #60a5fa, #ebe7e5);
-  background-size: 200% 200%;
-  animation: gradientMove 16s ease-in-out infinite;
-} */
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
- }
-.education-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f9f9f9;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 85%;
-  margin: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.education-text {
-  flex: 2;
-}
-
-.education-entry {
-  margin-bottom: 20px;
-}
-
-.education-entry h3 {
-  margin: 0;
-  color: #333;
-}
-
-.education-entry p {
-  margin: 4px 0;
-  color: #555;
-}
-
-.education-image {
-  flex: 1;
-  text-align: right;
-}
-
-.education-image img {
-  /* max-width: 150px; */
-  height:auto;
-  width: 100%;
-  border-radius: 8px;
-}       
-
+        #chat-toggle img:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -829,37 +911,37 @@ body {
             <span></span>
         </button>
         <div class="nav-menu">
-            <!-- <button class="b1">Education</button> -->
             <a href="#home" class="nav-link">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="projects1.html" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact</a>
             <a href="certificate.html" class="nav-link">Certificate</a>
         </div>
+        <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-content animate-fade-up">
-            <h1 class="hero-title">("Hey, I'm a <span id="typedText"></span></h1>
+            <h1 class="hero-title">Hey, I'm a <span id="typedText"></span></h1>
             <p class="hero-subtitle">Experienced frontend developer with a passion for creating visually stunning and user-friendly websites.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
                 <a href="VivekJaiswalResumelatest.pdf" class="btn btn-outline" download>Download CV</a>
             </div>
         </div>
-        
+
         <div class="featured-image">
             <div class="image">
-                <img src="my phto.jfif" alt="avatar">
+                <img src="my phto.jfif" alt="avatar" />
             </div>
         </div>
     </section>
 
-     <section class="about" id="about">
+    <section class="about" id="about">
         <h2 class="section-title">About Me</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                 <h3 class="skill-title">Background</h3>
+                <h3 class="skill-title">Background</h3>
                 <p>"I started my tech journey out of curiosity and quickly found a passion for building seamless digital experiences. I'm currently diving deeper into modern frameworks like Next.js and Tailwind CSS."</p>
             </div>
             <div class="skill-card">
@@ -872,60 +954,75 @@ body {
             </div>
         </div>
     </section>
-     <!-- Education Section Container -->
-<section class="education-container">
-  <div class="education-text">
-    <h2>Education</h2>
 
-    <div class="education-entry">
-      <h3 style="color: #0755d3; ;">#1. SKC Degree collage</h3>
-      <p><strong>Bachlor of science</strong> – Information Technology</p>
-      <p> Year: 2025-2027</p>
-      <!-- <p>Percentage: 60%</p> -->
-    </div>
+    <!-- Education Section Container -->
+    <section class="education-container">
+        <div class="education-text">
+            <h2>Education</h2>
 
-    <div class="education-entry">
-      <h3 style="color: #0755d3; ;">#2. Reckon public academy and jr collage</h3>
-      <p><strong>Higher Secondary (12th Grade)</strong>-Science stream</p>
-      <p>Board:State Board | Year: 2023</p>
-      <p>|Percentage:60%</p>
-    </div>
-    <div class="education-entry">
-      <h3 style="color: #0755d3; ;">#3. I-tech computer education</h3>
-      <p><strong>Web developer (Diploma)</strong></p>
-      <p>| Year: 2023-2025</p>
-      <!-- <p>Percentage:60%</p> -->
-    </div>
-  </div>
+            <div class="education-entry">
+                <h3 style="color: #0755d3;">#1. SKC Degree collage</h3>
+                <p><strong>Bachlor of science</strong> – Information Technology</p>
+                <p> Year: 2025-2027</p>
+            </div>
 
-  <div class="education-image">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjBeIQrNUDdQZKIBIVUKz6W4Kt0Ji-W1q27g&s" alt="School Logo">
-  </div>
-</section>
+            <div class="education-entry">
+                <h3 style="color: #0755d3;">#2. Reckon public academy and jr collage</h3>
+                <p><strong>Higher Secondary (12th Grade)</strong>-Science stream</p>
+                <p>Board:State Board | Year: 2023</p>
+                <p>|Percentage:60%</p>
+            </div>
+            <div class="education-entry">
+                <h3 style="color: #0755d3;">#3. I-tech computer education</h3>
+                <p><strong>Web developer (Diploma)</strong></p>
+                <p>| Year: 2023-2025</p>
+            </div>
+        </div>
+
+        <div class="education-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjBeIQrNUDdQZKIBIVUKz6W4Kt0Ji-W1q27g&s" alt="School Logo" />
+        </div>
+    </section>
+
     <section id="skills">
-        <h2 class="section-title">My Skills <svg fill="#4d9900" height="50px" width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#4d9900"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M461.913,30.614H50.087C22.469,30.614,0,53.083,0,80.701v267.13c0,27.618,22.469,50.087,50.087,50.087h148.078 l43.376,75.13c6.422,11.125,22.507,11.106,28.917,0l43.376-75.13h148.078c27.618,0,50.087-22.469,50.087-50.087V80.701 C512,53.083,489.531,30.614,461.913,30.614z M478.609,347.832c0,9.206-7.49,16.696-16.696,16.696H304.196 c-5.965,0-11.477,3.182-14.458,8.348L256,431.31l-33.737-58.435c-2.982-5.166-8.494-8.348-14.458-8.348H50.087 c-9.206,0-16.696-7.49-16.696-16.696V80.701c0-9.206,7.49-16.696,16.696-16.696h411.826c9.206,0,16.696,7.49,16.696,16.696 V347.832z"></path> </g> </g> <g> <g> <path d="M360.714,142.664l-47.467,20.103c-11.829,5.011-13.782,20.974-3.547,28.7l6.033,4.553l-37.93,47.687l-53.487-67.247 c-6.68-8.398-19.454-8.397-26.133,0l-66.553,83.674c-5.74,7.216-4.543,17.72,2.674,23.46c7.219,5.742,17.721,4.54,23.46-2.674 l53.487-67.247l53.487,67.247c6.68,8.398,19.454,8.397,26.133,0l51.524-64.777l8.519,6.43 c10.181,7.686,25.042,1.553,26.628-11.277l6.333-51.245C385.461,147.213,372.482,137.627,360.714,142.664z"></path> </g> </g> </g></svg></h2>
+        <h2 class="section-title">My Skills <svg fill="#4d9900" height="50px" width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#4d9900">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <g>
+                        <g>
+                            <path
+                                d="M461.913,30.614H50.087C22.469,30.614,0,53.083,0,80.701v267.13c0,27.618,22.469,50.087,50.087,50.087h148.078 l43.376,75.13c6.422,11.125,22.507,11.106,28.917,0l43.376-75.13h148.078c27.618,0,50.087-22.469,50.087-50.087V80.701 C512,53.083,489.531,30.614,461.913,30.614z M478.609,347.832c0,9.206-7.49,16.696-16.696,16.696H304.196 c-5.965,0-11.477,3.182-14.458,8.348L256,431.31l-33.737-58.435c-2.982-5.166-8.494-8.348-14.458-8.348H50.087 c-9.206,0-16.696-7.49-16.696-16.696V80.701c0-9.206,7.49-16.696,16.696-16.696h411.826c9.206,0,16.696,7.49,16.696,16.696 V347.832z"></path>
+                        </g>
+                    </g>
+                    <g>
+                        <g>
+                            <path
+                                d="M360.714,142.664l-47.467,20.103c-11.829,5.011-13.782,20.974-3.547,28.7l6.033,4.553l-37.93,47.687l-53.487-67.247 c-6.68-8.398-19.454-8.397-26.133,0l-66.553,83.674c-5.74,7.216-4.543,17.72,2.674,23.46c7.219,5.742,17.721,4.54,23.46-2.674 l53.487-67.247l53.487,67.247c6.68,8.398,19.454,8.397,26.133,0l51.524-64.777l8.519,6.43 c10.181,7.686,25.042,1.553,26.628-11.277l6.333-51.245C385.461,147.213,372.482,137.627,360.714,142.664z"></path>
+                        </g>
+                    </g>
+                </g>
+            </svg></h2>
         <div class="skills-container">
-            <div class="skill-category"> 
+            <div class="skill-category">
                 <h3>Front-end</h3>
                 <div class="skill-item">
                     <span>HTML5</span>
                     <div class="progress-bar">
                         <div class="progress" data-progress="90"></div>
-
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>CSS3</span>
                     <div class="progress-bar">
-                       <div class="progress" data-progress="90"></div>
-
+                        <div class="progress" data-progress="90"></div>
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>JavaScript</span>
                     <div class="progress-bar">
                         <div class="progress" data-progress="80"></div>
-
                     </div>
                 </div>
             </div>
@@ -936,14 +1033,12 @@ body {
                     <span>C</span>
                     <div class="progress-bar">
                         <div class="progress" data-progress="70"></div>
-
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>Bootstrap</span>
                     <div class="progress-bar">
                         <div class="progress" data-progress="85"></div>
-
                     </div>
                 </div>
             </div>
@@ -954,14 +1049,12 @@ body {
                     <span>C++</span>
                     <div class="progress-bar">
                         <div class="progress" data-progress="90"></div>
-
                     </div>
                 </div>
                 <div class="skill-item">
                     <span>VS Code</span>
                     <div class="progress-bar">
                         <div class="progress" data-progress="90"></div>
-
                     </div>
                 </div>
             </div>
@@ -988,80 +1081,50 @@ body {
         </div>
     </section>
 
-<!--     <div class="feedback-testimonials-container"> -->
-  <!-- Feedback (static or approved testimonials) -->
-<!--   <section class="feedback-section" id="feedback-section">
-    <h2>Feedback</h2>
-    <div class="testimonial">
-      <p class="testimonial-text">"Vivek’s design skills greatly improved our website’s user experience!"</p>
-      <div class="testimonial-person"><img src="https://randomuser.me/api/portraits/men/12.jpg" alt="John">Anikesh Verma</div>
-    </div>
-    <div class="testimonial">
-      <p class="testimonial-text">"Professional, timely, and detail-oriented developer."</p>
-      <div class="testimonial-person"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Jane">Pritesh Singh</div>
-    </div> -->
-    <!-- More feedback entries or dynamically added testimonials go here -->
-<!--   </section> -->
-
-  <!-- Testimonials Submission Form -->
-<!--   <section class="testimonials-section" id="testimonials-section">
-    <h2>Submit Your Testimonial</h2>
-    <form id="testimonialForm" autocomplete="off">
-      <input type="text" name="name" placeholder="Your Name" required minlength="2" maxlength="32" />
-      <input type="text" name="role" placeholder="Your Role (optional)" maxlength="32" />
-      <textarea name="message" placeholder="Your testimonial about me..." required minlength="10" maxlength="240"></textarea>
-      <button type="submit">Submit Testimonial</button>
-      <div id="testimonialStatus"></div>
-    </form>
-  </section>
-</div> -->
-
     <form action="https://formspree.io/f/mwpbvyak" method="POST">
-    <section class="contact" id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-grid">
-            <div class="contact-form">
-                <div class="form-group">
-                    <input type="text" class="form-input" name="text" placeholder="Your Name">
+        <section class="contact" id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="text" placeholder="Your Name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" placeholder="Your Email" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" name="message" placeholder="Your Message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Send Message</button>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-input" name="email" placeholder="Your Email">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-input" name="message" placeholder="Your Message" rows="4"></textarea>
-                </div>
-                <button type="submit" class="form-button">Send Message</button>
             </div>
-        </div>
     </form>
     </section>
     <div id="chatbot">
-  <div id="chat-header">💬 Ask Me!</div>
-  <div id="chat-box"></div>
-  <input type="text" id="chat-input" placeholder="Ask something..." />
-  <div id="resumeContainer" style="margin-top: 20px; display: none;">
-  <iframe id="resumeFrame" src="" width="100%" height="600px" style="border: none;"></iframe>
-</div>
+        <div id="chat-header">💬 Ask Me!</div>
+        <div id="chat-box"></div>
+        <input type="text" id="chat-input" placeholder="Ask something..." />
+        <div id="resumeContainer" style="margin-top: 20px; display: none;">
+            <iframe id="resumeFrame" src="" width="100%" height="600px" style="border: none;"></iframe>
+        </div>
+    </div>
 
-</div>
-
-<button id="chat-toggle">
-  <img src="robot.png" alt="Chat Bot" style="width: 40px; height: 40px;" />
-</button>
+    <button id="chat-toggle">
+        <img src="robot.png" alt="Chat Bot" style="width: 40px; height: 40px;" />
+    </button>
 
     <footer>
         <p>&copy; 2025 Vivek Jaiswal. All rights reserved.</p>
     </footer>
 
- 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         var typingEffect = new Typed("#typedText", {
-            strings: ["Vivek Jaiswal)", "Web Designer)", "WordPress Developer)"," Frontend Developer)", "UX/UI Designer)"],
+            strings: ["Vivek Jaiswal", "Web Designer", "WordPress Developer", "Frontend Developer", "UX/UI Designer"],
             loop: true,
             typeSpeed: 100,
             backSpeed: 80,
-            backDelay: 2000
+            backDelay: 2000,
         });
 
         // Hamburger menu functionality
@@ -1081,133 +1144,110 @@ body {
             });
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle on logo click
         document.querySelector('.nav-logo').addEventListener('click', () => {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        }); 
+            navMenu.classList.toggle('active');
+        });
 
+        // Dark mode toggle functionality
+        const darkToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Load saved dark mode setting
+        if (localStorage.getItem('darkMode') === 'on') {
+            body.classList.add('dark-mode');
+            darkToggle.textContent = '☀️';
+        }
+
+        darkToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'on');
+                darkToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('darkMode', 'off');
+                darkToggle.textContent = '🌙';
+            }
+        });
+
+        // Chatbot toggle and response
         const chatToggle = document.getElementById('chat-toggle');
-const chatbot = document.getElementById('chatbot');
-const chatInput = document.getElementById('chat-input');
-const chatBox = document.getElementById('chat-box');
+        const chatbot = document.getElementById('chatbot');
+        const chatInput = document.getElementById('chat-input');
+        const chatBox = document.getElementById('chat-box');
 
-chatToggle.addEventListener('click', () => {
-  chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
-});
+        chatToggle.addEventListener('click', () => {
+            chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
+        });
 
-chatInput.addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
-    const userInput = chatInput.value.trim();
-    if (!userInput) return;
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const userInput = chatInput.value.trim();
+                if (!userInput) return;
 
-    addMessage("You", userInput);
-    respondToUser(userInput.toLowerCase());
-    chatInput.value = '';
-  }
-});
+                addMessage("You", userInput);
+                respondToUser(userInput.toLowerCase());
+                chatInput.value = '';
+            }
+        });
 
-function addMessage(sender, text) {
-  const message = document.createElement('div');
-  message.innerHTML = `<strong>${sender}:</strong> ${text}`;
-  chatBox.appendChild(message);
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
+        function addMessage(sender, text) {
+            const message = document.createElement('div');
+            message.innerHTML = `<strong>${sender}:</strong> ${text}`;
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
 
-function respondToUser(input) {
-  let response = "Sorry, I didn't get that.";
-  const lowerInput = input.toLowerCase();
+        function respondToUser(input) {
+            let response = "Sorry, I didn't get that.";
+            const lowerInput = input.toLowerCase();
 
-  // Hide resume initially
-  document.getElementById("resumeContainer").style.display = "none";
+            // Hide resume initially
+            document.getElementById("resumeContainer").style.display = "none";
 
-  if (lowerInput.includes("hi") || lowerInput.includes("hello")) {
-    response = "Hi there! I'm your assistant. Ask me about my skills or projects.";
-  } else if (lowerInput.includes("skills")) {
-    response = "I'm skilled in React, JavaScript, HTML, CSS, and UI/UX design.";
-  } else if (lowerInput.includes("projects")) {
-    response = "You can find my projects in the Projects section above. I’ve built portfolios, apps, and more!";
-  } else if (lowerInput.includes("contact")) {
-    response = "Sure! Scroll to the bottom to contact me via the form or LinkedIn.";
-  } else if (lowerInput.includes("resume")) {
-    response = "Here's my resume below.";
-    
-    // Show the resume on the same page
-    const resumeUrl = "VivekJaiswalResumelatest.pdf"; // <-- Update this
-    document.getElementById("resumeFrame").src = resumeUrl;
-    document.getElementById("resumeContainer").style.display = "block";
-  }
+            if (lowerInput.includes("hi") || lowerInput.includes("hello")) {
+                response = "Hi there! I'm your assistant. Ask me about my skills or projects.";
+            } else if (lowerInput.includes("skills")) {
+                response = "I'm skilled in React, JavaScript, HTML, CSS, and UI/UX design.";
+            } else if (lowerInput.includes("projects")) {
+                response = "You can find my projects in the Projects section above. I’ve built portfolios, apps, and more!";
+            } else if (lowerInput.includes("contact")) {
+                response = "Sure! Scroll to the bottom to contact me via the form or LinkedIn.";
+            } else if (lowerInput.includes("resume")) {
+                response = "Here's my resume below.";
 
-  setTimeout(() => addMessage("Bot", response), 500);
-  const resumeUrl = "VivekJaiswalResumelatest.pdf";
+                // Show the resume on the same page
+                const resumeUrl = "VivekJaiswalResumelatest.pdf"; // <-- Update this
+                document.getElementById("resumeFrame").src = resumeUrl;
+                document.getElementById("resumeContainer").style.display = "block";
+            }
 
-}
-// Animate skill progress bars on page load
-document.addEventListener("DOMContentLoaded", function () {
-  // Select all '.progress' elements
-  document.querySelectorAll('.progress').forEach(function(bar) {
-    let percentage = parseInt(bar.getAttribute('data-progress'), 10) || 0;
-    bar.style.width = '0%'; // Start empty
+            setTimeout(() => addMessage("Bot", response), 500);
+        }
 
-    // Animate fill using requestAnimationFrame
-    let current = 0;
-    function animate() {
-      if (current < percentage) {
-        current++;
-        bar.style.width = current + '%';
-        requestAnimationFrame(animate);
-      }
-    }
-    animate();
-  });
-});
-const form = document.getElementById('testimonialForm');
-const statusDiv = document.getElementById('testimonialStatus');
+        // Animate skill progress bars on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all '.progress' elements
+            document.querySelectorAll('.progress').forEach(function (bar) {
+                let percentage = parseInt(bar.getAttribute('data-progress'), 10) || 0;
+                bar.style.width = '0%'; // Start empty
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name = form.name.value.trim().slice(0,32) || "Anonymous";
-  const role = form.role.value.trim().slice(0,32);
-  const message = form.message.value.trim().slice(0,240);
+                // Animate fill using requestAnimationFrame
+                let current = 0;
 
-  if (message.length < 10) {
-    statusDiv.textContent = "Please write at least 10 characters.";
-    return;
-  }
+                function animate() {
+                    if (current < percentage) {
+                        current++;
+                        bar.style.width = current + '%';
+                        requestAnimationFrame(animate);
+                    }
+                }
+                animate();
+            });
+        });
 
-  // Save to localStorage (replace with backend in production)
-  let testimonials = JSON.parse(localStorage.getItem("userTestimonials") || "[]");
-  testimonials.unshift({ name, role, message });
-  localStorage.setItem("userTestimonials", JSON.stringify(testimonials));
-
-  statusDiv.textContent = "Thank you! Your testimonial is saved and will appear after refresh.";
-  form.reset();
-});
-
-// Display testimonials dynamically
-window.addEventListener('DOMContentLoaded', () => {
-  const list = JSON.parse(localStorage.getItem("userTestimonials") || "[]");
-  const section = document.getElementById('feedback-section');
-  list.forEach(t => {
-    const div = document.createElement('div');
-    div.className = 'testimonial';
-    div.innerHTML = `<p class='testimonial-text'>\"${t.message}\"</p><div class='testimonial-person'>${t.name}${t.role ? ', ' + t.role : ''}</div>`;
-    section.appendChild(div);
-  });
-});
-    tsParticles.load("tsparticles", {
-  background: { color: "#f8fafc" }, // Set to match your site's background
-  particles: {
-    number: { value: 40 },
-    color: { value: "#60a5fa" },
-    shape: { type: "circle" },
-    opacity: { value: 0.15 },
-    size: { value: 4, random: { enable: true, minimumValue: 2 } },
-    move: { enable: true, speed: 1, direction: "none", outModes: { default: "bounce" } }
-  },
-  interactivity: { events: { onHover: { enable: false }, onClick: { enable: false } } }
-});
-
+        // Testimonial form omitted from showing since commented out in your source
     </script>
 </body>
-</html>
 
+</html>
