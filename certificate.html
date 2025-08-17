@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>My Certificates</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-
   <style>
     :root {
       --primary-color: #109CB4;
@@ -25,7 +23,6 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* Dark mode */
     body.dark {
       --card-bg: #1e1e1e;
       --text-color: #f0f0f0;
@@ -33,54 +30,46 @@
       --shadow-color: rgba(255, 255, 255, 0.08);
     }
 
-    /* Dark Mode Button fixed at top-right corner */
     #darkToggle {
       position: fixed;
-      top: 15px;
-      right: 15px;
+      top: 12px;
+      right: 12px;
       padding: 8px 14px;
       border-radius: 6px;
       border: none;
       background: #333;
       color: #fff;
       cursor: pointer;
-      font-size: 0.95em;
+      font-size: 0.9em;
       transition: 0.3s;
       z-index: 1100;
     }
-
-    #darkToggle:hover {
-      background: #555;
-    }
+    #darkToggle:hover { background: #555; }
 
     #certificates {
-      padding: 80px 20px 40px; /* extra top padding so title not hidden under button */
+      padding: 70px 15px 30px;
       max-width: 1200px;
       margin: auto;
     }
-
     #certificates h2 {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.5em;
+      margin-bottom: 24px;
+      font-size: 2.2em;
       font-weight: 600;
     }
 
-    /* Certificates Grid */
     .certificates-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
       justify-items: center;
     }
-
     .certificate {
       width: 100%;
-      max-width: 350px;
-      height: 240px;
+      max-width: 340px;
+      height: 220px;
       perspective: 1000px;
     }
-
     .certificate-flipper {
       position: relative;
       width: 100%;
@@ -89,11 +78,9 @@
       transition: transform 0.8s;
       transform-style: preserve-3d;
     }
-
     .certificate:hover .certificate-flipper {
       transform: rotateY(180deg);
     }
-
     .certificate-front,
     .certificate-back {
       position: absolute;
@@ -102,146 +89,199 @@
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 12px;
-      box-shadow: 0 4px 20px var(--shadow-color);
+      box-shadow: 0 4px 18px var(--shadow-color);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 15px;
+      padding: 14px;
     }
-
-    .certificate-front {
-      background: var(--card-bg);
-    }
-
+    .certificate-front { background: var(--card-bg); }
     .certificate-front img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 15px;
+      width: 75px;
+      height: 75px;
+      margin-bottom: 14px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #eee;
     }
-
     .certificate-front h3 {
-      font-size: 1.2em;
+      font-size: 1.15em;
       margin: 0;
     }
-
     .certificate-back {
       background: var(--primary-color);
       color: #fff;
       transform: rotateY(180deg);
     }
-
-    .certificate-back h3 {
-      margin: 0;
-    }
-
+    .certificate-back h3 { margin: 0; }
     .certificate-back p {
-      margin: 5px 0;
-      font-size: 0.9em;
+      margin: 4px 0;
+      font-size: 0.88em;
+      line-height: 1.3;
     }
-
     .view-btn {
       background: #ffffff;
       color: var(--primary-color);
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 50px;
-      margin-top: 8px;
+      margin-top: 7px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.85em;
+      font-size: 0.82em;
       border: none;
       cursor: pointer;
       transition: 0.3s;
     }
+    .view-btn:hover { background: #f0f0f0; }
 
-    .view-btn:hover {
-      background: #f0f0f0;
-    }
-
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
       z-index: 1000;
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       background-color: rgba(0, 0, 0, 0.85);
       animation: fadeIn 0.4s;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
-
     .modal-content-wrapper {
       background: var(--card-bg);
       border-radius: 12px;
       padding: 20px;
-      max-width: 90%;
-      max-height: 90%;
-      overflow-y: auto;
-      margin: auto;
+      max-width: 95vw;
+      max-height: 90vh;
+      margin: 40px auto 40px;
       position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
     }
-
     .modal-content {
       max-width: 100%;
+      max-height: 60vh;
+      width: auto;
+      height: auto;
       display: block;
-      margin: auto;
+      margin: 0 auto 12px auto;
+      object-fit: contain;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+      border-radius: 10px;
+      animation: imagePop 0.3s;
+      background: #fff;
     }
-
     .modal-skill-tags {
-      margin-top: 15px;
+      margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
     }
-
     .tag {
       background-color: var(--primary-color);
       color: #fff;
       padding: 5px 12px;
       border-radius: 15px;
-      font-size: 0.8em;
+      font-size: 0.78em;
       font-weight: 600;
+      white-space: nowrap;
     }
-
     .close-button {
       position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 32px;
+      top: 14px;
+      right: 22px;
+      font-size: 30px;
       color: white;
       cursor: pointer;
+      z-index: 2000;
+      user-select: none;
+    }
+    .cancel-modal-button {
+      margin-top: 14px;
+      padding: 8px 20px;
+      background: #109CB4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.25s;
+      max-width: 150px;
+      width: 90%;
+      text-align: center;
+    }
+    .cancel-modal-button:hover {
+      background: #0e85a6;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes imagePop {
+      from { opacity: 0; transform: scale(0.98);}
+      to { opacity: 1; transform: scale(1);}
+    }
 
-      to {
-        opacity: 1;
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      #certificates h2 {
+        font-size: 1.8em;
+        margin-bottom: 18px;
+      }
+      .certificates-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .certificate {
+        max-width: 280px;
+        height: 200px;
+      }
+      .certificate-front img {
+        width: 65px;
+        height: 65px;
+      }
+      .certificate-front h3 {
+        font-size: 1em;
+      }
+      .certificate-back p {
+        font-size: 0.8em;
+      }
+      .view-btn {
+        font-size: 0.78em;
+        padding: 6px 12px;
+      }
+      .modal-content-wrapper {
+        max-height: 85vh;
+        margin: 20px auto 20px;
+        padding: 15px;
+      }
+      .modal-content {
+        max-height: 50vh;
+      }
+      .cancel-modal-button {
+        max-width: 100%;
+        width: 100%;
+        padding: 10px 0;
+        font-size: 1.1em;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- Dark Mode Button (fixed at top-right corner) -->
   <button id="darkToggle">🌙</button>
 
   <section id="certificates">
     <h2>Certificates & Achievements</h2>
-
-    <!-- Certificates Grid -->
     <div class="certificates-container">
 
-      <!-- Certificate 1 -->
       <div class="certificate">
         <div class="certificate-flipper">
           <div class="certificate-front">
@@ -252,12 +292,11 @@
             <h3>Web Developer</h3>
             <p>Issuer: I-tech Computer Ed.</p>
             <p>Date: Mar 2024</p>
-            <button class="view-btn" data-img-src="certificate1.jpg">View</button>
+            <button class="view-btn" data-img-src="web program.jpg">View</button>
           </div>
         </div>
       </div>
 
-      <!-- Certificate 2 -->
       <div class="certificate">
         <div class="certificate-flipper">
           <div class="certificate-front">
@@ -268,12 +307,11 @@
             <h3>MS-Excel</h3>
             <p>Issuer: I-tech Computer Ed.</p>
             <p>Date: Mar 2024</p>
-            <button class="view-btn" data-img-src="certificate2.jpg">View</button>
+            <button class="view-btn" data-img-src="ms-excel.jpg">View</button>
           </div>
         </div>
       </div>
 
-      <!-- Certificate 3 -->
       <div class="certificate">
         <div class="certificate-flipper">
           <div class="certificate-front">
@@ -292,12 +330,12 @@
     </div>
   </section>
 
-  <!-- Modal -->
   <div id="certificateModal" class="modal">
     <span class="close-button">&times;</span>
     <div class="modal-content-wrapper">
       <img id="modalImage" class="modal-content" alt="Certificate" />
       <div id="modalSkills" class="modal-skill-tags"></div>
+      <button id="cancelModal" class="cancel-modal-button">Cancel</button>
     </div>
   </div>
 
@@ -306,14 +344,14 @@
     const modalImg = document.getElementById("modalImage");
     const modalSkills = document.getElementById("modalSkills");
     const closeBtn = document.querySelector(".close-button");
+    const cancelBtn = document.getElementById("cancelModal");
 
     const certificateSkills = {
-      "certificate1.jpg": ["HTML", "CSS", "JavaScript"],
-      "certificate2.jpg": ["Excel", "Formulas", "Pivot Tables"],
+      "web program.jpg": ["HTML", "CSS", "JavaScript"],
+      "ms-excel.jpg": ["Excel", "Formulas", "Pivot Tables"],
       "certificate3.jpg": ["Bot Design", "Automation"]
     };
 
-    // Modal logic
     document.querySelectorAll(".view-btn[data-img-src]").forEach(btn => {
       btn.addEventListener("click", () => {
         const src = btn.getAttribute("data-img-src");
@@ -332,9 +370,9 @@
     });
 
     closeBtn.onclick = () => modal.style.display = "none";
+    cancelBtn.onclick = () => modal.style.display = "none";
     window.onclick = e => { if (e.target == modal) modal.style.display = "none"; };
 
-    // Dark Mode
     document.getElementById("darkToggle").addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
