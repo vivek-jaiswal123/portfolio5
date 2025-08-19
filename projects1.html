@@ -1,240 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio Projects</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-      
-      :root {
-        --primary-color: #47d3dd;
-        --secondary-color: #4C99D1;
-        --text-light: #ffffff;
-        --text-dark: #333333;
-        --bg-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-        --card-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
-        --hover-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
-        --transition-speed: 0.4s;
-      }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-      body {
-        font-family: 'Poppins', sans-serif;
-        background: var(--bg-gradient);
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      .header {
-        text-align: center;
-        padding: 3rem 0 1rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-        display: inline-block;
-      }
-
-      .header p {
-        color: var(--text-dark);
-        max-width: 600px;
-        margin: 0 auto;
-        opacity: 0.8;
-      }
-
-      .project-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
-        padding: 50px 5%;
-        max-width: 1400px;
-        margin: 0 auto;
-        perspective: 1000px;
-      }
-
-      .project-box {
-        position: relative;
-        width: 300px;
-        height: 320px;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: var(--card-shadow);
-        cursor: pointer;
-        transform-style: preserve-3d;
-        transition: transform var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                    box-shadow var(--transition-speed) ease;
-        background-size: cover;
-        background-position: center;
-        background-color: #ffffff;
-      }
-
-      .project-box:hover {
-        transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
-        box-shadow: var(--hover-shadow);
-      }
-
-      .project-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.65) 0%,
-          rgba(0, 0, 0, 0.4) 50%,
-          rgba(0, 0, 0, 0.65) 100%
-        );
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-        transition: all var(--transition-speed) ease;
-      }
-
-      .project-box:hover .project-overlay {
-        background: linear-gradient(
-          to bottom,
-          rgba(71, 211, 221, 0.85) 0%,
-          rgba(76, 153, 209, 0.85) 100%
-        );
-      }
-
-      .project-icon {
-        font-size: 3rem;
-        color: var(--text-light);
-        margin-bottom: 15px;
-        transform: translateY(0);
-        transition: transform var(--transition-speed) ease;
-        opacity: 0.9;
-      }
-
-      .project-title {
-        font-size: 1.5rem;
-        color: var(--text-light);
-        font-weight: 600;
-        margin: 10px 0;
-        text-align: center;
-        transform: translateY(0);
-        transition: transform var(--transition-speed) ease;
-      }
-
-      .project-label {
-        font-size: 0.9rem;
-        color: var(--text-light);
-        text-align: center;
-        opacity: 0.8;
-        padding: 0 20px;
-        transform: translateY(20px);
-        transition: all var(--transition-speed) ease;
-        opacity: 0;
-      }
-
-      .project-box:hover .project-icon {
-        transform: translateY(-10px) scale(1.1);
-      }
-
-      .project-box:hover .project-title {
-        transform: translateY(-5px);
-      }
-
-      .project-box:hover .project-label {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .project-box::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform var(--transition-speed) ease;
-        z-index: 2;
-      }
-
-      .project-box:hover::after {
-        transform: scaleX(1);
-      }
-
-      .project-link {
-        text-decoration: none;
-        color: var(--text-light);
-        position: relative;
-        z-index: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-      }
-
-      .project-action {
-        position: absolute;
-        bottom: -40px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--text-light);
-        color: var(--primary-color);
-        border: none;
-        border-radius: 30px;
-        padding: 8px 20px;
-        font-weight: 500;
-        font-size: 0.9rem;
-        transition: all var(--transition-speed) ease;
-        opacity: 0;
-        z-index: 3;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      }
-
-      .project-box:hover .project-action {
-        bottom: 20px;
-        opacity: 1;
-      }
-
-      .project-action:hover {
-        background: var(--primary-color);
-        color: var(--text-light);
-        box-shadow: 0 7px 20px rgba(71, 211, 221, 0.4);
-      }
-
-      .coming-soon {
-        background-color: #f8f9fa;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .coming-soon::before {
-        content: "";
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        top: -50%;
-        left: -50%;
-        background: linear-gradient(
-          45deg,
+    :root {
+      --primary-color: #47d3dd;
+      --secondary-color: #4C99D1;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      --card-bg: #ffffff;
+      --card-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+      --hover-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
+      --transition-speed: 0.4s;
+      --loader-bg: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      --coming-soon-bg: #f8f9fa;
+      --coming-soon-stripes: linear-gradient(45deg,
           rgba(255, 255, 255, 0.7) 0%,
           rgba(255, 255, 255, 0.7) 25%,
           rgba(240, 240, 240, 0.7) 25%,
@@ -242,366 +30,840 @@
           rgba(255, 255, 255, 0.7) 50%,
           rgba(255, 255, 255, 0.7) 75%,
           rgba(240, 240, 240, 0.7) 75%,
-          rgba(240, 240, 240, 0.7) 100%
-        );
-        background-size: 30px 30px;
-        animation: moveStripes 20s linear infinite;
-        z-index: 0;
+          rgba(240, 240, 240, 0.7) 100%);
+      --coming-soon-overlay: rgba(255, 255, 255, 0.4);
+      --coming-soon-text: var(--text-dark);
+    }
+
+    [data-theme="dark"] {
+      --text-light: #ffffff;
+      --text-dark: #e0e0e0;
+      --bg-gradient: linear-gradient(135deg, #1a1a2e, #16213e);
+      --card-bg: #2a2a3e;
+      --card-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+      --hover-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
+      --loader-bg: linear-gradient(135deg, #1a1a2e, #16213e);
+      --coming-soon-bg: #2a2a3e;
+      --coming-soon-stripes: linear-gradient(45deg,
+          rgba(42, 42, 62, 0.7) 0%,
+          rgba(42, 42, 62, 0.7) 25%,
+          rgba(50, 50, 70, 0.7) 25%,
+          rgba(50, 50, 70, 0.7) 50%,
+          rgba(42, 42, 62, 0.7) 50%,
+          rgba(42, 42, 62, 0.7) 75%,
+          rgba(50, 50, 70, 0.7) 75%,
+          rgba(50, 50, 70, 0.7) 100%);
+      --coming-soon-overlay: rgba(42, 42, 62, 0.4);
+      --coming-soon-text: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--card-bg);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: all var(--transition-speed) ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .theme-toggle .icon {
+      font-size: 1.5rem;
+      transition: all var(--transition-speed) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      position: absolute;
+    }
+
+    .theme-toggle .sun-icon {
+      color: #ffa500;
+      transform: rotate(0deg) scale(1);
+    }
+
+    .theme-toggle .moon-icon {
+      color: #6366f1;
+      transform: rotate(180deg) scale(0);
+    }
+
+    [data-theme="dark"] .theme-toggle .sun-icon {
+      transform: rotate(-180deg) scale(0);
+    }
+
+    [data-theme="dark"] .theme-toggle .moon-icon {
+      transform: rotate(0deg) scale(1);
+    }
+
+    .header {
+      text-align: center;
+      padding: 3rem 0 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .header p {
+      color: var(--text-dark);
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.8;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 50px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .project-box {
+      position: relative;
+      width: 300px;
+      height: 320px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow var(--transition-speed) ease;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--card-bg);
+    }
+
+    .project-box:hover {
+      transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.65) 0%,
+          rgba(0, 0, 0, 0.4) 50%,
+          rgba(0, 0, 0, 0.65) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .project-box:hover .project-overlay {
+      background: linear-gradient(to bottom,
+          rgba(71, 211, 221, 0.85) 0%,
+          rgba(76, 153, 209, 0.85) 100%);
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+      transform: translateY(0);
+      transition: transform var(--transition-speed) ease;
+      opacity: 0.9;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin: 10px 0;
+      text-align: center;
+      transform: translateY(0);
+      transition: transform var(--transition-speed) ease;
+    }
+
+    .project-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      text-align: center;
+      opacity: 0.8;
+      padding: 0 20px;
+      transform: translateY(20px);
+      transition: all var(--transition-speed) ease;
+      opacity: 0;
+    }
+
+    .project-box:hover .project-icon {
+      transform: translateY(-10px) scale(1.1);
+    }
+
+    .project-box:hover .project-title {
+      transform: translateY(-5px);
+    }
+
+    .project-box:hover .project-label {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-box::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-speed) ease;
+      z-index: 2;
+    }
+
+    .project-box:hover::after {
+      transform: scaleX(1);
+    }
+
+    .project-link {
+      text-decoration: none;
+      color: var(--text-light);
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Updated button container styles */
+    .project-actions {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transition: all var(--transition-speed) ease;
+      z-index: 3;
+      width: 90%; /* Ensures the action buttons fill most of the box */
+      justify-content: center;
+    }
+
+    .project-box:hover .project-actions {
+      bottom: 20px;
+      opacity: 1;
+    }
+
+    /* Updated button styles */
+    .project-action {
+      background: var(--text-light);
+      color: var(--primary-color);
+      border: none;
+      border-radius: 30px;
+      flex: 1 1 0; /* Buttons share space equally */
+      min-width: 0; /* Prevents overflowing if the container is too small */
+      padding: 10px 8px; /* Top-bottom padding, adjusted side padding */
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition-speed) ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: block;
+      white-space: nowrap; /* Prevents text wrapping */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Shows ... if text is too long */
+    }
+
+    .project-action:hover {
+      background: var(--primary-color);
+      color: var(--text-light);
+      box-shadow: 0 7px 20px rgba(71, 211, 221, 0.4);
+    }
+
+    .coming-soon {
+      background-color: var(--coming-soon-bg);
+      position: relative;
+      overflow: hidden;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    .coming-soon::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: var(--coming-soon-stripes);
+      background-size: 30px 30px;
+      animation: moveStripes 20s linear infinite;
+      z-index: 0;
+      transition: background var(--transition-speed) ease;
+    }
+
+    @keyframes moveStripes {
+      0% {
+        transform: rotate(0deg);
       }
 
-      @keyframes moveStripes {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .coming-soon .project-overlay {
+      background: var(--coming-soon-overlay);
+      backdrop-filter: blur(3px);
+      transition: background var(--transition-speed) ease;
+    }
+
+    .coming-soon:hover .project-overlay {
+      background: rgba(76, 153, 209, 0.7);
+    }
+
+    .coming-soon .project-icon,
+    .coming-soon .project-title,
+    .coming-soon .project-label {
+      color: var(--coming-soon-text);
+      z-index: 2;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .coming-soon:hover .project-icon,
+    .coming-soon:hover .project-title,
+    .coming-soon:hover .project-label {
+      color: var(--text-light);
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
       }
 
-      .coming-soon .project-overlay {
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(3px);
+      50% {
+        transform: scale(1.05);
       }
 
-      .coming-soon:hover .project-overlay {
-        background: rgba(76, 153, 209, 0.7);
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Loading animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--loader-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(76, 153, 209, 0.2);
+      border-top-color: var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Tilt effect for project boxes */
+    .tilt-effect {
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+    }
+
+    .tilt-inner {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--text-dark);
+      opacity: 0.7;
+      font-size: 0.9rem;
+      transition: color var(--transition-speed) ease;
+    }
+
+    /* Dark mode animation overlay */
+    .theme-transition {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      transform: translate(-50%, -50%) scale(0);
+      z-index: 10000;
+      pointer-events: none;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .theme-transition.active {
+      transform: translate(-50%, -50%) scale(30);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1200px) {
+      .project-container {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .theme-toggle {
+        width: 50px;
+        height: 50px;
+        top: 15px;
+        right: 15px;
       }
 
-      .coming-soon .project-icon,
-      .coming-soon .project-title,
-      .coming-soon .project-label {
-        color: var(--text-dark);
-        z-index: 2;
+      .theme-toggle .icon {
+        font-size: 1.3rem;
       }
 
-      .coming-soon:hover .project-icon,
-      .coming-soon:hover .project-title,
-      .coming-soon:hover .project-label {
-        color: var(--text-light);
+      .header h1 {
+        font-size: 2rem;
       }
 
-      .pulse {
-        animation: pulse 2s infinite;
+      .project-container {
+        padding: 30px 5%;
+        gap: 25px;
       }
 
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
+      .project-box {
+        width: 280px;
+        height: 300px;
       }
 
-      /* Loading animation */
-      .loader {
-        position: fixed;
-        top: 0;
-        left: 0;
+      .project-actions {
+        width: 85%;
+        gap: 6px;
+      }
+
+      .project-action {
+        font-size: 0.8rem;
+        padding: 8px 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        top: 10px;
+        right: 10px;
+      }
+
+      .theme-toggle .icon {
+        font-size: 1.2rem;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .project-container {
+        padding: 20px 5%;
+        gap: 20px;
+      }
+
+      .project-box {
         width: 100%;
-        height: 100%;
-        background: var(--bg-gradient);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.8s ease, visibility 0.8s ease;
+        max-width: 320px;
+        height: 280px;
       }
 
-      .loader.hidden {
-        opacity: 0;
-        visibility: hidden;
+      .project-icon {
+        font-size: 2.5rem;
       }
 
-      .loader-content {
-        text-align: center;
+      .project-title {
+        font-size: 1.3rem;
       }
 
-      .loader-spinner {
-        width: 60px;
-        height: 60px;
-        border: 5px solid rgba(76, 153, 209, 0.2);
-        border-top-color: var(--primary-color);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
+      .project-actions {
+        width: 95%;
+        gap: 4px;
       }
 
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
+      .project-action {
+        font-size: 0.75rem;
+        padding: 8px 4px;
       }
+    }
+  </style>
+</head>
 
-      /* Tilt effect for project boxes */
-      .tilt-effect {
-        transform-style: preserve-3d;
-        transform: perspective(1000px);
-      }
+<body>
+  <!-- Theme toggle button -->
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-sun icon sun-icon"></i>
+    <i class="fas fa-moon icon moon-icon"></i>
+  </button>
 
-      .tilt-inner {
-        transform-style: preserve-3d;
-        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      }
+  <!-- Theme transition overlay -->
+  <div class="theme-transition"></div>
 
-      /* Footer */
-      .footer {
-        text-align: center;
-        padding: 30px 0;
-        color: var(--text-dark);
-        opacity: 0.7;
-        font-size: 0.9rem;
-      }
-
-      /* Responsive styles */
-      @media (max-width: 1200px) {
-        .project-container {
-          gap: 30px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .header h1 {
-          font-size: 2rem;
-        }
-        
-        .project-container {
-          padding: 30px 5%;
-          gap: 25px;
-        }
-
-        .project-box {
-          width: 280px;
-          height: 300px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .header h1 {
-          font-size: 1.8rem;
-        }
-        
-        .project-container {
-          padding: 20px 5%;
-          gap: 20px;
-        }
-
-        .project-box {
-          width: 100%;
-          max-width: 320px;
-          height: 280px;
-        }
-
-        .project-icon {
-          font-size: 2.5rem;
-        }
-
-        .project-title {
-          font-size: 1.3rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Loading animation -->
-    <div class="loader">
-      <div class="loader-content">
-        <div class="loader-spinner"></div>
-      </div>
+  <!-- Loading animation -->
+  <div class="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
     </div>
+  </div>
 
-    <!-- Header section -->
-    <header class="header">
-      <h1 class="animate__animated animate__fadeInDown">Portfolio Projects</h1>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">A showcase of my web development journey and creative work</p>
-    </header>
+  <!-- Header section -->
+  <header class="header">
+    <h1 class="animate__animated animate__fadeInDown">Portfolio Projects</h1>
+    <p class="animate__animated animate__fadeIn animate__delay-1s">A showcase of my web development journey and creative
+      work</p>
+  </header>
 
-    <!-- Projects container -->
-    <div class="project-container">
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('Tic tac.png'); animation-delay: 0.2s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="game.html" class="project-link">
-            <i class="fas fa-gamepad project-icon"></i>
-            <h3 class="project-title">Tic Tac Toe</h3>
-            <p class="project-label">Classic game with modern UI and multiplayer capabilities</p>
-          </a>
+  <!-- Projects container -->
+  <div class="project-container">
+    <!-- Tic Tac Toe Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('Tic tac.png'); animation-delay: 0.2s;" data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="game.html" class="project-link">
+          <i class="fas fa-gamepad project-icon"></i>
+          <h3 class="project-title">Tic Tac Toe</h3>
+          <p class="project-label">Classic game with modern UI and multiplayer capabilities</p>
+        </a>
+        <div class="project-actions">
           <button class="project-action" onclick="window.location.href='game.html'">Play Now</button>
-        </div>
-      </div>
-
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('Netflix.png'); animation-delay: 0.3s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="netflix.html" class="project-link">
-            <i class="fas fa-film project-icon"></i>
-            <h3 class="project-title">Netflix Clone</h3>
-            <p class="project-label">Streaming platform UI with responsive design</p>
-          </a>
-          <button class="project-action" onclick="window.location.href='netflix.html'">View Project</button>
-        </div>
-      </div>
-
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('Amazon.png'); animation-delay: 0.4s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="amazon.html" class="project-link">
-            <i class="fas fa-shopping-cart project-icon"></i>
-            <h3 class="project-title">Amazon Clone</h3>
-            <p class="project-label">E-commerce platform with shopping cart functionality</p>
-          </a>
-          <button class="project-action" onclick="window.location.href='amazon.html'">Shop Now</button>
-        </div>
-      </div>
-
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('Bg logo.png'); animation-delay: 0.5s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="https://fastremover.netlify.app/" class="project-link">
-            <i class="fas fa-bolt project-icon"></i>
-            <h3 class="project-title">Fastremover</h3>
-            <p class="project-label">Quick and efficient content removal service</p>
-          </a>
-          <button class="project-action" onclick="window.location.href='https://fastremover.netlify.app/'">Visit Site</button>
-        </div>
-      </div>
-
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('/affiliatenest-logo.png'); animation-delay: 0.6s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="https://affiliate-ultra.vercel.app/" class="project-link">
-            <i class="fas fa-link project-icon"></i>
-            <h3 class="project-title">AffiliateNest</h3>
-            <p class="project-label">Affiliate marketing platform with analytics</p>
-          </a>
-          <button class="project-action" onclick="window.location.href='https://affiliate-ultra.vercel.app/'">Explore</button>
-        </div>
-      </div>
-
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('/bookverse-logo.png'); animation-delay: 0.7s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="https://bookverse-bv.vercel.app/" class="project-link">
-            <i class="fas fa-book project-icon"></i>
-            <h3 class="project-title">BookVerse</h3>
-            <p class="project-label">Digital library with reader-friendly interface</p>
-          </a>
-          <button class="project-action" onclick="window.location.href='https://bookverse-bv.vercel.app/'">Read Now</button>
-        </div>
-      </div>
-
-      <div class="project-box animate__animated animate__fadeInUp" 
-           style="background-image: url('/mahadeeplogo2.png'); animation-delay: 0.7s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <a href="https://mahadeep-enterprises.vercel.app/" class="project-link">
-            <i class="fas fa-rocket project-icon"></i>
-<!--             <h3 class="project-title">mahadeep-enterprises</h3> -->
-            <p class="project-label">metal fabrication company dedicated to delivering high-quality custom metal products for various industries.</p>
-          </a>
-          <button class="project-action" onclick="window.location.href='https://mahadeep-enterprises.vercel.app/'">Visit Site</button>
-        </div>
-      </div>
-
-       <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" 
-           style="animation-delay: 0.8s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <div class="project-link">
-            <i class="fas fa-rocket project-icon"></i>
-            <h3 class="project-title">coming-soon</h3>
-            <p class="project-label">Exciting new project in the works. Stay tuned for more!</p>
-          </div>
-        </div>
-      </div>
-      <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" 
-           style="animation-delay: 0.8s;"
-           data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
-        <div class="project-overlay">
-          <div class="project-link">
-            <i class="fas fa-rocket project-icon"></i>
-            <h3 class="project-title">Coming soon</h3>
-            <p class="project-label">Exciting new project in the works. Stay tuned for more!</p>
-          </div>
+          <button class="project-action" onclick="window.location.href='#'">Details</button>
         </div>
       </div>
     </div>
-     
+
+    <!-- Netflix Clone Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('Netflix.png'); animation-delay: 0.3s;" data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="netflix.html" class="project-link">
+          <i class="fas fa-film project-icon"></i>
+          <h3 class="project-title">Netflix Clone</h3>
+          <p class="project-label">Streaming platform UI with responsive design</p>
+        </a>
+        <div class="project-actions">
+          <button class="project-action" onclick="window.location.href='netflix.html'">View Project</button>
+          <button class="project-action" onclick="window.location.href='#'">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amazon Clone Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('Amazon.png'); animation-delay: 0.4s;" data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="amazon.html" class="project-link">
+          <i class="fas fa-shopping-cart project-icon"></i>
+          <h3 class="project-title">Amazon Clone</h3>
+          <p class="project-label">E-commerce platform with shopping cart functionality</p>
+        </a>
+        <div class="project-actions">
+          <button class="project-action" onclick="window.location.href='amazon.html'">Shop Now</button>
+          <button class="project-action" onclick="window.location.href='#'">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fastremover Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('Bg logo.png'); animation-delay: 0.5s;" data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="https://fastremover.netlify.app/" class="project-link">
+          <i class="fas fa-bolt project-icon"></i>
+          <h3 class="project-title">Fastremover</h3>
+          <p class="project-label">Quick and efficient content removal service</p>
+        </a>
+        <div class="project-actions">
+          <button class="project-action" onclick="window.location.href='https://fastremover.netlify.app/'">Visit Site</button>
+          <button class="project-action" onclick="window.location.href='#'">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AffiliateNest Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('/affiliatenest-logo.png'); animation-delay: 0.6s;" data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="https://affiliate-ultra.vercel.app/" class="project-link">
+          <i class="fas fa-link project-icon"></i>
+          <h3 class="project-title">AffiliateNest</h3>
+          <p class="project-label">Affiliate marketing platform with analytics</p>
+        </a>
+        <div class="project-actions">
+          <button class="project-action" onclick="window.location.href='https://affiliate-ultra.vercel.app/'">Explore</button>
+          <button class="project-action" onclick="window.location.href='https://github.com/vivek-jaiswal123/AffiliateUltra'">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BookVerse Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('/bookverse-logo.png'); animation-delay: 0.7s;" data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="https://bookverse-bv.vercel.app/" class="project-link">
+          <i class="fas fa-book project-icon"></i>
+          <h3 class="project-title">BookVerse</h3>
+          <p class="project-label">Digital library with reader-friendly interface</p>
+        </a>
+        <div class="project-actions">
+          <button class="project-action" onclick="window.location.href='https://bookverse-bv.vercel.app/'">Read Now</button>
+          <button class="project-action" onclick="window.location.href='https://github.com/yourusername/bookversehttps://github.com/vivek-jaiswal123/Bookverse.sell'">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mahadeep Enterprises Project -->
+    <div class="project-box animate__animated animate__fadeInUp"
+      style="background-image: url('/mahadeeplogo2.png'); animation-delay: 0.8s;" 
+      data-tilt data-tilt-max="10"
+      data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <a href="https://mahadeep-enterprises.vercel.app/" class="project-link">
+          <i class="fas fa-industry project-icon"></i>
+          <h3 class="project-title">Mahadeep Enterprises</h3>
+          <p class="project-label">
+            Metal fabrication company dedicated to delivering high-quality custom 
+            metal products for various industries.
+          </p>
+        </a>
+        <div class="project-actions">
+          <button class="project-action" onclick="window.location.href='https://mahadeep-enterprises.vercel.app/'">Visit Site</button>
+          <button class="project-action" onclick="window.location.href='https://github.com/vivek-jaiswal123/Mahadeep-Enterprises-'">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coming Soon Project 1 -->
+    <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" style="animation-delay: 0.9s;"
+      data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <div class="project-link">
+          <i class="fas fa-rocket project-icon"></i>
+          <h3 class="project-title">Coming Soon</h3>
+          <p class="project-label">Exciting new project in the works. Stay tuned for more!</p>
+        </div>
+        <div class="project-actions">
+          <button class="project-action" onclick="alert('Project coming soon!')">Coming Soon</button>
+          <button class="project-action" onclick="window.location.href='#'">Details</button>
+        </div>
+      </div>
+    </div>
     
-    
-       <!-- Footer -->
-    <footer class="footer animate__animated animate__fadeIn animate__delay-1s">
-      <p>© 2025 Portfolio Projects | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i></p>
-    </footer>
+    <!-- Coming Soon Project 2 -->
+    <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" style="animation-delay: 1.0s;"
+      data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+      <div class="project-overlay">
+        <div class="project-link">
+          <i class="fas fa-rocket project-icon"></i>
+          <h3 class="project-title">Coming Soon</h3>
+          <p class="project-label">Exciting new project in the works. Stay tuned for more!</p>
+        </div>
+        <div class="project-actions">
+          <button class="project-action" onclick="alert('Project coming soon!')">Coming Soon</button>
+          <button class="project-action" onclick="window.location.href='#'">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <script>
-      // Loading animation
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          document.querySelector('.loader').classList.add('hidden');
-        }, 1000);
+  <!-- Footer -->
+  <footer class="footer animate__animated animate__fadeIn animate__delay-1s">
+    <p>© 2025 Portfolio Projects | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <script>
+    // Theme management
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      // Create transition effect
+      const transition = document.querySelector('.theme-transition');
+      transition.classList.add('active');
+
+      setTimeout(() => {
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }, 300);
+
+      setTimeout(() => {
+        transition.classList.remove('active');
+      }, 600);
+    }
+
+    // Initialize theme on page load
+    initTheme();
+
+    // Loading animation
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.loader').classList.add('hidden');
+      }, 1000);
+    });
+
+    // Initialize tilt effect
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+      max: 10,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.3,
+    });
+
+    // Project click handlers
+    function handleClickGame() {
+      window.location.href = "game.html";
+    }
+
+    function handleClickNetflix() {
+      window.location.href = "netflix.html";
+    }
+
+    function handleClickAmazon() {
+      window.location.href = "amazon.html";
+    }
+
+    function handleClickFastremover() {
+      window.location.href = "https://fastremover.netlify.app/";
+    }
+
+    function handleClickAffiliateNest() {
+      window.location.href = "https://affiliate-ultra.vercel.app/";
+    }
+
+    function handleClickBookVerse() {
+      window.location.href = "https://bookverse-bv.vercel.app/";
+    }
+
+    function handleClickMahadeep() {
+      window.location.href = "https://mahadeep-enterprises.vercel.app/";
+    }
+
+    // Add animation when scrolling
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__fadeInUp');
+          entry.target.style.opacity = 1;
+        }
       });
+    }, { threshold: 0.1 });
 
-      // Initialize tilt effect
-      VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-        max: 10,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.3,
+    document.querySelectorAll('.project-box').forEach(box => {
+      observer.observe(box);
+    });
+
+    // Keyboard shortcut for theme toggle (Ctrl/Cmd + D)
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+        e.preventDefault();
+        toggleTheme();
+      }
+    });
+
+    // Auto theme based on system preference (optional)
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      // Only apply system theme if no saved preference exists
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', mediaQuery.matches ? 'dark' : 'light');
+      }
+
+      mediaQuery.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
       });
+    }
+  </script>
+</body>
 
-      // Project click handlers
-      function handleClickGame() {
-        window.location.href = "game.html";
-      }
-      
-      function handleClickNetflix() {
-        window.location.href = "netflix.html";
-      }
-      
-      function handleClickAmazon() {
-        window.location.href = "amazon.html";
-      }
-      
-      function handleClickFastremover() {
-        window.location.href = "https://fastremover.netlify.app/";
-      }
-      
-      function handleClickAffiliateNest() {
-        window.location.href = "https://affiliate-ultra.vercel.app/";
-      }
-      
-      function handleClickBookVerse() {
-        window.location.href = "https://bookverse-bv.vercel.app/";
-      }
-      function handleClickBookVerse() {
-        window.location.href = "https://mahadeep-enterprises.vercel.app/";
-      }
-
-
-      // Add animation when scrolling
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate__fadeInUp');
-            entry.target.style.opacity = 1;
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.project-box').forEach(box => {
-        observer.observe(box);
-      });
-    </script>
-  </body>
 </html>
