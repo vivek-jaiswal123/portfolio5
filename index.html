@@ -179,59 +179,28 @@
         #darkModeToggle {
             font-size: 1.3rem;
             background: transparent;
-            /* Remove background */
             border: none;
-            /* Remove border ring */
             cursor: pointer;
             color: var(--primary-color);
             padding: 0;
-            /* Remove extra padding */
             border-radius: 0;
-            /* Remove border radius */
-            width: auto;
-            /* Adjust width to content */
-            height: auto;
-            /* Adjust height to content */
+            width: 45px;
+            height: 45px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             box-shadow: none;
-            /* Remove shadow */
             transition: color var(--transition-speed) ease;
-            /* Keep subtle color transition */
+            position: relative;
+            z-index: 1100;
+            margin-left: 1rem;
         }
 
         #darkModeToggle:hover {
             background: transparent;
-            /* Remove hover background */
             color: var(--secondary-color);
-            /* Optional: subtle color change on hover */
             transform: none;
-            /* Remove scale on hover */
         }
-
-
-        #darkModeToggle {
-            position: relative;
-            /* from fixed or absolute if applies */
-            z-index: 1100;
-            margin-left: 1rem;
-            /* small margin away from nav items */
-            width: 45px;
-            height: 45px;
-        }
-
-        /* Or move it slightly left */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5% 1rem 5%;
-            /* Add right padding if needed */
-            position: relative;
-        }
-
-
 
         #darkModeToggle:active {
             transform: scale(0.95);
@@ -318,23 +287,62 @@
             }
         }
 
-        /* Hero Section with Animations */
+        /* Hero Section with Background Video */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 5%;
-            background: linear-gradient(135deg, hwb(177 64% 7%) 0%, #ebe7e5 100%);
             position: relative;
             gap: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.3s;
+            background-image: url('https://sdmntprwestus2.oaiusercontent.com/files/00000000-cb34-61f8-9888-916c1ff45938/raw?se=2025-08-30T10%3A45%3A54Z&sp=r&sv=2024-08-04&sr=b&scid=61c253ea-0c55-5e51-aed7-aac3836d7e1b&skoid=04233560-0ad7-493e-8bf0-1347c317d021&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-30T09%3A43%3A14Z&ske=2025-08-31T09%3A43%3A14Z&sks=b&skv=2024-08-04&sig=zJS4/BkXPaF%2BQwsOq1Yhvr65CLm%2BRZZ66eh5OaYleac%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, var(--bg-darkmode), var(--bg-lightmode));
+        /* Background Video Styling */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Video Overlay for Better Text Readability */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.4);
+            z-index: -1;
+        }
+
+        /* Dark theme overlay */
+        [data-theme="dark"] .video-overlay {
+            background: rgba(17, 24, 39, 0.6);
+        }
+
+        /* Fallback background for reduced motion or video errors */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-video {
+                display: none;
+            }
+
+            .hero {
+                background-image: url('https://images.unsplash.com/photo-1607706189992-eae578626c86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29kaW5nfGVufDB8fDB8fHww');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
         }
 
         .hero-content {
@@ -346,22 +354,57 @@
             opacity: 0;
         }
 
+        /* Enhanced Hero Title with Typing Effect */
         .hero-title {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #0755d3;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        /* Typing Text Container */
+        #typedText {
+            display: inline-block;
+            min-width: 280px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: visible;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Cursor Animation */
+        .typed-cursor {
+            color: var(--primary-color) !important;
+            animation: blink 1s infinite;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
         }
 
         .hero-subtitle {
             font-size: 1.25rem;
-            color: var(--text-dark);
-            opacity: 0.8;
+            color: #ffffff;
+            opacity: 0.9;
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .hero-buttons {
@@ -410,15 +453,16 @@
         }
 
         .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 2px solid #ffffff;
+            color: #ffffff;
             margin-left: 1rem;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
             transform: translateY(-3px);
         }
 
@@ -869,8 +913,6 @@
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: var(--shadow);
-            max-width: 90%;
-            width: 100%;
             max-width: min(90vw, 600px);
             margin: 0 auto;
             transition: all var(--transition-speed) ease;
@@ -878,25 +920,6 @@
             position: relative;
             overflow: hidden;
         }
-
-        /* Enhanced mobile responsiveness */
-        @media (max-width: 768px) {
-            .contact-form {
-                padding: 1.5rem;
-                max-width: 95%;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contact-form {
-                padding: 1.25rem;
-                max-width: 100%;
-                margin: 0 10px;
-                border-radius: 0.75rem;
-            }
-        }
-
 
         .contact-form::before {
             content: '';
@@ -933,14 +956,12 @@
             color: var(--text-dark);
             font-size: 1rem;
             min-height: 44px;
-            /* Better touch targets on mobile */
         }
 
         .form-input[name="message"] {
             min-height: 120px;
             resize: vertical;
         }
-
 
         .form-input:focus {
             outline: none;
@@ -1168,6 +1189,10 @@
                 width: 300px;
                 height: 300px;
             }
+
+            #typedText {
+                min-width: 250px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1178,8 +1203,32 @@
                 gap: 3rem;
             }
 
+            .hero-video {
+                background-attachment: scroll;
+                /* Better performance on mobile */
+            }
+
+            .video-overlay {
+                background: rgba(37, 99, 235, 0.6);
+                /* Stronger overlay on mobile */
+            }
+
             .hero-content {
                 max-width: 100%;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                text-align: center;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.3rem;
+            }
+
+            #typedText {
+                min-width: 220px;
+                text-align: center;
             }
 
             .featured-image {
@@ -1210,6 +1259,11 @@
                 text-align: center;
             }
 
+            .contact-form {
+                padding: 1.5rem;
+                max-width: 95%;
+            }
+
             #chatbot {
                 width: 280px;
                 right: 15px;
@@ -1224,13 +1278,18 @@
         }
 
         @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            #typedText {
+                min-width: 180px;
+                font-size: 0.9em;
+            }
+
             .featured-image {
                 width: 200px;
                 height: 200px;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
             }
 
             .hero-subtitle {
@@ -1239,6 +1298,13 @@
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 1.25rem;
+                max-width: 100%;
+                margin: 0 10px;
+                border-radius: 0.75rem;
             }
 
             #chatbot {
@@ -1311,6 +1377,10 @@
     </nav>
 
     <section class="hero" id="home">
+
+        <!-- Video Overlay -->
+        <div class="video-overlay"></div>
+
         <div class="hero-content">
             <h1 class="hero-title">Hey, I'm a <span id="typedText"></span></h1>
             <p class="hero-subtitle">Experienced frontend developer with a passion for creating visually stunning and
@@ -1469,10 +1539,10 @@
         </div>
     </section>
 
-    <form action="https://formspree.io/f/mwpbvyak" method="POST">
-        <section class="contact" id="contact">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-form">
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-form">
+            <form action="https://formspree.io/f/mwpbvyak" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-input" name="text" placeholder="Your Name" required />
                 </div>
@@ -1483,9 +1553,9 @@
                     <textarea class="form-input" name="message" placeholder="Your Message" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="form-button">Send Message</button>
-            </div>
-        </section>
-    </form>
+            </form>
+        </div>
+    </section>
 
     <div id="chatbot">
         <div id="chat-header">💬 Ask Me Anything!</div>
@@ -1497,10 +1567,9 @@
         </div>
     </div>
 
-   <button id="chat-toggle">
+    <button id="chat-toggle">
         <img src="robot.png" alt="Chat Bot" />
     </button>
-
 
     <footer>
         <p>&copy; 2025 Vivek Jaiswal. All rights reserved. Made with 💙</p>
@@ -1513,7 +1582,6 @@
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
 
-            // Update button icon
             const darkToggle = document.getElementById("darkModeToggle");
             darkToggle.textContent = savedTheme === 'dark' ? "☀️" : "🌙";
         }
@@ -1523,33 +1591,70 @@
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-            // Start the animation
             const transition = document.querySelector('.theme-transition');
             transition.classList.add('active');
 
-            // Change theme during animation
             setTimeout(() => {
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
 
-                // Update button icon
                 const darkToggle = document.getElementById("darkModeToggle");
                 darkToggle.textContent = newTheme === 'dark' ? "☀️" : "🌙";
             }, 300);
 
-            // Remove animation class
             setTimeout(() => {
                 transition.classList.remove('active');
             }, 600);
         }
 
-        // Typing effect
+        // Enhanced typing effect
         var typingEffect = new Typed("#typedText", {
             strings: ["Vivek Jaiswal", "Web Designer", "WordPress Developer", "Frontend Developer", "UX/UI Designer"],
             loop: true,
-            typeSpeed: 100,
-            backSpeed: 80,
+            typeSpeed: 80,
+            backSpeed: 60,
             backDelay: 2000,
+            startDelay: 500,
+            showCursor: true,
+            cursorChar: '|',
+            autoInsertCss: true,
+            preStringTyped: function () {
+                document.getElementById('typedText').style.minHeight = '1.2em';
+            },
+            onStringTyped: function () {
+                document.getElementById('typedText').style.minHeight = '1.2em';
+            }
+        });
+
+        // Video control functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.hero-video');
+
+            if (video) {
+                // Pause video when not visible (performance optimization)
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            video.play();
+                        } else {
+                            video.pause();
+                        }
+                    });
+                });
+
+                observer.observe(video);
+
+                // Handle video loading errors - fallback to image background
+                video.addEventListener('error', () => {
+                    console.log('Video failed to load, falling back to image background');
+                    document.querySelector('.hero').style.backgroundImage =
+                        "url('https://images.unsplash.com/photo-1607706189992-eae578626c86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29kaW5nfGVufDB8fDB8fHww')";
+                    document.querySelector('.hero').style.backgroundSize = 'cover';
+                    document.querySelector('.hero').style.backgroundPosition = 'center';
+                    document.querySelector('.hero').style.backgroundRepeat = 'no-repeat';
+                    video.style.display = 'none';
+                });
+            }
         });
 
         // Loading animation
@@ -1568,7 +1673,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking a nav link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -1615,7 +1719,6 @@
             let response = "Sorry, I didn't understand that. Try asking about my skills, projects, or contact information.";
             const lowerInput = input.toLowerCase();
 
-            // Hide resume initially
             document.getElementById("resumeContainer").style.display = "none";
 
             if (lowerInput.includes("hi") || lowerInput.includes("hello") || lowerInput.includes("hey")) {
@@ -1668,7 +1771,6 @@
             });
         }
 
-        // Show/hide scroll to top button
         window.addEventListener('scroll', () => {
             const scrollTop = document.querySelector('.scroll-top');
             if (window.pageYOffset > 100) {
@@ -1707,7 +1809,6 @@
             });
         }, observerOptions);
 
-        // Observe elements for animation
         document.querySelectorAll('.skill-card, .project-box, .skill-category').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
@@ -1720,13 +1821,11 @@
             initTheme();
             animateSkills();
 
-            // Add welcome message to chatbot
             setTimeout(() => {
                 addMessage("Bot", "Hi! 👋 I'm here to help you learn more about Vivek. Feel free to ask me anything!");
             }, 2000);
         });
 
-        // Event listeners
         document.getElementById("darkModeToggle").addEventListener("click", toggleTheme);
 
         // Auto theme based on system preference
@@ -1755,5 +1854,3 @@
 </body>
 
 </html>
-
-
