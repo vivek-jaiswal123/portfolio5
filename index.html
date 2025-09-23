@@ -170,7 +170,6 @@
         transition: color var(--transition-base),
           background-color var(--transition-base);
         cursor: none;
-        
       }
 
       /* Optimized Custom Cursor */
@@ -1430,22 +1429,87 @@
         }
       }
       .social-media-links {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start; /* Aligns icons to the left */
-}
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start; /* Aligns icons to the left */
+      }
 
-.social-media-links a {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
+      .social-media-links a {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+      }
 
-.social-media-links a:hover {
-  color: var(--primary-dark-color);
-}
+      .social-media-links a:hover {
+        color: var(--primary-dark-color);
+      }
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-glass);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        z-index: 1101;
+        transition: box-shadow var(--transition-fast);
+      }
+      .burger-line {
+        width: 25px;
+        height: 3px;
+        background: var(--primary-color);
+        border-radius: 3px;
+        transition: all 0.3s;
+      }
 
+      @media (max-width: 768px) {
+        .burger {
+          display: flex;
+        }
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -320px;
+          width: 260px;
+          height: 100%;
+          background: var(--bg-glass);
+          box-shadow: 0 0 40px rgba(0, 0, 0, 0.17);
+          backdrop-filter: blur(25px);
+          display: flex;
+          flex-direction: column;
+          padding: 60px 30px 20px 30px;
+          align-items: flex-start;
+          gap: 24px;
+          transition: right 0.5s cubic-bezier(0.4, 2, 0.6, 1), opacity 0.3s;
+          z-index: 1100;
+          opacity: 0;
+          pointer-events: none;
+        }
+        .nav-menu.open {
+          right: 0;
+          opacity: 1;
+          pointer-events: auto;
+        }
+        nav {
+          padding: var(--space-sm) 7vw;
+        }
+      }
+
+      .burger.open .burger-line:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+      }
+      .burger.open .burger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .burger.open .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+      }
     </style>
   </head>
 
@@ -1479,11 +1543,20 @@
     >
       ↑
     </button>
-
     <!-- Navigation -->
     <nav>
       <a href="#" class="nav-logo">Vivek.dev</a>
-       <div class="nav-menu">
+      <button
+        class="burger"
+        aria-label="Open menu"
+        aria-controls="nav-menu"
+        aria-expanded="false"
+      >
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
         <a href="#home" class="nav-link">Home</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#education" class="nav-link">Education</a>
@@ -1491,14 +1564,13 @@
         <a href="projects1.html" class="nav-link">Projects</a>
         <a href="#contact" class="nav-link">Contact</a>
         <a href="certificate.html" class="nav-link">Certificates</a>
+        <button
+          class="theme-toggle"
+          id="darkModeToggle"
+          aria-label="Toggle dark mode"
+        ></button>
       </div>
-      <button
-        class="theme-toggle"
-        id="darkModeToggle"
-        aria-label="Toggle dark mode"
-      ></button>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content">
@@ -1522,20 +1594,39 @@
           </a>
         </div>
         <div class="social-media-links">
-  <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
-    <i class="uil uil-linkedin"></i>
-  </a>
-  <a href="https://github.com/yourprofile" target="_blank" aria-label="GitHub" rel="noopener noreferrer">
-    <i class="uil uil-github"></i>
-  </a>
-  <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter" rel="noopener noreferrer">
-    <i class="uil uil-twitter"></i>
-  </a>
-  <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
-    <i class="uil uil-instagram"></i>
-  </a>
-</div>
-
+          <a
+            href="https://linkedin.com/in/yourprofile"
+            target="_blank"
+            aria-label="LinkedIn"
+            rel="noopener noreferrer"
+          >
+            <i class="uil uil-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/yourprofile"
+            target="_blank"
+            aria-label="GitHub"
+            rel="noopener noreferrer"
+          >
+            <i class="uil uil-github"></i>
+          </a>
+          <a
+            href="https://twitter.com/yourprofile"
+            target="_blank"
+            aria-label="Twitter"
+            rel="noopener noreferrer"
+          >
+            <i class="uil uil-twitter"></i>
+          </a>
+          <a
+            href="https://instagram.com/yourprofile"
+            target="_blank"
+            aria-label="Instagram"
+            rel="noopener noreferrer"
+          >
+            <i class="uil uil-instagram"></i>
+          </a>
+        </div>
       </div>
 
       <div class="profile-container">
@@ -2523,10 +2614,24 @@
           init();
         }
       })();
+      document.addEventListener("DOMContentLoaded", function () {
+        const burger = document.querySelector(".burger");
+        const navMenu = document.getElementById("nav-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+        burger.addEventListener("click", function () {
+          burger.classList.toggle("open");
+          navMenu.classList.toggle("open");
+          let expanded = burger.getAttribute("aria-expanded") === "true";
+          burger.setAttribute("aria-expanded", !expanded);
+        });
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            burger.classList.remove("open");
+            navMenu.classList.remove("open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
+      });
     </script>
   </body>
 </html>
-
-
-
-
