@@ -1868,6 +1868,145 @@
     .burger.open .burger-line:nth-child(3) {
       transform: rotate(-45deg) translateY(-8px);
     }
+    /* Enhanced About Section with Checkerboard Background */
+.about {
+  padding: var(--space-xxl) 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Checkerboard Background Pattern */
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: 
+    conic-gradient(
+      from 0deg at 50% 50%,
+      #000000 90deg,
+      #ffffff 90deg 180deg,
+      #000000 180deg 270deg,
+      #ffffff 270deg 360deg
+    );
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  opacity: 0.08;
+  transition: opacity var(--transition-base);
+}
+
+/* Dark mode adjustments for checkerboard */
+[data-theme="dark"] .about::before {
+  opacity: 0.04;
+  background-image: 
+    conic-gradient(
+      from 0deg at 50% 50%,
+      #ffffff 90deg,
+      #000000 90deg 180deg,
+      #ffffff 180deg 270deg,
+      #000000 270deg 360deg
+    );
+}
+
+/* Alternative method using repeating linear gradients */
+.about::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.1) 20px,
+      rgba(0, 0, 0, 0.1) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.1) 20px,
+      rgba(0, 0, 0, 0.1) 40px
+    );
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  display: none; /* Use either ::before or ::after, not both */
+}
+
+/* Ensure content stays above the pattern */
+.about .section-title,
+.about .skills-grid,
+.about .card {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced section styling to work with background */
+.about {
+  background: 
+    radial-gradient(
+      ellipse at center,
+      var(--bg-primary) 0%,
+      var(--bg-secondary) 100%
+    );
+}
+
+/* Responsive adjustments for checkerboard size */
+@media (max-width: 768px) {
+  .about::before {
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about::before {
+    background-size: 25px 25px;
+    background-position: 0 0, 12.5px 12.5px;
+    opacity: 0.06;
+  }
+  
+  [data-theme="dark"] .about::before {
+    opacity: 0.03;
+  }
+}
+
+/* Alternative simpler version using box-shadow */
+.about-checkerboard-simple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: 
+    linear-gradient(45deg, #000 25%, transparent 25%),
+    linear-gradient(-45deg, #000 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  opacity: 0.05;
+}
+
+/* Performance optimization for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .about::before,
+  .about::after {
+    transition: none;
+  }
+}
+
   </style>
 </head>
 
@@ -2943,4 +3082,5 @@
     });
   </script>
 </body>
+
 </html>
