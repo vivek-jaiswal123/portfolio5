@@ -1826,13 +1826,13 @@
         display: flex;
       }
 
-      .nav-menu {
+     .nav-menu {
         position: fixed;
         top: 0;
         right: -320px;
         width: 260px;
         height: 100%;
-        background: var(--bg-glass);
+        background: var(--bg-primary);
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.17);
         backdrop-filter: blur(25px);
         display: flex;
@@ -1844,6 +1844,13 @@
         z-index: 1100;
         opacity: 0;
         pointer-events: none;
+      }
+
+      .nav-menu.open {
+        right: 0;
+        opacity: 1;
+        pointer-events: auto;
+        min-height: 600px;
       }
 
       .nav-menu.open {
@@ -3084,3 +3091,4 @@
 </body>
 
 </html>
+
