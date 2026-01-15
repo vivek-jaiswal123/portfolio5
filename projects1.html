@@ -1,315 +1,276 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Projects - Vivek Jaiswal</title>
-  <meta name="description" content="Portfolio Projects by Vivek Jaiswal - Showcase of web development projects with modern design and functionality.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio showcasing web development projects">
   <meta name="author" content="Vivek Jaiswal">
   
-  <!-- Preconnect for faster loading -->
+  <title>Vivek Jaiswal | Portfolio Projects</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  
-  <!-- Fonts and Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   
   <style>
-    /* === COMPLETE PORTFOLIO DESIGN SYSTEM === */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
     :root {
-      /* Enhanced Color System - Exact Match */
-      --primary-hue: 220;
-      --primary-sat: 70%;
-      --primary-light: 55%;
-      
-      --primary-color: hsl(var(--primary-hue), var(--primary-sat), var(--primary-light));
-      --primary-light-color: hsl(var(--primary-hue), var(--primary-sat), 65%);
-      --primary-dark-color: hsl(var(--primary-hue), var(--primary-sat), 45%);
-      
-      /* Gradients - Portfolio System */
-      --gradient-primary: linear-gradient(135deg, hsl(var(--primary-hue), var(--primary-sat), var(--primary-light)) 0%, hsl(270, 70%, 60%) 100%);
-      --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --gradient-success: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-      
-      /* Typography */
-      --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
-      
-      /* Spacing Scale */
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 1.5rem;
-      --space-lg: 2rem;
-      --space-xl: 3rem;
-      --space-xxl: 4rem;
-      
-      /* Shadows - Optimized for Performance */
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
-      --shadow-glow: 0 0 20px hsla(var(--primary-hue), var(--primary-sat), var(--primary-light), 0.3);
-      
-      /* Optimized Transitions */
-      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      
-      /* Theme Colors */
-      --text-primary: #1a1a1a;
-      --text-secondary: #666666;
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
-      --bg-glass: rgba(255, 255, 255, 0.1);
-      --border-color: rgba(255, 255, 255, 0.2);
+      --primary-color: #47d3dd;
+      --secondary-color: #4C99D1;
+      --accent-color: #ff6b6b;
+      --success-color: #4CAF50;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+      --text-muted: #666666;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      --card-bg: #ffffff;
+      --card-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+      --hover-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
+      --transition-speed: 0.3s;
+      --nav-bg: rgba(255, 255, 255, 0.95);
+      --input-bg: #ffffff;
+      --input-border: #e0e0e0;
+      --coming-soon-bg: #f8f9fa;
+      --coming-soon-overlay: rgba(255, 255, 255, 0.4);
+      --coming-soon-text: var(--text-dark);
     }
 
-    /* Dark Theme */
     [data-theme="dark"] {
-      --text-primary: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-glass: rgba(255, 255, 255, 0.05);
-      --border-color: rgba(255, 255, 255, 0.1);
+      --text-light: #ffffff;
+      --text-dark: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --bg-gradient: linear-gradient(135deg, #1a1a2e, #16213e);
+      --card-bg: #2a2a3e;
+      --card-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+      --hover-shadow: 0px 15px 35px rgba(0, 0, 0, 0.6);
+      --nav-bg: rgba(26, 26, 46, 0.95);
+      --input-bg: #2a2a3e;
+      --input-border: #3a3a4e;
+      --coming-soon-bg: #2a2a3e;
+      --coming-soon-overlay: rgba(42, 42, 62, 0.4);
+      --coming-soon-text: #e0e0e0;
     }
 
-    /* Performance-Optimized Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
     html {
       scroll-behavior: smooth;
-      font-size: 16px;
-      -webkit-text-size-adjust: 100%;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-      font-family: var(--font-primary);
-      line-height: 1.6;
-      color: var(--text-primary);
-      background: radial-gradient(ellipse at center, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      min-height: 100vh;
       overflow-x: hidden;
-      transition: color var(--transition-base), background-color var(--transition-base);
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
     }
 
-    /* Enhanced Background with Animation */
-    body::before {
-      content: "";
+    /* Navigation */
+    .navbar {
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent 340deg, var(--primary-color) 360deg);
-      animation: rotate 20s linear infinite;
-      opacity: 0.05;
-      z-index: -1;
-      will-change: transform;
-    }
-
-    @keyframes rotate {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Optimized Theme Transition */
-    .theme-transition {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 1px;
-      height: 1px;
-      border-radius: 50%;
-      background: var(--gradient-primary);
-      transform: translate(-50%, -50%) scale(0);
-      z-index: 10000;
-      pointer-events: none;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .theme-transition.active {
-      transform: translate(-50%, -50%) scale(2000);
-    }
-
-    /* Enhanced Theme Toggle */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      width: 50px;
-      height: 26px;
-      background: var(--bg-glass);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all var(--transition-base);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .theme-toggle::before {
-      content: "☀️";
-      position: absolute;
-      top: 50%;
-      left: 3px;
-      transform: translateY(-50%);
-      font-size: 0.9rem;
-      transition: all var(--transition-base);
-    }
-
-    [data-theme="dark"] .theme-toggle::before {
-      content: "🌙";
-      left: calc(100% - 20px);
-    }
-
-    .theme-toggle:hover {
-      box-shadow: var(--shadow-glow);
-      border-color: var(--primary-color);
-    }
-
-    /* Header with Enhanced Animation */
-    .header {
-      text-align: center;
-      padding: var(--space-xxl) 5% var(--space-sm);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .header::before {
-      content: '';
-      position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at center, var(--primary-color) 0%, transparent 70%);
-      opacity: 0.1;
-      animation: pulse-bg 4s ease-in-out infinite;
+      width: 100%;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      transition: background var(--transition-speed) ease;
     }
 
-    @keyframes pulse-bg {
-      0%, 100% { 
-        transform: scale(1); 
-        opacity: 0.1; 
-      }
-      50% { 
-        transform: scale(1.05); 
-        opacity: 0.2; 
-      }
-    }
-
-    .header h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      margin-bottom: var(--space-sm);
-      background: var(--gradient-primary);
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: var(--card-bg);
+      border: 2px solid var(--input-border);
+      border-radius: 50px;
+      width: 50px;
+      height: 28px;
+      cursor: pointer;
       position: relative;
-      line-height: 1.1;
+      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
     }
 
-    .header h1::after {
-      content: "";
+    .theme-toggle::after {
+      content: '';
       position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 0;
-      height: 4px;
-      background: var(--gradient-primary);
-      border-radius: 2px;
-      animation: expandWidth 2s ease forwards 1s;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      transition: transform var(--transition-speed) ease;
     }
 
-    @keyframes expandWidth {
-      from { width: 0; }
-      to { width: 80px; }
+    [data-theme="dark"] .theme-toggle::after {
+      transform: translateX(22px);
+    }
+
+    .theme-toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle-wrapper i {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .theme-toggle-wrapper .fa-sun {
+      color: #ffa500;
+    }
+
+    .theme-toggle-wrapper .fa-moon {
+      color: #6366f1;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      padding: 120px 5% 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .header p {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      margin-bottom: var(--space-lg);
-      font-weight: 400;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      transition: color var(--transition-base);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
     }
 
-    /* Enhanced Project Container */
+    /* Filter Buttons */
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      padding: 0 5%;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 25px;
+      border: 2px solid var(--primary-color);
+      background: transparent;
+      color: var(--text-dark);
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 500;
+      font-family: inherit;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* Projects Container */
     .project-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-lg);
-      padding: var(--space-xxl) 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px 5% 50px;
       max-width: 1400px;
       margin: 0 auto;
-      perspective: 1000px;
     }
 
-    /* Optimized Cards with Glassmorphism */
     .project-box {
-      background: var(--bg-glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: var(--space-lg);
-      transition: all var(--transition-base);
       position: relative;
+      width: 300px;
+      height: 320px;
+      border-radius: 15px;
       overflow: hidden;
-      height: 400px;
+      box-shadow: var(--card-shadow);
       cursor: pointer;
-      will-change: transform;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
       background-size: cover;
       background-position: center;
+      background-color: var(--card-bg);
     }
 
-    /* Shimmer Effect */
-    .project-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.1), 
-        transparent);
-      transition: left 0.8s;
-    }
-
-    .project-box:hover::before {
-      left: 100%;
+    .project-box.hidden {
+      display: none;
     }
 
     .project-box:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-color);
+      transform: translateY(-10px);
+      box-shadow: var(--hover-shadow);
     }
 
     .project-overlay {
@@ -318,315 +279,678 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, 
-        rgba(0, 0, 0, 0.7) 0%, 
-        rgba(0, 0, 0, 0.4) 50%, 
-        rgba(0, 0, 0, 0.7) 100%);
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.65) 0%,
+          rgba(0, 0, 0, 0.4) 50%,
+          rgba(0, 0, 0, 0.65) 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: var(--space-lg);
-      transition: all var(--transition-base);
+      z-index: 1;
+      transition: background var(--transition-speed) ease;
     }
 
     .project-box:hover .project-overlay {
-      background: var(--gradient-primary);
-      opacity: 0.9;
+      background: linear-gradient(to bottom,
+          rgba(71, 211, 221, 0.85) 0%,
+          rgba(76, 153, 209, 0.85) 100%);
     }
 
     .project-icon {
-      font-size: 3.5rem;
-      color: #ffffff;
-      margin-bottom: var(--space-md);
-      transition: all var(--transition-base);
-      opacity: 0.9;
+      font-size: 3rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+      transition: transform var(--transition-speed) ease;
     }
 
     .project-box:hover .project-icon {
-      transform: scale(1.1) rotate(5deg);
-      filter: drop-shadow(0 0 10px var(--primary-color));
+      transform: scale(1.1);
     }
 
     .project-title {
-      font-size: 1.8rem;
-      color: #ffffff;
-      font-weight: 700;
-      margin-bottom: var(--space-sm);
+      font-size: 1.5rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin: 10px 0;
       text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .project-box:hover .project-title {
-      transform: translateY(-5px);
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
     .project-label {
-      font-size: 1rem;
-      color: #ffffff;
+      font-size: 0.9rem;
+      color: var(--text-light);
       text-align: center;
+      padding: 0 20px;
       opacity: 0;
-      transform: translateY(20px);
-      transition: all var(--transition-base);
-      margin-bottom: var(--space-lg);
+      transition: opacity var(--transition-speed) ease;
     }
 
     .project-box:hover .project-label {
       opacity: 1;
-      transform: translateY(0);
+    }
+
+    .project-tech {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition-speed) ease;
+    }
+
+    .project-box:hover .project-tech {
+      opacity: 1;
+    }
+
+    .tech-badge {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
     }
 
     .project-link {
       text-decoration: none;
-      color: inherit;
+      color: var(--text-light);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100%;
       height: 100%;
-      position: relative;
-      z-index: 2;
     }
 
-    /* Enhanced Button Styles */
     .project-actions {
       position: absolute;
-      bottom: -60px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: var(--space-sm);
+      gap: 8px;
       opacity: 0;
-      transition: all var(--transition-base);
-      width: 90%;
+      transition: opacity var(--transition-speed) ease;
       z-index: 3;
+      width: 90%;
+      justify-content: center;
     }
 
     .project-box:hover .project-actions {
-      bottom: var(--space-lg);
       opacity: 1;
     }
 
     .project-action {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--text-light);
       color: var(--primary-color);
       border: none;
-      border-radius: 25px;
-      padding: 12px 20px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      border-radius: 30px;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 10px 8px;
+      font-weight: 500;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: all var(--transition-fast);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
+      transition: all var(--transition-speed) ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      white-space: nowrap;
       overflow: hidden;
-    }
-
-    .project-action::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.6s;
-    }
-
-    .project-action:hover::before {
-      left: 100%;
+      text-overflow: ellipsis;
+      font-family: inherit;
     }
 
     .project-action:hover {
-      background: var(--gradient-primary);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      background: var(--primary-color);
+      color: var(--text-light);
     }
 
-    /* Enhanced Coming Soon Animation */
+    /* Coming Soon */
     .coming-soon {
-      background: var(--bg-glass);
+      background-color: var(--coming-soon-bg);
       position: relative;
       overflow: hidden;
     }
 
-    .coming-soon::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.05) 0px,
-        rgba(255, 255, 255, 0.05) 10px,
-        rgba(255, 255, 255, 0.1) 10px,
-        rgba(255, 255, 255, 0.1) 20px
-      );
-      animation: moveStripes 20s linear infinite;
-    }
-
-    [data-theme="dark"] .coming-soon::after {
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(15, 23, 42, 0.3) 0px,
-        rgba(15, 23, 42, 0.3) 10px,
-        rgba(30, 41, 59, 0.5) 10px,
-        rgba(30, 41, 59, 0.5) 20px
-      );
-    }
-
-    @keyframes moveStripes {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(40px); }
-    }
-
     .coming-soon .project-overlay {
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
+      background: var(--coming-soon-overlay);
+      backdrop-filter: blur(3px);
     }
 
     .coming-soon:hover .project-overlay {
-      background: var(--gradient-primary);
-      opacity: 0.8;
+      background: rgba(76, 153, 209, 0.7);
     }
 
     .coming-soon .project-icon,
     .coming-soon .project-title,
     .coming-soon .project-label {
-      color: var(--text-primary);
+      color: var(--coming-soon-text);
       z-index: 2;
-      transition: color var(--transition-base);
     }
 
     .coming-soon:hover .project-icon,
     .coming-soon:hover .project-title,
     .coming-soon:hover .project-label {
-      color: #ffffff;
+      color: var(--text-light);
     }
 
-    .pulse {
-      animation: pulse 2s infinite;
+    /* Contact Section */
+    .contact-section {
+      background: var(--card-bg);
+      padding: 80px 5%;
+      transition: background var(--transition-speed) ease;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
     }
 
-    /* Performance-Optimized Loading */
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at center, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-item i {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 10000;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      font-size: 1.2rem;
     }
 
-    .loader.hidden {
+    .contact-item-text h4 {
+      color: var(--text-dark);
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .contact-item-text p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--bg-gradient);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--input-border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--input-bg);
+      color: var(--text-dark);
+      transition: border-color var(--transition-speed) ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(71, 211, 221, 0.4);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success-color);
+      border: 1px solid var(--success-color);
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(244, 67, 54, 0.1);
+      color: #f44336;
+      border: 1px solid #f44336;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 20px rgba(71, 211, 221, 0.4);
       opacity: 0;
       visibility: hidden;
+      transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease, transform var(--transition-speed) ease;
+      z-index: 998;
     }
 
-    .loader-content {
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Footer */
+    .footer {
       text-align: center;
+      padding: 50px 5% 30px;
+      color: var(--text-dark);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .footer-social a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      box-shadow: var(--card-shadow);
+      transition: all var(--transition-speed) ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .footer-links a:hover {
       color: var(--primary-color);
     }
 
-    .loader-spinner {
-      width: 60px;
-      height: 60px;
-      border: 3px solid rgba(var(--primary-hue), var(--primary-sat), var(--primary-light), 0.1);
-      border-top: 3px solid var(--primary-color);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: var(--space-sm);
+    .footer-copyright {
+      opacity: 0.7;
+      font-size: 0.9rem;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
     }
 
-    /* Enhanced Footer */
-    .footer {
-      background: var(--bg-glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border-color);
-      padding: var(--space-lg);
-      text-align: center;
-      color: var(--text-secondary);
-      margin-top: var(--space-xxl);
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .footer i {
-      color: #ff6b6b;
-      animation: heartbeat 1.5s ease-in-out infinite;
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 20px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
     }
 
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color var(--transition-speed) ease;
     }
 
-    /* Optimized Animations */
-    @keyframes morphShape {
-      0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-      25% { border-radius: 50% 50% 30% 70% / 50% 30% 70% 50%; }
-      50% { border-radius: 40% 60% 70% 30% / 40% 60% 30% 70%; }
-      75% { border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%; }
+    .modal-close:hover {
+      color: var(--accent-color);
     }
 
-    @keyframes shimmer {
-      0% { left: -100%; }
-      50% { left: 100%; }
-      100% { left: 100%; }
+    .modal-header h3 {
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 10px;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .modal-header p {
+      color: var(--text-muted);
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .project-container {
+    .modal-body {
+      color: var(--text-dark);
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    .modal-body h4 {
+      margin: 20px 0 10px;
+      color: var(--primary-color);
+    }
+
+    .modal-body ul {
+      padding-left: 20px;
+    }
+
+    .modal-body li {
+      margin-bottom: 8px;
+    }
+
+    .modal-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .modal-tech-stack span {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-speed) ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(71, 211, 221, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* Notification Toast */
+    .notification {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--card-bg);
+      color: var(--text-dark);
+      padding: 15px 30px;
+      border-radius: 10px;
+      box-shadow: var(--hover-shadow);
+      z-index: 10001;
+      transition: transform var(--transition-speed) ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .notification.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .notification i {
+      color: var(--success-color);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .contact-container {
         grid-template-columns: 1fr;
-        padding: var(--space-lg) 5%;
-        gap: var(--space-md);
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--nav-bg);
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .theme-toggle-wrapper {
+        order: -1;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .project-container {
+        gap: 25px;
       }
 
       .project-box {
-        height: 350px;
+        width: 280px;
+        height: 300px;
       }
 
-      .project-actions {
-        gap: var(--space-xs);
+      .contact-form {
+        padding: 30px 20px;
       }
 
-      .project-action {
-        font-size: 0.8rem;
-        padding: 10px 15px;
+      .modal-buttons {
+        flex-direction: column;
       }
     }
 
     @media (max-width: 480px) {
+      .navbar {
+        padding: 12px 5%;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .header {
+        padding: 100px 5% 30px;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .filter-container {
+        gap: 10px;
+      }
+
+      .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+      }
+
       .project-container {
-        padding: var(--space-md) 5%;
-        gap: var(--space-sm);
+        gap: 20px;
       }
 
       .project-box {
-        height: 320px;
+        width: 100%;
+        max-width: 320px;
+        height: 280px;
       }
 
       .project-icon {
@@ -634,378 +958,613 @@
       }
 
       .project-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+      }
+
+      .project-actions {
+        width: 95%;
+        gap: 4px;
       }
 
       .project-action {
         font-size: 0.75rem;
-        padding: 8px 12px;
-      }
-    }
-
-    /* Performance Optimizations */
-    .gpu-accelerated {
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
-    }
-
-    /* Accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        padding: 8px 4px;
       }
 
-      body::before {
-        animation: none !important;
+      .modal-content {
+        padding: 25px;
+      }
+
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Theme toggle button -->
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
-
-  <!-- Theme transition overlay -->
-  <div class="theme-transition"></div>
-
-  <!-- Loading animation -->
-  <div class="loader">
-    <div class="loader-content">
-      <div class="loader-spinner"></div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">Vivek Jaiswal</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <div class="theme-toggle-wrapper">
+          <i class="fas fa-sun"></i>
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+          <i class="fas fa-moon"></i>
+        </div>
+      </li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </div>
+  </nav>
 
-  <!-- Header section -->
-  <header class="header">
-    <h1 class="animate__animated animate__fadeInDown">Portfolio Projects</h1>
-    <p class="animate__animated animate__fadeIn animate__delay-1s">
-      A showcase of my web development journey and creative work
-    </p>
+  <!-- Header Section -->
+  <header class="header" id="home">
+    <h1>Portfolio Projects</h1>
+    <p>A showcase of my web development journey and creative work</p>
   </header>
 
-  <!-- Projects container -->
-  <div class="project-container">
-    <!-- Tic Tac Toe Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('Tic tac.png'); animation-delay: 0.2s">
-      <div class="project-overlay">
-        <a href="game.html" class="project-link">
-          <i class="fas fa-gamepad project-icon"></i>
-          <h3 class="project-title">Tic Tac Toe</h3>
-          <p class="project-label">Classic game with modern UI and multiplayer capabilities</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='game.html'">Play Now</button>
-          <button class="project-action" onclick="window.location.href='#'">Details</button>
+  <!-- Projects Section -->
+  <section id="projects">
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Apps</button>
+      <button class="filter-btn" data-filter="clone">Clones</button>
+      <button class="filter-btn" data-filter="game">Games</button>
+      <button class="filter-btn" data-filter="business">Business</button>
+    </div>
+
+    <!-- Projects container -->
+    <div class="project-container">
+      <!-- Tic Tac Toe Project -->
+      <div class="project-box" data-category="game" style="background-image: url('Tic tac.png');">
+        <div class="project-overlay">
+          <a href="game.html" class="project-link">
+            <i class="fas fa-gamepad project-icon"></i>
+            <h3 class="project-title">Tic Tac Toe</h3>
+            <p class="project-label">Classic game with modern UI</p>
+            <div class="project-tech">
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">JS</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.location.href='game.html'">Play Now</button>
+            <button class="project-action" onclick="openModal('tictactoe')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix Clone Project -->
+      <div class="project-box" data-category="clone" style="background-image: url('Netflix.png');">
+        <div class="project-overlay">
+          <a href="netflix.html" class="project-link">
+            <i class="fas fa-film project-icon"></i>
+            <h3 class="project-title">Netflix Clone</h3>
+            <p class="project-label">Streaming platform UI</p>
+            <div class="project-tech">
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">JS</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.location.href='netflix.html'">View</button>
+            <button class="project-action" onclick="openModal('netflix')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amazon Clone Project -->
+      <div class="project-box" data-category="clone" style="background-image: url('Amazon.png');">
+        <div class="project-overlay">
+          <a href="amazon.html" class="project-link">
+            <i class="fas fa-shopping-cart project-icon"></i>
+            <h3 class="project-title">Amazon Clone</h3>
+            <p class="project-label">E-commerce platform</p>
+            <div class="project-tech">
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">JS</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.location.href='amazon.html'">Shop</button>
+            <button class="project-action" onclick="openModal('amazon')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fastremover Project -->
+      <div class="project-box" data-category="web" style="background-image: url('Bg logo.png');">
+        <div class="project-overlay">
+          <a href="https://fastremover.netlify.app/" class="project-link" target="_blank">
+            <i class="fas fa-bolt project-icon"></i>
+            <h3 class="project-title">Fastremover</h3>
+            <p class="project-label">Background removal tool</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">API</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.open('https://fastremover.netlify.app/', '_blank')">Visit</button>
+            <button class="project-action" onclick="openModal('fastremover')">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AffiliateNest Project -->
+      <div class="project-box" data-category="web" style="background-image: url('/affiliatenest-logo.png');">
+        <div class="project-overlay">
+          <a href="https://affiliate-ultra.vercel.app/" class="project-link" target="_blank">
+            <i class="fas fa-link project-icon"></i>
+            <h3 class="project-title">AffiliateNest</h3>
+            <p class="project-label">Affiliate marketing platform</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node</span>
+              <span class="tech-badge">MongoDB</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.open('https://affiliate-ultra.vercel.app/', '_blank')">Explore</button>
+            <button class="project-action" onclick="window.open('https://github.com/vivek-jaiswal123/AffiliateUltra', '_blank')">GitHub</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BookVerse Project -->
+      <div class="project-box" data-category="web" style="background-image: url('/bookverse-logo.png');">
+        <div class="project-overlay">
+          <a href="https://bookverse-bv.vercel.app/" class="project-link" target="_blank">
+            <i class="fas fa-book project-icon"></i>
+            <h3 class="project-title">BookVerse</h3>
+            <p class="project-label">Digital library platform</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Firebase</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.open('https://bookverse-bv.vercel.app/', '_blank')">Read</button>
+            <button class="project-action" onclick="window.open('https://github.com/vivek-jaiswal123/Bookverse.sell', '_blank')">GitHub</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mahadeep Enterprises Project -->
+      <div class="project-box" data-category="business" style="background-image: url('/mahadeeplogo2.png');">
+        <div class="project-overlay">
+          <a href="https://mahadeep-enterprises.vercel.app/" class="project-link" target="_blank">
+            <i class="fas fa-industry project-icon"></i>
+            <h3 class="project-title">Mahadeep Enterprises</h3>
+            <p class="project-label">Business website</p>
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Next.js</span>
+            </div>
+          </a>
+          <div class="project-actions">
+            <button class="project-action" onclick="window.open('https://mahadeep-enterprises.vercel.app/', '_blank')">Visit</button>
+            <button class="project-action" onclick="window.open('https://github.com/vivek-jaiswal123/Mahadeep-Enterprises-', '_blank')">GitHub</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon Project 1 -->
+      <div class="project-box coming-soon" data-category="web">
+        <div class="project-overlay">
+          <div class="project-link">
+            <i class="fas fa-rocket project-icon"></i>
+            <h3 class="project-title">Coming Soon</h3>
+            <p class="project-label">New project in development</p>
+          </div>
+          <div class="project-actions">
+            <button class="project-action" onclick="showNotification('Project coming soon!')">Notify Me</button>
+            <button class="project-action" onclick="openModal('comingsoon')">Learn More</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Coming Soon Project 2 -->
+      <div class="project-box coming-soon" data-category="game">
+        <div class="project-overlay">
+          <div class="project-link">
+            <i class="fas fa-gamepad project-icon"></i>
+            <h3 class="project-title">Coming Soon</h3>
+            <p class="project-label">New game on the way</p>
+          </div>
+          <div class="project-actions">
+            <button class="project-action" onclick="showNotification('Game coming soon!')">Notify Me</button>
+            <button class="project-action" onclick="openModal('comingsoon')">Learn More</button>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Netflix Clone Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('Netflix.png'); animation-delay: 0.3s">
-      <div class="project-overlay">
-        <a href="netflix.html" class="project-link">
-          <i class="fas fa-film project-icon"></i>
-          <h3 class="project-title">Netflix Clone</h3>
-          <p class="project-label">Streaming platform UI with responsive design</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='netflix.html'">View Project</button>
-          <button class="project-action" onclick="window.location.href='#'">Details</button>
-        </div>
-      </div>
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="section-header">
+      <h2>Get In Touch</h2>
+      <p>Have a project in mind? Let's work together!</p>
     </div>
-
-    <!-- Amazon Clone Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('Amazon.png'); animation-delay: 0.4s">
-      <div class="project-overlay">
-        <a href="amazon.html" class="project-link">
-          <i class="fas fa-shopping-cart project-icon"></i>
-          <h3 class="project-title">Amazon Clone</h3>
-          <p class="project-label">E-commerce platform with shopping cart functionality</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='amazon.html'">Shop Now</button>
-          <button class="project-action" onclick="window.location.href='#'">Details</button>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's talk about your project</h3>
+        <p>
+          I'm always excited to work on new projects. Whether you have a question or just want to say hi, feel free to reach out!
+        </p>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div class="contact-item-text">
+            <h4>Email</h4>
+            <p>vivekjaiswal@example.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="contact-item-text">
+            <h4>Location</h4>
+            <p>India</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <div class="contact-item-text">
+            <h4>GitHub</h4>
+            <p>github.com/vivek-jaiswal123</p>
+          </div>
         </div>
       </div>
+      <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email *</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject *</label>
+          <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message *</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
     </div>
+  </section>
 
-    <!-- Fastremover Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('Bg logo.png'); animation-delay: 0.5s">
-      <div class="project-overlay">
-        <a href="https://fastremover.netlify.app/" class="project-link">
-          <i class="fas fa-bolt project-icon"></i>
-          <h3 class="project-title">Fastremover</h3>
-          <p class="project-label">Quick and efficient content removal service</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='https://fastremover.netlify.app/'">Visit Site</button>
-          <button class="project-action" onclick="window.location.href='#'">Details</button>
-        </div>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-social">
+      <a href="https://github.com/vivek-jaiswal123" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="mailto:your.email@example.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
     </div>
-
-    <!-- AffiliateNest Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('/affiliatenest-logo.png'); animation-delay: 0.6s">
-      <div class="project-overlay">
-        <a href="https://affiliate-ultra.vercel.app/" class="project-link">
-          <i class="fas fa-link project-icon"></i>
-          <h3 class="project-title">AffiliateNest</h3>
-          <p class="project-label">Affiliate marketing platform with analytics</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='https://affiliate-ultra.vercel.app/'">Explore</button>
-          <button class="project-action" onclick="window.location.href='https://github.com/vivek-jaiswal123/AffiliateUltra'">Details</button>
-        </div>
-      </div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
+    <p class="footer-copyright">
+      © 2025 Vivek Jaiswal | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i>
+    </p>
+  </footer>
 
-    <!-- BookVerse Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('/bookverse-logo.png'); animation-delay: 0.7s">
-      <div class="project-overlay">
-        <a href="https://bookverse-bv.vercel.app/" class="project-link">
-          <i class="fas fa-book project-icon"></i>
-          <h3 class="project-title">BookVerse</h3>
-          <p class="project-label">Digital library with reader-friendly interface</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='https://bookverse-bv.vercel.app/'">Read Now</button>
-          <button class="project-action" onclick="window.location.href='https://github.com/vivek-jaiswal123/Bookverse.sell'">Details</button>
-        </div>
-      </div>
-    </div>
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-    <!-- Mahadeep Enterprises Project -->
-    <div class="project-box animate__animated animate__fadeInUp" 
-         style="background-image: url('/mahadeeplogo2.png'); animation-delay: 0.8s">
-      <div class="project-overlay">
-        <a href="https://mahadeep-enterprises.vercel.app/" class="project-link">
-          <i class="fas fa-industry project-icon"></i>
-          <h3 class="project-title">Mahadeep Enterprises</h3>
-          <p class="project-label">Metal fabrication company with custom solutions</p>
-        </a>
-        <div class="project-actions">
-          <button class="project-action" onclick="window.location.href='https://mahadeep-enterprises.vercel.app/'">Visit Site</button>
-          <button class="project-action" onclick="window.location.href='https://github.com/vivek-jaiswal123/Mahadeep-Enterprises-'">Details</button>
-        </div>
+  <!-- Project Details Modal -->
+  <div class="modal" id="projectModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-header">
+        <h3 id="modalTitle">Project Title</h3>
+        <p id="modalSubtitle">Project description</p>
       </div>
-    </div>
-
-    <!-- Coming Soon Project 1 -->
-    <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" style="animation-delay: 0.9s">
-      <div class="project-overlay">
-        <div class="project-link">
-          <i class="fas fa-rocket project-icon"></i>
-          <h3 class="project-title">Coming Soon</h3>
-          <p class="project-label">Exciting new project in development. Stay tuned!</p>
-        </div>
-        <div class="project-actions">
-          <button class="project-action" onclick="alert('Project coming soon!')">Coming Soon</button>
-          <button class="project-action" onclick="window.location.href='#'">Details</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Coming Soon Project 2 -->
-    <div class="project-box coming-soon animate__animated animate__fadeInUp pulse" style="animation-delay: 1.0s">
-      <div class="project-overlay">
-        <div class="project-link">
-          <i class="fas fa-code project-icon"></i>
-          <h3 class="project-title">Coming Soon</h3>
-          <p class="project-label">Another innovative project in the works!</p>
-        </div>
-        <div class="project-actions">
-          <button class="project-action" onclick="alert('Project coming soon!')">Coming Soon</button>
-          <button class="project-action" onclick="window.location.href='#'">Details</button>
-        </div>
-      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-buttons" id="modalButtons"></div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer animate__animated animate__fadeIn animate__delay-1s">
-    <p>© 2025 Portfolio Projects | Designed with <i class="fas fa-heart"></i> by Vivek Jaiswal</p>
-  </footer>
+  <!-- Notification Toast -->
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationText">Notification message</span>
+  </div>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
   <script>
-    "use strict";
-
-    // Enhanced Theme Management
-    class ThemeManager {
-      constructor() {
-        this.currentTheme = localStorage.getItem('theme') || 'light';
-        this.toggleBtn = document.querySelector('.theme-toggle');
-        this.transition = document.querySelector('.theme-transition');
-        this.init();
+    // Project Data
+    const projectData = {
+      tictactoe: {
+        title: "Tic Tac Toe Game",
+        subtitle: "A classic game with modern design",
+        description: `
+          <p>A fully functional Tic Tac Toe game built with vanilla JavaScript.</p>
+          <h4>Features</h4>
+          <ul>
+            <li>Single player mode against AI</li>
+            <li>Two player local multiplayer</li>
+            <li>Score tracking</li>
+            <li>Responsive design</li>
+          </ul>
+          <h4>Technologies</h4>
+        `,
+        tech: ["HTML5", "CSS3", "JavaScript"],
+        liveUrl: "game.html",
+        githubUrl: "#"
+      },
+      netflix: {
+        title: "Netflix Clone",
+        subtitle: "Streaming platform UI recreation",
+        description: `
+          <p>A Netflix clone replicating the streaming platform's user interface.</p>
+          <h4>Features</h4>
+          <ul>
+            <li>Responsive landing page</li>
+            <li>Movie/TV show carousels</li>
+            <li>Hover effects</li>
+            <li>Video trailer integration</li>
+          </ul>
+          <h4>Technologies</h4>
+        `,
+        tech: ["HTML5", "CSS3", "JavaScript"],
+        liveUrl: "netflix.html",
+        githubUrl: "#"
+      },
+      amazon: {
+        title: "Amazon Clone",
+        subtitle: "E-commerce platform",
+        description: `
+          <p>A feature-rich Amazon clone with shopping cart functionality.</p>
+          <h4>Features</h4>
+          <ul>
+            <li>Product listing with categories</li>
+            <li>Shopping cart</li>
+            <li>Search functionality</li>
+            <li>Responsive design</li>
+          </ul>
+          <h4>Technologies</h4>
+        `,
+        tech: ["HTML5", "CSS3", "JavaScript"],
+        liveUrl: "amazon.html",
+        githubUrl: "#"
+      },
+      fastremover: {
+        title: "FastRemover",
+        subtitle: "Background removal tool",
+        description: `
+          <p>A fast background removal service powered by AI.</p>
+          <h4>Features</h4>
+          <ul>
+            <li>Instant background removal</li>
+            <li>High-quality output</li>
+            <li>Drag and drop upload</li>
+            <li>Multiple format support</li>
+          </ul>
+          <h4>Technologies</h4>
+        `,
+        tech: ["React", "Remove.bg API", "CSS3"],
+        liveUrl: "https://fastremover.netlify.app/",
+        githubUrl: "#"
+      },
+      comingsoon: {
+        title: "Coming Soon",
+        subtitle: "New project in development",
+        description: `
+          <p>Exciting new projects are currently in development!</p>
+          <h4>What to Expect</h4>
+          <ul>
+            <li>Innovative features</li>
+            <li>Modern tech stack</li>
+            <li>User-focused experience</li>
+            <li>Performance optimized</li>
+          </ul>
+          <p style="margin-top: 20px;"><strong>Want to be notified?</strong> Use the contact form below!</p>
+        `,
+        tech: ["React", "Node.js", "More TBA..."],
+        liveUrl: "#",
+        githubUrl: "#"
       }
-
-      init() {
-        this.setTheme(this.currentTheme);
-        
-        if (this.toggleBtn) {
-          this.toggleBtn.addEventListener('click', this.toggleTheme.bind(this));
-        }
-
-        // System preference detection
-        if (!localStorage.getItem('theme')) {
-          const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-          this.setTheme(mediaQuery.matches ? 'dark' : 'light');
-          
-          mediaQuery.addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme-manual')) {
-              this.setTheme(e.matches ? 'dark' : 'light');
-            }
-          });
-        }
-      }
-
-      setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        this.currentTheme = theme;
-      }
-
-      toggleTheme() {
-        const newTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
-        localStorage.setItem('theme-manual', 'true');
-        
-        if (this.transition) {
-          this.transition.classList.add('active');
-          
-          setTimeout(() => {
-            this.setTheme(newTheme);
-          }, 300);
-          
-          setTimeout(() => {
-            this.transition.classList.remove('active');
-          }, 600);
-        } else {
-          this.setTheme(newTheme);
-        }
-      }
-    }
-
-    // Scroll Animations
-    class ScrollAnimations {
-      constructor() {
-        this.init();
-      }
-
-      init() {
-        this.createObserver();
-      }
-
-      createObserver() {
-        const options = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        };
-
-        this.observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = 1;
-              entry.target.style.transform = 'translateY(0)';
-              this.observer.unobserve(entry.target);
-            }
-          });
-        }, options);
-
-        // Observe elements
-        const elements = document.querySelectorAll('.project-box');
-        elements.forEach(el => {
-          el.style.opacity = 0;
-          el.style.transform = 'translateY(30px)';
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          this.observer.observe(el);
-        });
-      }
-    }
-
-    // Loading Management
-    function handleLoading() {
-      const loader = document.querySelector('.loader');
-      
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          if (loader) {
-            loader.classList.add('hidden');
-          }
-        }, 1000);
-      });
-    }
-
-    // Initialize Tilt Effect (Desktop Only)
-    function initTiltEffect() {
-      if (window.innerWidth > 768 && typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(document.querySelectorAll(".project-box"), {
-          max: 8,
-          speed: 400,
-          glare: true,
-          "max-glare": 0.2,
-        });
-      }
-    }
-
-    // Keyboard Shortcuts
-    function initKeyboardShortcuts() {
-      document.addEventListener('keydown', (e) => {
-        // Ctrl/Cmd + D to toggle theme
-        if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
-          e.preventDefault();
-          const themeToggle = document.querySelector('.theme-toggle');
-          if (themeToggle) themeToggle.click();
-        }
-      });
-    }
-
-    // Initialize Everything
-    function init() {
-      try {
-        // Handle loading
-        handleLoading();
-        
-        // Initialize core features
-        new ThemeManager();
-        new ScrollAnimations();
-        
-        // Initialize other features
-        initTiltEffect();
-        initKeyboardShortcuts();
-        
-        console.log('Portfolio Projects loaded successfully!');
-      } catch (error) {
-        console.error('Error initializing portfolio:', error);
-      }
-    }
-
-    // Start when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
-
-    // Global functions for onclick handlers
-    window.toggleTheme = function() {
-      const themeToggle = document.querySelector('.theme-toggle');
-      if (themeToggle) themeToggle.click();
     };
+
+    // Theme Toggle
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    initTheme();
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      document.getElementById('hamburger').classList.toggle('active');
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Scroll events
+    window.addEventListener('scroll', () => {
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Project Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectBoxes = document.querySelectorAll('.project-box');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        projectBoxes.forEach(box => {
+          if (filter === 'all' || box.getAttribute('data-category') === filter) {
+            box.classList.remove('hidden');
+          } else {
+            box.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Modal Functions
+    function openModal(projectId) {
+      const modal = document.getElementById('projectModal');
+      const project = projectData[projectId];
+
+      if (project) {
+        document.getElementById('modalTitle').textContent = project.title;
+        document.getElementById('modalSubtitle').textContent = project.subtitle;
+        
+        let techHTML = '<div class="modal-tech-stack">';
+        project.tech.forEach(tech => {
+          techHTML += `<span>${tech}</span>`;
+        });
+        techHTML += '</div>';
+
+        document.getElementById('modalBody').innerHTML = project.description + techHTML;
+
+        let buttonsHTML = '';
+        if (project.liveUrl && project.liveUrl !== '#') {
+          buttonsHTML += `<a href="${project.liveUrl}" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
+        }
+        if (project.githubUrl && project.githubUrl !== '#') {
+          buttonsHTML += `<a href="${project.githubUrl}" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> View Code</a>`;
+        }
+        document.getElementById('modalButtons').innerHTML = buttonsHTML;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnOverlay(event) {
+      if (event.target.classList.contains('modal')) {
+        closeModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Notification
+    function showNotification(message) {
+      const notification = document.getElementById('notification');
+      document.getElementById('notificationText').textContent = message;
+      notification.classList.add('show');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    // Contact Form
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const formStatus = document.getElementById('formStatus');
+      const form = document.getElementById('contactForm');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+      // Simulate form submission
+      setTimeout(() => {
+        formStatus.textContent = '✓ Message sent successfully!';
+        formStatus.className = 'form-status success';
+        form.reset();
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+
+        showNotification('Message sent successfully!');
+
+        setTimeout(() => {
+          formStatus.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
