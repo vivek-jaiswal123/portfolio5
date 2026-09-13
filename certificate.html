@@ -1,1519 +1,410 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional Certificates | Vivek's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #4f7cff;
-      --primary-dark: #3d63cc;
-      --gradient-primary: linear-gradient(135deg, #4f7cff 0%, #8b5cf6 100%);
-      --gradient-success: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-      --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
-      --shadow-xl: 0 16px 64px rgba(0,0,0,0.2);
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --text-primary: #1a1a1a;
-      --text-secondary: #666;
-      --text-tertiary: #999;
-      --bg-primary: #fff;
-      --bg-secondary: #f8fafc;
-      --bg-tertiary: #f1f5f9;
-      --border: rgba(0,0,0,0.1);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates | Vivek Jaiswal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#09090b;
+  --surface:#111114;
+  --surface-2:#17171b;
+  --text:#f5f5f5;
+  --muted:#a1a1aa;
+  --line:rgba(255,255,255,.10);
+  --accent:#8b5cf6;
+  --accent-2:#22d3ee;
+  --radius:22px;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+body:not(.dark){
+  --bg:#f7f7f5;
+  --surface:#fff;
+  --surface-2:#f1f1ef;
+  --text:#18181b;
+  --muted:#66666f;
+  --line:rgba(24,24,27,.10);
+  --shadow:0 20px 50px rgba(24,24,27,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"DM Sans",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  min-height:100vh;
+}
+body.dark{background:var(--bg);color:var(--text)}
+a{color:inherit}
+button,input{font:inherit}
+.navbar{
+  position:sticky;top:0;z-index:1000;width:100%;
+  padding:16px 5%;display:flex;align-items:center;justify-content:space-between;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
+}
+.nav-logo{font-family:"Space Grotesk",sans-serif;font-size:1.05rem;font-weight:700;text-decoration:none;letter-spacing:-.02em}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.9rem;color:var(--muted);text-decoration:none;transition:.25s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--text)}
+.theme-toggle{
+  width:42px;height:42px;padding:0;border-radius:12px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  color:#f8fafc;cursor:pointer;
+  transition:border-color .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
+}
+.theme-toggle:hover{border-color:rgba(124,92,255,.55);box-shadow:0 0 24px rgba(124,92,255,.16)}
+.theme-toggle i{font-size:15px}
+body:not(.dark) .theme-toggle{background:rgba(255,255,255,.82);border-color:rgba(17,24,39,.12);color:#111827}
+
+.container{max-width:1200px;margin:auto;padding:0 5%}
+.header{padding:95px 0 45px}
+.header-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 12px;
+  border:1px solid var(--line);border-radius:99px;color:var(--muted);
+  font-size:.78rem;margin-bottom:18px;background:var(--surface);
+}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2)}
+.header h1{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(2.7rem,7vw,5.2rem);line-height:1;
+  letter-spacing:-.05em;margin-bottom:18px;
+}
+.header h1::after{
+  content:"";display:block;width:55px;height:2px;margin-top:22px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+}
+.header p{color:var(--muted);max-width:650px;font-size:1rem}
+
+.toolbar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:12px;border:1px solid var(--line);border-radius:18px;
+  background:var(--surface);margin-bottom:25px;
+}
+.search-box{flex:1;min-width:240px;position:relative}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem}
+.search-input{
+  width:100%;padding:11px 14px 11px 38px;background:var(--bg);
+  border:1px solid var(--line);border-radius:11px;color:var(--text);outline:none;
+}
+.search-input:focus{border-color:var(--accent)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filter-btn{
+  padding:9px 13px;border:1px solid var(--line);border-radius:10px;
+  background:var(--bg);color:var(--muted);cursor:pointer;transition:.25s;
+}
+.filter-btn:hover,.filter-btn.active{
+  border-color:rgba(139,92,246,.5);
+  background:rgba(139,92,246,.12);color:var(--text);
+}
+
+.certificates-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;padding-bottom:80px;
+}
+.cert-card{
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);
+  transition:transform .35s var(--ease),border-color .35s,box-shadow .35s;
+}
+.cert-card:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.45);box-shadow:var(--shadow)}
+.cert-image-wrap{position:relative;height:220px;background:var(--surface-2);overflow:hidden}
+.cert-image{width:100%;height:100%;object-fit:cover;display:block}
+.category-tag{
+  position:absolute;top:16px;left:16px;padding:6px 10px;
+  border:1px solid rgba(255,255,255,.16);border-radius:99px;
+  background:rgba(10,10,12,.65);backdrop-filter:blur(8px);
+  color:#fff;font-size:.72rem;font-weight:600;
+}
+.cert-content{padding:24px}
+.cert-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.cert-heading h2{font-family:"Space Grotesk",sans-serif;font-size:1.25rem;line-height:1.25}
+.issuer{margin-top:4px;color:var(--muted);font-size:.88rem}
+.date{white-space:nowrap;color:var(--muted);font-size:.78rem;padding-top:3px}
+.credential{margin:17px 0;color:var(--muted);font-size:.78rem;word-break:break-word}
+.skills{display:flex;flex-wrap:wrap;gap:7px}
+.skills span{
+  padding:5px 9px;border:1px solid var(--line);border-radius:99px;
+  background:var(--surface-2);color:var(--muted);font-size:.72rem;
+}
+.details-btn{
+  margin-top:20px;border:1px solid var(--line);background:transparent;
+  color:var(--text);border-radius:11px;padding:10px 14px;cursor:pointer;
+  transition:.25s;
+}
+.details-btn:hover{border-color:rgba(139,92,246,.55);background:rgba(139,92,246,.10)}
+.details-btn i{margin-left:7px;font-size:.72rem}
+
+.empty-state{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--muted)}
+.empty-state i{font-size:2rem;margin-bottom:12px;color:var(--accent)}
+.empty-state h3{font-family:"Space Grotesk",sans-serif;color:var(--text);margin-bottom:5px}
+
+.modal-overlay{
+  position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;pointer-events:none;transition:.25s;
+}
+.modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto}
+.modal{
+  position:relative;width:min(680px,100%);max-height:88vh;overflow:auto;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.modal-header{display:flex;justify-content:space-between;gap:20px;padding:25px 28px;border-bottom:1px solid var(--line)}
+.modal-title h2{font-family:"Space Grotesk",sans-serif;font-size:1.4rem}
+.modal-subtitle{color:var(--muted);margin-top:3px}
+.close-btn{
+  width:38px;height:38px;flex:none;border-radius:10px;
+  background:var(--bg);border:1px solid var(--line);color:var(--text);cursor:pointer;
+}
+.modal-body{padding:28px}
+.modal-cert-image{width:100%;max-height:330px;object-fit:contain;border-radius:14px;background:var(--surface-2);margin-bottom:25px}
+.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:25px}
+.detail-grid div{padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2)}
+.detail-grid span{display:block;color:var(--muted);font-size:.7rem;margin-bottom:4px}
+.detail-grid strong{font-size:.82rem;word-break:break-word}
+.modal-body h3{font-family:"Space Grotesk",sans-serif;margin-bottom:12px}
+.modal-skills{margin-bottom:5px}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+
+@media(max-width:850px){.certificates-grid{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .navbar{padding:14px 5%}
+  .nav-links{gap:15px}
+  .nav-links li:nth-child(1){display:none}
+  .header{padding:70px 0 38px}
+  .toolbar{align-items:stretch}
+  .search-box{min-width:100%}
+  .filters{width:100%}
+  .filter-btn{flex:1}
+  .cert-image-wrap{height:200px}
+}
+@media(max-width:520px){
+  .cert-heading{flex-direction:column;gap:4px}
+  .date{padding:0}
+  .detail-grid{grid-template-columns:1fr}
+  .modal-header,.modal-body{padding:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
 
-    [data-theme="dark"] {
-      --text-primary: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --text-tertiary: #94a3b8;
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-tertiary: #334155;
-      --border: rgba(255,255,255,0.1);
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: all var(--transition);
-      overflow-x: hidden;
-    }
-
-    .mesh-bg {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(at 40% 20%, rgba(79,124,255,0.15) 0px, transparent 50%),
-                  radial-gradient(at 80% 0%, rgba(139,92,246,0.15) 0px, transparent 50%),
-                  radial-gradient(at 0% 50%, rgba(34,197,94,0.1) 0px, transparent 50%);
-      z-index: -1;
-      animation: meshMove 20s ease-in-out infinite;
-    }
-
-    @keyframes meshMove {
-      0%, 100% { filter: hue-rotate(0deg); }
-      50% { filter: hue-rotate(30deg); }
-    }
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-primary);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s, visibility 0.5s;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader-ring {
-      width: 80px;
-      height: 80px;
-      border: 4px solid var(--border);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    .loader-text {
-      margin-top: 20px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 56px;
-      height: 28px;
-      background: var(--bg-secondary);
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      cursor: pointer;
-      z-index: 1000;
-      padding: 2px;
-      transition: all var(--transition);
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(79,124,255,0.3);
-    }
-
-    .theme-thumb {
-      width: 24px;
-      height: 24px;
-      background: var(--gradient-primary);
-      border-radius: 50%;
-      transition: transform var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-    }
-
-    [data-theme="dark"] .theme-thumb {
-      transform: translateX(26px);
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .header {
-      text-align: center;
-      padding: 120px 0 60px;
-      position: relative;
-    }
-
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-      opacity: 0.1;
-      animation: pulse-bg 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-bg {
-      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.1; }
-      50% { transform: translateX(-50%) scale(1.1); opacity: 0.2; }
-    }
-
-    .header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      padding: 8px 16px;
-      border-radius: 50px;
-      margin-bottom: 20px;
-      font-size: 0.85rem;
-      animation: fadeInUp 0.6s ease;
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #22c55e;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
-      animation: fadeInUp 0.6s ease 0.1s backwards;
-    }
-
-    .header p {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 40px;
-      animation: fadeInUp 0.6s ease 0.2s backwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 60px;
-      flex-wrap: wrap;
-      animation: fadeInUp 0.6s ease 0.3s backwards;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 20px 30px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      transition: all var(--transition);
-      min-width: 140px;
-    }
-
-    .stat-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary);
-    }
-
-    .stat-value {
-      display: block;
-      font-size: 2rem;
-      font-weight: 800;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 40px;
-      padding: 16px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      animation: fadeInUp 0.6s ease 0.4s backwards;
-    }
-
-    .search-box {
-      flex: 1;
-      min-width: 250px;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 14px 20px 14px 48px;
-      background: var(--bg-primary);
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      transition: all var(--transition);
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(79,124,255,0.1);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-tertiary);
-    }
-
-    .filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: 10px 18px;
-      background: var(--bg-primary);
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all var(--transition);
-      font-family: inherit;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .filter-btn.active {
-      background: var(--gradient-primary);
-      border-color: transparent;
-      color: white;
-    }
-
-    .view-toggle {
-      display: flex;
-      background: var(--bg-primary);
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .view-btn {
-      padding: 10px 14px;
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .view-btn.active {
-      background: var(--gradient-primary);
-      color: white;
-    }
-
-    .certificates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 30px;
-      margin-bottom: 80px;
-      animation: fadeInUp 0.6s ease 0.5s backwards;
-    }
-
-    .certificates-grid.list-view {
-      grid-template-columns: 1fr;
-    }
-
-    .cert-card {
-      position: relative;
-      height: 400px;
-      perspective: 1200px;
-    }
-
-    .certificates-grid.list-view .cert-card {
-      height: auto !important;
-      perspective: none !important;
-    }
-
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform-style: preserve-3d;
-    }
-
-    .cert-card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .certificates-grid.list-view .card-inner {
-      display: block !important;
-      transform: none !important;
-      height: auto !important;
-      transform-style: flat !important;
-    }
-
-    .card-face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .certificates-grid.list-view .card-face {
-      position: static !important;
-      width: 100% !important;
-      height: auto !important;
-      backface-visibility: visible !important;
-      transform: none !important;
-    }
-
-    .card-front {
-      background: var(--bg-secondary);
-      box-shadow: var(--shadow-lg);
-      transition: all var(--transition);
-    }
-
-    .certificates-grid.list-view .card-front {
-      flex-direction: row !important;
-      text-align: left !important;
-      gap: 20px !important;
-      width: 100% !important;
-      height: auto !important;
-      padding: 20px !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-    }
-
-    .certificates-grid.list-view .card-back {
-      display: none !important;
-      visibility: hidden !important;
-      position: absolute !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-    
-    .certificates-grid.list-view .list-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    
-    .list-actions {
-      display: none;
-    }
-    
-    .certificates-grid.list-view .card-content {
-      flex: 1;
-    }
-
-    .cert-card:hover .card-front {
-      box-shadow: var(--shadow-xl);
-    }
-
-    .card-front::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      transition: left 0.8s;
-    }
-
-    .cert-card:hover .card-front::before {
-      left: 100%;
-    }
-
-    .card-back {
-      background: var(--gradient-primary);
-      color: white;
-      transform: rotateY(180deg);
-      box-shadow: var(--shadow-xl);
-    }
-
-    .verify-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 32px;
-      height: 32px;
-      background: var(--gradient-success);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      box-shadow: var(--shadow-md);
-      z-index: 10;
-    }
-
-    .category-tag {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      padding: 6px 12px;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      z-index: 10;
-    }
-
-    .cert-icon {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 4px solid var(--primary);
-      margin-bottom: 20px;
-      object-fit: cover;
-      transition: all var(--transition);
-      background: var(--bg-primary);
-    }
-
-    .certificates-grid.list-view .cert-icon {
-      width: 60px;
-      height: 60px;
-      margin: 0;
-    }
-
-    .cert-card:hover .cert-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 0 20px rgba(79,124,255,0.3);
-    }
-
-    .card-front h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    .certificates-grid.list-view .card-content {
-      flex: 1;
-    }
-
-    .card-front .subtitle {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      margin-bottom: 12px;
-    }
-
-    .card-meta {
-      font-size: 0.8rem;
-      color: var(--text-tertiary);
-      margin-bottom: 12px;
-    }
-
-    .skills-preview {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .certificates-grid.list-view .skills-preview {
-      justify-content: flex-start;
-    }
-
-    .skill-tag {
-      padding: 4px 10px;
-      background: rgba(79,124,255,0.1);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-    }
-
-    .flip-btn {
-      position: absolute;
-      bottom: 16px;
-      right: 16px;
-      width: 36px;
-      height: 36px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-      z-index: 10;
-    }
-
-    .flip-btn:hover {
-      background: var(--gradient-primary);
-      color: white;
-      transform: rotate(180deg);
-    }
-
-    .certificates-grid.list-view .flip-btn {
-      display: none;
-    }
-
-    .card-back h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      max-width: 280px;
-    }
-
-    .action-btn {
-      background: rgba(255,255,255,0.15);
-      color: white;
-      border: 2px solid rgba(255,255,255,0.2);
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition);
-      font-family: inherit;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .action-btn:hover {
-      background: rgba(255,255,255,0.25);
-      transform: translateY(-2px);
-    }
-
-    .action-btn.primary {
-      background: white;
-      color: var(--primary);
-    }
-
-    .action-btn.primary:hover {
-      box-shadow: 0 8px 24px rgba(255,255,255,0.3);
-    }
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(15,23,42,0.85);
-      backdrop-filter: blur(12px);
-      z-index: 9998;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal {
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      max-width: 900px;
-      width: 100%;
-      max-height: 90vh;
-      border-radius: 24px;
-      box-shadow: var(--shadow-xl);
-      animation: slideIn 0.4s ease;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .modal-header {
-      padding: 30px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-secondary);
-    }
-
-    .modal-title h2 {
-      font-size: 1.4rem;
-      margin-bottom: 4px;
-    }
-
-    .modal-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-
-    .close-btn {
-      width: 40px;
-      height: 40px;
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-    }
-
-    .close-btn:hover {
-      background: #ef4444;
-      color: white;
-      transform: rotate(90deg);
-    }
-
-    .modal-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 30px;
-    }
-
-    .cert-image {
-      width: 100%;
-      max-height: 50vh;
-      object-fit: contain;
-      border-radius: 16px;
-      border: 3px solid var(--border);
-      margin-bottom: 20px;
-    }
-
-    .info-grid {
-      display: grid;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px;
-      background: var(--bg-secondary);
-      border-radius: 10px;
-    }
-
-    .info-label {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-
-    .info-value {
-      font-size: 0.85rem;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .toast-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .toast {
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: var(--shadow-xl);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 300px;
-      animation: toastSlide 0.3s ease, toastOut 0.3s ease 4.7s forwards;
-    }
-
-    @keyframes toastSlide {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes toastOut {
-      from {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-    }
-
-    .toast-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-
-    .toast-icon.success {
-      background: rgba(34,197,94,0.1);
-    }
-
-    .toast-content {
-      flex: 1;
-    }
-
-    .toast-title {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .toast-message {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-
-    @media (max-width: 768px) {
-      .certificates-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .stats {
-        gap: 20px;
-      }
-      
-      .toolbar {
-        flex-direction: column;
-      }
-    }
-  </style>
 </head>
-<body>
-  <div class="mesh-bg"></div>
-  
-  <div class="loader" id="loader">
-    <div class="loader-ring"></div>
-    <div class="loader-text">Loading Certificates...</div>
-  </div>
+<body class="dark">
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Vivek Jaiswal</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects1.html">Projects</a></li>
+    <li><a href="certificate.html" aria-current="page">Certificates</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+</nav>
 
-  <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-label="Toggle theme">
-    <div class="theme-thumb">🌙</div>
-  </div>
+<main class="container">
+  <header class="header">
+    <div class="header-badge"><span class="pulse-dot"></span> Credentials &amp; Training</div>
+    <h1>Certificates</h1>
+    <p>A focused record of completed training and professional credentials.</p>
+  </header>
 
-  <div class="container">
-    <header class="header">
-      <div class="header-badge">
-        <span class="pulse-dot"></span>
-        <span>Blockchain Verified</span>
-      </div>
-      <h1>Professional Certificates</h1>
-      <p>Verified credentials showcasing expertise across multiple domains with blockchain authentication</p>
-      
-      <div class="stats">
-        <div class="stat-item">
-          <span class="stat-value" data-count="12">0</span>
-          <span class="stat-label">Certificates</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value" data-count="8">0</span>
-          <span class="stat-label">Institutions</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value" data-count="35">0</span>
-          <span class="stat-label">Skills</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value">100%</span>
-          <span class="stat-label">Verified</span>
-        </div>
-      </div>
-    </header>
+  <section class="toolbar" aria-label="Certificate filters">
+    <div class="search-box">
+      <i class="fas fa-search search-icon"></i>
+      <input class="search-input" id="searchInput" type="search" placeholder="Search certificates..." aria-label="Search certificates">
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="development">Development</button>
+      <button class="filter-btn" data-filter="data">Data</button>
+    </div>
+  </section>
 
-    <div class="toolbar">
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" id="searchInput" placeholder="Search certificates...">
-      </div>
-      
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="development">Development</button>
-        <button class="filter-btn" data-filter="design">Design</button>
-        <button class="filter-btn" data-filter="cloud">Cloud</button>
-        <button class="filter-btn" data-filter="data">Data Science</button>
-      </div>
+  <section class="certificates-grid" id="certificatesGrid" aria-live="polite"></section>
+</main>
 
-      <div class="view-toggle">
-        <button class="view-btn active" data-view="grid">📱</button>
-        <button class="view-btn" data-view="list">📋</button>
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h2 id="modalTitle"></h2>
+        <div class="modal-subtitle" id="modalSubtitle"></div>
       </div>
-
-      <button class="filter-btn" id="addCertBtn" style="background: var(--gradient-primary); color: white; border: none;">
-        ➕ Add Certificate
+      <button class="close-btn" id="closeModal" type="button" aria-label="Close details">
+        <i class="fas fa-times"></i>
       </button>
     </div>
-
-    <div class="certificates-grid" id="certificatesGrid"></div>
+    <div class="modal-body" id="modalBody"></div>
   </div>
+</div>
 
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title">
-          <h2 id="modalTitle"></h2>
-          <div class="modal-subtitle" id="modalSubtitle"></div>
-        </div>
-        <button class="close-btn" id="closeModal">✕</button>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
 
-  <div class="modal-overlay" id="addCertModal">
-    <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title">
-          <h2>Add New Certificate</h2>
-          <div class="modal-subtitle">Quick and easy - just the essentials</div>
-        </div>
-        <button class="close-btn" id="closeAddModal">✕</button>
-      </div>
-      <div class="modal-body">
-        <form id="addCertForm" style="display: grid; gap: 16px;">
-          <div>
-            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-primary);">Certificate Name *</label>
-            <input type="text" id="certTitle" required placeholder="e.g., Full Stack Web Development" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; font-size: 0.95rem;">
-          </div>
-          
-          <div>
-            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-primary);">Issued By *</label>
-            <input type="text" id="certIssuer" required placeholder="e.g., Coursera, Google, AWS" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; font-size: 0.95rem;">
-          </div>
+<script>
+const certificates = [
+  {
+    id: 1,
+    title: "Web Programming Certificate",
+    issuer: "Professional Institute",
+    category: "development",
+    date: "2024",
+    credentialId: "WEB-PROG-2024-001",
+    skills: ["HTML", "CSS", "JavaScript", "Web Development", "Programming"],
+    image: "web program.jpg"
+  },
+  {
+    id: 2,
+    title: "MS Excel Certificate",
+    issuer: "Microsoft Office Specialist",
+    category: "data",
+    date: "2024",
+    credentialId: "MS-EXCEL-2024-002",
+    skills: ["Excel", "Spreadsheets", "Data Analysis", "Formulas", "Pivot Tables"],
+    image: "ms-excel.jpg"
+  }
+];
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <div>
-              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-primary);">Category *</label>
-              <select id="certCategory" required style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; font-size: 0.95rem; cursor: pointer;">
-                <option value="development">Development</option>
-                <option value="design">Design</option>
-                <option value="cloud">Cloud</option>
-                <option value="data">Data Science</option>
-              </select>
-            </div>
-            
-            <div>
-              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-primary);">Date *</label>
-              <input type="text" id="certDate" required placeholder="Jan 2024" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; font-size: 0.95rem;">
-            </div>
-          </div>
+const grid = document.getElementById("certificatesGrid");
+const searchInput = document.getElementById("searchInput");
 
-          <div>
-            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-primary);">Skills *</label>
-            <input type="text" id="certSkills" required placeholder="React, Node.js, MongoDB (separate with commas)" style="width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; font-size: 0.95rem;">
-            <small style="color: var(--text-tertiary); font-size: 0.8rem;">Separate multiple skills with commas</small>
-          </div>
+function renderCertificates(filter = "all", search = "") {
+  const query = search.trim().toLowerCase();
 
-          <div style="display: flex; gap: 12px; margin-top: 8px;">
-            <button type="submit" style="flex: 1; padding: 14px; background: var(--gradient-primary); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1rem; font-family: inherit; transition: all var(--transition);">
-              ✅ Add Certificate
-            </button>
-            <button type="button" id="cancelAdd" style="padding: 14px 24px; background: var(--bg-secondary); color: var(--text-primary); border: 2px solid var(--border); border-radius: 12px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all var(--transition);">
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  const filtered = certificates.filter(cert => {
+    const categoryMatch = filter === "all" || cert.category === filter;
+    const searchMatch = !query ||
+      cert.title.toLowerCase().includes(query) ||
+      cert.issuer.toLowerCase().includes(query) ||
+      cert.skills.some(skill => skill.toLowerCase().includes(query));
+    return categoryMatch && searchMatch;
+  });
 
-  <div class="toast-container" id="toastContainer"></div>
+  if (!filtered.length) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <i class="fas fa-search"></i>
+        <h3>No certificates found</h3>
+        <p>Try another search or category.</p>
+      </div>`;
+    return;
+  }
 
-  <script>
-    const certificates = [
-      {
-        id: 1,
-        title: "Web Programming Certificate",
-        issuer: "Professional Institute",
-        category: "development",
-        date: "2024",
-        credentialId: "WEB-PROG-2024-001",
-        verified: true,
-        blockchain: true,
-        skills: ["HTML", "CSS", "JavaScript", "Web Development", "Programming"],
-        image: "web program.jpg",
-        verifyUrl: "#verify"
-      },
-      {
-        id: 2,
-        title: "MS Excel Certificate",
-        issuer: "Microsoft Office Specialist",
-        category: "data",
-        date: "2024",
-        credentialId: "MS-EXCEL-2024-002",
-        verified: true,
-        blockchain: true,
-        skills: ["Excel", "Spreadsheets", "Data Analysis", "Formulas", "Pivot Tables"],
-        image: "ms-excel.jpg",
-        verifyUrl: "#verify"
-      },
-      // {
-      //   id: 3,
-      //   title: "Full Stack Web Development",
-      //   issuer: "Coursera",
-      //   category: "development",
-      //   date: "Dec 2023",
-      //   credentialId: "CERT-FS-2023-001",
-      //   verified: true,
-      //   blockchain: true,
-      //   skills: ["React", "Node.js", "MongoDB", "Express", "REST APIs"],
-      //   image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop",
-      //   verifyUrl: "#verify"
-      // },
-      // {
-      //   id: 4,
-      //   title: "AWS Cloud Practitioner",
-      //   issuer: "Amazon Web Services",
-      //   category: "cloud",
-      //   date: "Nov 2023",
-      //   credentialId: "AWS-CP-2023-789",
-      //   verified: true,
-      //   blockchain: true,
-      //   skills: ["AWS", "Cloud Architecture", "EC2", "S3", "Lambda"],
-      //   image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
-      //   verifyUrl: "#verify"
-      // },
-      // {
-      //   id: 5,
-      //   title: "UI/UX Design Professional",
-      //   issuer: "Google",
-      //   category: "design",
-      //   date: "Oct 2023",
-      //   credentialId: "GOOG-UX-2023-456",
-      //   verified: true,
-      //   blockchain: true,
-      //   skills: ["Figma", "User Research", "Prototyping", "Design Systems"],
-      //   image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-      //   verifyUrl: "#verify"
-      // },
-      // {
-      //   id: 6,
-      //   title: "Data Science with Python",
-      //   issuer: "IBM",
-      //   category: "data",
-      //   date: "Sep 2023",
-      //   credentialId: "IBM-DS-2023-234",
-      //   verified: true,
-      //   blockchain: true,
-      //   skills: ["Python", "Pandas", "NumPy", "Machine Learning", "Data Viz"],
-      //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      //   verifyUrl: "#verify"
-      // },
-      // {
-      //   id: 7,
-      //   title: "Advanced JavaScript",
-      //   issuer: "Meta",
-      //   category: "development",
-      //   date: "Aug 2023",
-      //   credentialId: "META-JS-2023-567",
-      //   verified: true,
-      //   blockchain: true,
-      //   skills: ["JavaScript", "ES6+", "Async/Await", "Promises", "OOP"],
-      //   image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop",
-      //   verifyUrl: "#verify"
-      // },
-      // {
-      //   id: 8,
-      //   title: "Responsive Web Design",
-      //   issuer: "freeCodeCamp",
-      //   category: "design",
-      //   date: "Jul 2023",
-      //   credentialId: "FCC-RWD-2023-890",
-      //   verified: true,
-      //   blockchain: false,
-      //   skills: ["HTML5", "CSS3", "Flexbox", "Grid", "Mobile-First"],
-      //   image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop",
-      //   verifyUrl: "#verify"
-      // }
-    ];
-
-    // Initialize
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 1200);
-      
-      loadCertificates();
-      renderCertificates();
-      animateStats();
-    });
-
-    // Load certificates from storage
-    function loadCertificates() {
-      const stored = localStorage.getItem('certificates');
-      if (stored) {
-        const customCerts = JSON.parse(stored);
-        certificates.push(...customCerts);
-      }
-    }
-
-    // Save certificates to storage
-    function saveCertificates() {
-      const customCerts = certificates.filter(cert => cert.custom === true);
-      localStorage.setItem('certificates', JSON.stringify(customCerts));
-    }
-
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      
-      const thumb = themeToggle.querySelector('.theme-thumb');
-      thumb.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    });
-
-    // Animate Stats Counter
-    function animateStats() {
-      document.querySelectorAll('.stat-value[data-count]').forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'));
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            stat.textContent = target;
-            clearInterval(timer);
-          } else {
-            stat.textContent = Math.floor(current);
-          }
-        }, 30);
-      });
-    }
-
-    // Update Stats
-    function updateStats() {
-      const stats = document.querySelectorAll('.stat-value');
-      const totalCerts = certificates.length;
-      const uniqueIssuers = new Set(certificates.map(c => c.issuer)).size;
-      const totalSkills = new Set(certificates.flatMap(c => c.skills)).size;
-      
-      stats[0].textContent = totalCerts;
-      stats[1].textContent = uniqueIssuers;
-      stats[2].textContent = totalSkills;
-    }
-
-    // Render Certificates
-    function renderCertificates(filter = 'all', search = '') {
-      const grid = document.getElementById('certificatesGrid');
-      let filtered = certificates;
-
-      if (filter !== 'all') {
-        filtered = filtered.filter(cert => cert.category === filter);
-      }
-
-      if (search) {
-        filtered = filtered.filter(cert =>
-          cert.title.toLowerCase().includes(search.toLowerCase()) ||
-          cert.issuer.toLowerCase().includes(search.toLowerCase()) ||
-          cert.skills.some(skill => skill.toLowerCase().includes(search.toLowerCase()))
-        );
-      }
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
-            <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;">🔍</div>
-            <h3>No certificates found</h3>
-            <p style="color: var(--text-secondary);">Try adjusting your filters or search query</p>
-          </div>
-        `;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(cert => `
-        <div class="cert-card" data-id="${cert.id}">
-          <div class="card-inner">
-            <div class="card-face card-front">
-              ${cert.verified ? '<div class="verify-badge">✓</div>' : ''}
-              <div class="category-tag">${cert.category}</div>
-              <img src="${cert.image}" alt="${cert.title}" class="cert-icon">
-              <div class="card-content">
-                <h3>${cert.title}</h3>
-                <div class="subtitle">${cert.issuer}</div>
-                <div class="card-meta">
-                  <div>📅 Issued: ${cert.date}</div>
-                  <div>🔒 ${cert.credentialId}</div>
-                </div>
-                <div class="skills-preview">
-                  ${cert.skills.slice(0, 3).map(skill => 
-                    `<span class="skill-tag">${skill}</span>`
-                  ).join('')}
-                  ${cert.skills.length > 3 ? `<span class="skill-tag">+${cert.skills.length - 3}</span>` : ''}
-                </div>
-              </div>
-              <div class="list-actions">
-                <button class="action-btn" onclick="viewDetails(${cert.id})" style="padding: 8px 16px; font-size: 0.85rem; background: var(--gradient-primary); color: white; border: none;">
-                  📄 Details
-                </button>
-                <button class="action-btn" onclick="downloadCert(${cert.id})" style="padding: 8px 16px; font-size: 0.85rem; background: var(--bg-primary); color: var(--text-primary); border: 2px solid var(--border);">
-                  ⬇️ Download
-                </button>
-                ${cert.custom ? `<button class="action-btn" onclick="deleteCert(${cert.id})" style="padding: 8px 16px; font-size: 0.85rem; background: #ef4444; color: white; border: none;">🗑️ Delete</button>` : ''}
-              </div>
-              <button class="flip-btn" aria-label="Flip card">🔄</button>
-            </div>
-            <div class="card-face card-back">
-              <h3>${cert.title}</h3>
-              <div class="actions">
-                <button class="action-btn primary" onclick="viewDetails(${cert.id})">
-                  📄 View Details
-                </button>
-                <a href="${cert.verifyUrl}" class="action-btn">
-                  ✅ Verify Certificate
-                </a>
-                <button class="action-btn" onclick="downloadCert(${cert.id})">
-                  ⬇️ Download PDF
-                </button>
-                <button class="action-btn" onclick="shareCert(${cert.id})">
-                  🔗 Share
-                </button>
-                ${cert.custom ? `<button class="action-btn" onclick="deleteCert(${cert.id})" style="background: rgba(239,68,68,0.2); border-color: rgba(239,68,68,0.4);">🗑️ Delete</button>` : ''}
-              </div>
-            </div>
-          </div>
-        </div>
-      `).join('');
-
-      // Add flip functionality
-      document.querySelectorAll('.flip-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          btn.closest('.cert-card').classList.toggle('flipped');
-        });
-      });
-    }
-
-    // Search Functionality
-    const searchInput = document.getElementById('searchInput');
-    let searchTimeout;
-    
-    searchInput.addEventListener('input', (e) => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-        renderCertificates(activeFilter, e.target.value);
-      }, 300);
-    });
-
-    // Filter Functionality
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderCertificates(btn.getAttribute('data-filter'), searchInput.value);
-      });
-    });
-
-    // View Toggle
-    document.querySelectorAll('.view-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const grid = document.getElementById('certificatesGrid');
-        if (btn.getAttribute('data-view') === 'list') {
-          grid.classList.add('list-view');
-        } else {
-          grid.classList.remove('list-view');
-        }
-      });
-    });
-
-    // View Details Modal
-    function viewDetails(id) {
-      const cert = certificates.find(c => c.id === id);
-      if (!cert) return;
-
-      const modal = document.getElementById('modalOverlay');
-      document.getElementById('modalTitle').textContent = cert.title;
-      document.getElementById('modalSubtitle').textContent = cert.issuer;
-      
-      document.getElementById('modalBody').innerHTML = `
+  grid.innerHTML = filtered.map(cert => `
+    <article class="cert-card">
+      <div class="cert-image-wrap">
         <img src="${cert.image}" alt="${cert.title}" class="cert-image">
-        
-        <h3 style="margin-bottom: 16px;">Certificate Details</h3>
-        <div class="info-grid">
-          <div class="info-row">
-            <span class="info-label">Credential ID</span>
-            <span class="info-value">${cert.credentialId}</span>
+        <span class="category-tag">${cert.category === "development" ? "Development" : "Data"}</span>
+      </div>
+
+      <div class="cert-content">
+        <div class="cert-heading">
+          <div>
+            <h2>${cert.title}</h2>
+            <p class="issuer">${cert.issuer}</p>
           </div>
-          <div class="info-row">
-            <span class="info-label">Issue Date</span>
-            <span class="info-value">${cert.date}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Verification</span>
-            <span class="info-value" style="color: #22c55e;">✓ Verified</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Blockchain</span>
-            <span class="info-value">${cert.blockchain ? '🔗 Enabled' : '❌ Not Available'}</span>
-          </div>
+          <span class="date">${cert.date}</span>
         </div>
 
-        <h3 style="margin: 24px 0 16px;">Skills Covered</h3>
-        <div class="skills-preview">
-          ${cert.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+        <p class="credential">Credential ID: ${cert.credentialId}</p>
+
+        <div class="skills">
+          ${cert.skills.map(skill => `<span>${skill}</span>`).join("")}
         </div>
-      `;
-      
-      modal.classList.add('active');
-    }
 
-    // Close Modal
-    document.getElementById('closeModal').addEventListener('click', () => {
-      document.getElementById('modalOverlay').classList.remove('active');
+        <button class="details-btn" type="button" onclick="viewDetails(${cert.id})">
+          View Details <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function viewDetails(id) {
+  const cert = certificates.find(item => item.id === id);
+  if (!cert) return;
+
+  document.getElementById("modalTitle").textContent = cert.title;
+  document.getElementById("modalSubtitle").textContent = cert.issuer;
+  document.getElementById("modalBody").innerHTML = `
+    <img src="${cert.image}" alt="${cert.title}" class="modal-cert-image">
+    <div class="detail-grid">
+      <div><span>Category</span><strong>${cert.category === "development" ? "Development" : "Data"}</strong></div>
+      <div><span>Issued</span><strong>${cert.date}</strong></div>
+      <div><span>Credential ID</span><strong>${cert.credentialId}</strong></div>
+    </div>
+    <h3>Skills Covered</h3>
+    <div class="skills modal-skills">
+      ${cert.skills.map(skill => `<span>${skill}</span>`).join("")}
+    </div>
+  `;
+
+  document.getElementById("modalOverlay").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+    renderCertificates(button.dataset.filter, searchInput.value);
+  });
+});
+
+searchInput.addEventListener("input", () => {
+  const active = document.querySelector(".filter-btn.active");
+  renderCertificates(active ? active.dataset.filter : "all", searchInput.value);
+});
+
+document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("modalOverlay").addEventListener("click", event => {
+  if (event.target.id === "modalOverlay") closeModal();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModal();
+});
+
+// Same theme behavior as the main portfolio: one icon, body.dark, persistent choice.
+(function () {
+  const button = document.getElementById("themeToggle");
+  const icon = button ? button.querySelector("i") : null;
+
+  function setTheme(theme) {
+    const dark = theme === "dark";
+    document.body.classList.toggle("dark", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+    if (icon) icon.className = dark ? "fas fa-sun" : "fas fa-moon";
+    if (button) button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+
+  setTheme(localStorage.getItem("theme") === "light" ? "light" : "dark");
+
+  if (button) {
+    button.addEventListener("click", () => {
+      setTheme(document.body.classList.contains("dark") ? "light" : "dark");
     });
+  }
+})();
 
-    document.getElementById('modalOverlay').addEventListener('click', (e) => {
-      if (e.target.id === 'modalOverlay') {
-        document.getElementById('modalOverlay').classList.remove('active');
-      }
-    });
+renderCertificates();
+</script>
 
-    // Add Certificate Modal
-    document.getElementById('addCertBtn').addEventListener('click', () => {
-      document.getElementById('addCertModal').classList.add('active');
-    });
-
-    document.getElementById('closeAddModal').addEventListener('click', () => {
-      document.getElementById('addCertModal').classList.remove('active');
-    });
-
-    document.getElementById('cancelAdd').addEventListener('click', () => {
-      document.getElementById('addCertModal').classList.remove('active');
-      document.getElementById('addCertForm').reset();
-    });
-
-    document.getElementById('addCertModal').addEventListener('click', (e) => {
-      if (e.target.id === 'addCertModal') {
-        document.getElementById('addCertModal').classList.remove('active');
-      }
-    });
-
-    // Predefined certificate images by category
-    const defaultImages = {
-      development: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop',
-      design: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
-      cloud: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
-      data: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
-    };
-
-    // Handle Add Certificate Form
-    document.getElementById('addCertForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const category = document.getElementById('certCategory').value;
-      const issuer = document.getElementById('certIssuer').value;
-      const title = document.getElementById('certTitle').value;
-      
-      // Auto-generate credential ID
-      const credentialId = `${issuer.substring(0, 4).toUpperCase()}-${category.substring(0, 3).toUpperCase()}-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
-      
-      const newCert = {
-        id: Date.now(),
-        title: title,
-        issuer: issuer,
-        category: category,
-        date: document.getElementById('certDate').value,
-        credentialId: credentialId,
-        verified: true,
-        blockchain: true,
-        skills: document.getElementById('certSkills').value.split(',').map(s => s.trim()).filter(s => s),
-        image: defaultImages[category],
-        verifyUrl: '#verify',
-        custom: true
-      };
-
-      certificates.push(newCert);
-      saveCertificates();
-      
-      document.getElementById('addCertModal').classList.remove('active');
-      document.getElementById('addCertForm').reset();
-      
-      const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-      renderCertificates(activeFilter, searchInput.value);
-      
-      showToast('Success!', `${title} certificate added successfully!`, 'success');
-      updateStats();
-    });
-
-    // Download Certificate
-    function downloadCert(id) {
-      const cert = certificates.find(c => c.id === id);
-      showToast('Download Started', `${cert.title} is being downloaded...`, 'success');
-      
-      // Simulate download
-      setTimeout(() => {
-        showToast('Download Complete', 'Certificate saved successfully!', 'success');
-      }, 2000);
-    }
-
-    // Delete Certificate
-    function deleteCert(id) {
-      if (confirm('Are you sure you want to delete this certificate?')) {
-        const index = certificates.findIndex(c => c.id === id);
-        if (index !== -1) {
-          certificates.splice(index, 1);
-          saveCertificates();
-          
-          const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-          renderCertificates(activeFilter, searchInput.value);
-          
-          showToast('Deleted!', 'Certificate removed successfully', 'success');
-          updateStats();
-        }
-      }
-    }
-
-    // Share Certificate
-    function shareCert(id) {
-      const cert = certificates.find(c => c.id === id);
-      const shareUrl = `https://certificates.vivek.dev/${cert.credentialId}`;
-      
-      if (navigator.share) {
-        navigator.share({
-          title: cert.title,
-          text: `Check out my ${cert.title} certificate from ${cert.issuer}`,
-          url: shareUrl
-        }).then(() => {
-          showToast('Shared!', 'Certificate shared successfully', 'success');
-        }).catch(() => {
-          copyToClipboard(shareUrl);
-        });
-      } else {
-        copyToClipboard(shareUrl);
-      }
-    }
-
-    // Copy to Clipboard
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast('Link Copied!', 'Certificate link copied to clipboard', 'success');
-      });
-    }
-
-    // Toast Notification
-    function showToast(title, message, type = 'success') {
-      const container = document.getElementById('toastContainer');
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.innerHTML = `
-        <div class="toast-icon ${type}">${type === 'success' ? '✓' : 'ℹ'}</div>
-        <div class="toast-content">
-          <div class="toast-title">${title}</div>
-          <div class="toast-message">${message}</div>
-        </div>
-      `;
-      
-      container.appendChild(toast);
-      
-      setTimeout(() => {
-        toast.remove();
-      }, 5000);
-    }
-
-    // Keyboard Navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.getElementById('modalOverlay').classList.remove('active');
-      }
-    });
-  </script>
 </body>
 </html>
